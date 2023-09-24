@@ -1,0 +1,71 @@
+
+:root{
+    --primPurple : #713770;
+}
+
+.mynav{
+    background-color: white !important;
+}
+.navbar-brand{
+    display: flex;
+    flex-direction: row;
+    color: var(--primPurple);
+    margin-left:12px ;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+.navbar-brand img{
+    width: 100%;
+    max-width: 19px;
+    margin: 4px;
+}
+
+
+.navLinks li{
+    margin-right:8px ;;
+    font-weight: 600;
+}
+
+
+.navbtn{
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    border: solid 2px var(--primPurple);
+    height: 32px;
+    border-radius: 4px;
+    padding: 0px !important;
+    flex: 0 0 auto;
+    margin-right:6px ;
+    width: 90px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.navLogin a{
+    color: var(--primPurple);
+}
+.navLogin:hover{
+    background: var(--primPurple);
+}
+.navLogin:hover a{
+    color: white;
+}
+
+.navReg{
+    color: white !important;
+    background-color: var(--primPurple);
+}
+.navReg a{
+    color: white !important;
+}
+
+.navReg:hover{
+    background: #ad4eaa;
+    border: #ad4eaa;
+}

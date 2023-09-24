@@ -1,0 +1,109 @@
+:root{
+    --bgPurple : #eae5ea;
+    --primPurple : #713770; 
+    --hovercardBg : #996e98;
+    --textPurple:#713770;
+}
+
+.whyGuideContainer{
+    background: var(--bgPurple);
+}
+
+.whyGuideFrame{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.whyAnime{
+    flex: 1;
+    padding: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.whyAnime img{
+    width: 100%;
+    max-width: 360px;
+
+}
+.whyText{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 30px;
+    
+}
+
+.whyText h5{
+    font-family: 'Popppins', sans-serif;
+    color: var(--textPurple);
+    font-weight: 600;
+    font-size: 20px;
+}
+.whyText h2{
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: rgb(48, 47, 47);
+}
+
+.accordion-button{
+    background: var(--bgPurple) !important;
+    outline: none !important;
+    border: none; 
+    padding-bottom: 5px;
+    font-size: 18px !important;
+    font-family: 'Poppins', sans-serif;
+    color: var(--textPurple);
+   
+}
+
+.whysubheading:focus{
+    outline: none !important;
+    border: none !important;
+}
+.accordion-button:focus {
+    
+    outline: none !important;
+    box-shadow: none !important;
+    color: var(--textPurple) !important;
+}
+.accordion-body{
+    background: var(--bgPurple) !important;
+    padding-top: 5px;
+    font-family: 'Poppins', sans-serif !important;
+    color: var(--textPurple);
+    font-size: 13px !important;
+   
+}
+
+.whyTypingBox{
+    width: 200px;
+    height: 45px;
+    border-radius: 7px;
+    background: rgb(250, 245, 245);
+    position: absolute;
+    top: 135px;
+    left: 220px;
+    font-size: 19px;
+    font-weight: 600;
+    padding: 7px;
+    padding-left: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
+
+@media screen and (max-width: 850px) {
+    .whyAnime{
+        display: none;
+    }
+    .whyText{
+        text-align: center;
+        padding-top: 25px;
+        padding-right: 5px;
+    }
+
+}

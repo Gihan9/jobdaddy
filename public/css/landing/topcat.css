@@ -1,0 +1,112 @@
+:root{
+    --bgPurple : #eae5ea;
+    --primPurple : #713770; 
+    --hovercardBg : #996e98;
+}
+
+.topCatContainer{
+    background: var(--bgPurple);
+    padding-bottom: 60px;
+}
+
+.topCategoryFrame{
+    font-family: 'Poppins', sans-serif;
+    box-shadow: none;
+    padding-top: 25px;
+}
+.topCatHeadline{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px;
+    
+}
+.topCatHeadline h1{
+    font-size: 22px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.topCatHeadline a , i{
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--primPurple) ;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+.topCatHeadline i{
+    padding-left: 5px;
+}
+
+.catcard{
+    background: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 6px;
+    max-width: 300px;
+    align-items: center;
+    margin: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.catcard:hover {
+    background: var(--hovercardBg);
+    color: white !important;
+}
+
+.catcard .catText{
+    margin-left: 10px;
+}
+.catcard .catSubtextHead{
+    font-family:  'Poppins', sans-serif;
+    font-weight: bold;
+    
+}
+.catcard .catSubtext{
+    font-family:  'Poppins', sans-serif;
+    font-size: 10px;
+
+}
+
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+.show{
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+@media(prefers-reduced-motion) {
+    .hidden{
+        transition: none;
+    }
+}
+
+.cards:nth-child(2){
+    transition-delay: 100ms;
+}
+.cards:nth-child(3){
+    transition-delay: 200ms;
+}
+.cards:nth-child(4){
+    transition-delay: 300ms;
+}
+.cards:nth-child(5){
+    transition-delay: 400ms;
+}
+.cards:nth-child(6){
+    transition-delay: 500ms;
+}
+.cards:nth-child(7){
+    transition-delay: 600ms;
+}
+.cards:nth-child(8){
+    transition-delay: 700ms;
+}

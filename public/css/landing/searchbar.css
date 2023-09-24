@@ -1,0 +1,79 @@
+:root{
+    --primPurple : #713770; 
+    --darkerPurple: #5a1f59; 
+    --white:white;
+    --textLightGray:#9199A3;
+    --textDarkGray:#636972;
+    --sublineGray:#5E6670;
+}
+.searchBarFrame{
+    padding: 10px;
+    border: 2px solid var(--primPurple);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--white);
+    margin-top: 10px;
+
+}
+
+
+.searchBtn{
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--white);
+    background-color: var(--primPurple);
+    border: solid 1px var(--primPurple);
+    border-radius: 4px;
+    padding: 4px 9px;
+    flex: 0 0 auto;
+    
+}
+.searchBtn:hover{
+    background-color: var(--darkerPurple);
+}
+
+
+.inputFrame{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    margin-left: 8px;
+    align-items: center;
+}
+.inputFrame input{
+    width: 100%;
+    border: none;
+    outline: none;
+}
+.inputFrame i{
+    margin-right: 7px;
+    font-size: large;
+    cursor: pointer;
+    color: var(--primPurple);
+
+}
+
+.searchbarFooter{
+    font-family: 'Poppins', sans-serif;
+    color:var(--textLightGray);
+    text-align: center;
+    font-size: 10px;
+    margin-top: 17px;
+}
+.searchbarFooter strong{
+    color: var(--textDarkGray);
+}
+
+@media screen and (max-width: 450px) {
+    .searchBarFrame{
+        flex-direction: column;
+    }
+    .inputFrame{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
