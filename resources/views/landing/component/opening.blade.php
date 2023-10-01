@@ -5,7 +5,7 @@
            <!--<span class="autoType"></span>-->
         </div>
         <div class="subline">
-            Aliquam vitae turpis in diam convallis finibus in at risus. Nullam in scelerisque leo, eget sollicitudin velit bestibulum scelerisque leo, eget sollicitudin velit 
+        Welcome to Job Daddy, your one-stop destination for finding the best job opportunities tailored for you. Dive deep into our vast database of job listings, ranging from tech to teaching and finance to healthcare. Your dream job awaits!
         </div>
         @include('landing.component.searchbar')
     </div>
