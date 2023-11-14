@@ -57,3 +57,7 @@ Route::get('/jd/build', function () {
 Route::get('/jd/choice', function () {
     return view('jd.buildprofile.choosePath');
 });
+
+Route::get('/jd/skip', function () {
+    return view('jd.buildprofile.skipProfile');
+});

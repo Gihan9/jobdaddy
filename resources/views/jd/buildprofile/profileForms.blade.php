@@ -32,11 +32,14 @@
 
                         
                 </div>
+               
             </form>  
         </div>
         <div class="toggleBtns">
             <button class="prev formBtn" disabled>Previous</button>
             <button class="next formBtn">Next</button>
+            <button style="display: none; background:rgb(163, 29, 29);"  class="confirm formBtn">Confirm</button>
+            
         </div>
     </div>
 
@@ -58,6 +61,7 @@
     document.addEventListener('DOMContentLoaded', function(){
         const prevbtn = document.querySelector('.toggleBtns .prev');
         const nextbtn = document.querySelector('.toggleBtns .next');
+        const confirmbtn = document.querySelector('.toggleBtns .confirm');
         let currentPage = 1;
 
         let pageMove = ()=>{
@@ -66,8 +70,14 @@
             if (currentPage === 1){
                 prevbtn.disabled = true;
             }
-            else if(currentPage === 5){
+            if(currentPage === 5){
                 nextbtn.disabled = true;
+                confirmbtn.style.display='block';
+                nextbtn.style.display='none';
+            }
+            else{
+                nextbtn.style.display='block';
+                confirmbtn.style.display='none';
             }
             document.querySelector('.progressBar .active').classList.remove('active');
             document.querySelectorAll('.progressBar .number')[currentPage-1].classList.add('active');

@@ -3,7 +3,7 @@
         <div class="stepDescription">
             <h2>Step 2</h2>
             <div class="stepTitles">
-                <img src="/jd_img/profmonkey.png" alt="">
+                <img src="/jd_img/profmonkey2.png" alt="">
                 <h3>Got a Resume ?</h3>
                 <h4>Tell me about your Skills...</h4>
             </div>

@@ -1,9 +1,9 @@
 <div id="step" class="step">
     <div class="stepContainer">
         <div class="stepDescription">
-            <h2>Step 4</h2>
+            <h2>Step 5</h2>
             <div class="stepTitles">
-                <img src="/jd_img/profmonkey.png" alt="">
+                <img src="/jd_img/profmonkey5.png" alt="">
                 <h3>Have you worked before ?</h3>
                 <h4>Tell me about your work experience...</h4>
             </div>
