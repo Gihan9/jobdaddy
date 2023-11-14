@@ -1,0 +1,31 @@
+.modal{
+    color: var(--primBlue);
+}
+
+.modal input , .modal select{
+    border:1px solid var(--primBlue) ; 
+}
+
+.modal-content{
+    border: 2px solid var(--primBlue) !important;
+    padding: 25px ;
+    padding-top: 5px;
+}
+
+.modalBtns{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.modalBtns button{
+    margin-left: 8px;
+    margin-right: 8px;
+    min-width:200px ;
+}
+
+.saveBtn{
+    background: var(--primBlue);
+    color: white;
+}

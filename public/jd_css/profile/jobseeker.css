@@ -1,0 +1,142 @@
+:root{
+    --cardicons: rgb(83, 83, 156);
+    --subCardbg:#D4DEE7;
+}
+
+
+.personalBox{
+    margin-top: 20px;
+}
+
+.form-check{
+    font-size: 12px;
+    margin-top: 6px;
+
+}
+.imageFrame{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -15px;
+}
+.profImgHolder{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid #D4DEE7;
+    overflow: hidden;
+    margin-bottom: 7px;
+    cursor: pointer;
+
+}
+.profImgHolder img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.addCVBtn{
+    background-color: var(--primBlue);
+    border-radius: 7px;
+    padding: 5px 10px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    font-weight: 600;
+    justify-content: center;
+    margin-top: 8px;
+}
+.addCVBtn i{
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+
+.profCardTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profCardTitle .profCardEditbtn{
+    font-size: 21px;
+    cursor: pointer;
+    transition: 0.3s;
+    
+}
+.mainAddIcon{
+    margin-top: -10px;
+}
+.mainAddIcon i{
+    font-size: 30px;
+    
+}
+.profCardTitle .profCardEditbtn:hover{
+    transform: scale(1.3);
+}
+
+
+.subCards{
+    background: var(--subCardbg);
+    padding: 25px;
+    border-radius: 9px;
+}
+.subCardIcons{
+    display: flex;
+    flex-direction: row;
+}
+.subCardIcons i{
+    margin-right: 4px;
+}
+.subCardIcons .delbtn{
+    color: red;
+    margin-left: 8px;
+}
+.subCardTitle{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.minidata{
+    font-size: 13px;
+}
+
+
+/* the looking for items */
+
+.jobtype{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: #FDE0BC;
+    color: var(--cardicons);
+    border-radius: 4px;
+    width: fit-content;
+    padding: 2px 6px;
+    padding-right: 10px;
+    margin: 2px;
+}
+.jobtype span{
+    padding-left: 5px;
+}
+.jobtype i{
+    margin-top: -4px;
+}
+
+
+.addTypeBtn{
+    border: 1px solid var(--primBlue) ;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px 10px;
+    margin: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.addTypeBtn:hover{
+    background-color: var(--primBlue);
+    color: white;
+}

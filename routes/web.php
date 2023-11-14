@@ -14,13 +14,20 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
+});*/
+
+Route::get('/', function () {
+    return view('jd.home.main');
 });
 
-Route::get('/devtest', function () {
-    return view('landing.landing');
-});
+
+
 Auth::routes();
+
+
+Route::get('/jd/profile', [App\Http\Controllers\jobseekerfrontController::class, 'personaldata']);
+Route::post('/edit', [App\Http\Controllers\jobseekerfrontController::class, 'updatepersonaldata']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

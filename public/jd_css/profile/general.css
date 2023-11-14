@@ -1,0 +1,41 @@
+
+:root{
+    --primBlue : #274472 ;
+}
+
+.box{
+    padding: 5px;
+    color: var(--primBlue);
+}
+
+.contentframe{
+    border-radius: 9px;
+    min-height: 10px;
+    border: 2px solid var(--primBlue) ;
+    padding: 25px;
+    margin: 5px;
+    margin-bottom: 9px;
+    color: var(--primBlue);
+    
+}
+
+.contentFrameTitle h2{
+    font-size: 21px ;
+    font-weight: 600;
+    color: var(--primBlue);
+}
+.contentFrameTitle h4{
+    font-size: 11px ;
+    font-weight: 500;
+    color: var(--primBlue);
+}
+
+form label{
+    font-size: 14px;
+}
+
+form input , form select{
+    font-size: 13px !important;
+    color: rgb(68, 67, 67);
+    border: 1px solid var(--primBlue) !important;
+}
