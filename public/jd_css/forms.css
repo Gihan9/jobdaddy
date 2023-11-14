@@ -1,0 +1,93 @@
+:root{
+    --formbody : white;
+    --primPurple : #274472;
+    --btnhover : #1d3458;
+
+}
+
+.formFrame{
+    background:var(--formbody);
+    width: 420px;
+    padding: 25px;
+    border-radius: 15px;
+    font-family: 'Poppins', sans-serif;
+    margin: 5px;
+}
+
+h2{
+    color: var(--primPurple);
+    font-weight: 600;
+    font-size: 28px;
+}
+h5{
+    font-size: 17px;
+    color: rgb(49, 47, 47);
+    font-weight: 600;
+}
+.formText{
+    font-size: 12px;
+}
+.formLink{
+    color: var(--primPurple);
+    font-weight: 600;
+    padding-left: 7px;
+    cursor: pointer;
+}
+.formLink:hover{
+    text-decoration: underline;
+}
+
+
+.form-label{
+    font-size: 15px;
+}
+
+.formtitleBox{
+    padding-bottom: 20px;
+}
+
+.formBtn{
+    background-color: var(--primPurple);
+    color:white;
+    width: 100%;
+    font-weight: 500;
+    box-shadow: none;
+    border-radius: 7px;
+    padding: 10px 8px;
+    letter-spacing: 1px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.formBtn:hover{
+    background-color: var(--btnhover);
+    color: white;
+}
+
+/* form inputs */
+.form-control:focus {
+    box-shadow: none !important; 
+}
+
+
+
+.inframe{
+    border: 1px rgb(145, 144, 145) solid;
+    border-radius: 4px;
+}
+
+.inframe:focus-within {
+    box-shadow: 0 0 5px var(--primPurple); 
+    border-color: none;
+    
+}
+
+.inframe input , .input-group-text{
+    border: none;
+    background-color: white;
+}
+
+#eyebtn{
+    cursor: pointer;
+}
+

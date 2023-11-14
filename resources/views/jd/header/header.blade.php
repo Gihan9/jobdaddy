@@ -1,8 +1,12 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin-bottom:0px">
     <div class="container-fluid mynav">
-    <div>24/7 0094 76 311 45 49</div>
+    <div class="contactBox">
+        <img src="/jd_img/contact.png" alt="" title="Contact Us">
+        <div class="contactNum"> 24/7 0094 76 311 45 49</div>
+       
+    </div>
     <!--<div class="logoText">Job Daddy</div>-->
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
         <img class="companyLogo" src="/jd_img/monkey.png" alt="">
         <div class="logoText">Job Daddy</div>
     </a>
@@ -32,7 +36,7 @@
         <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 
-                <img src="/img/sampleImg/profileIcon.png" style="max-width: 30px;" alt="">
+                <img src="/jd_img/profileIcon.png" style="max-width: 30px;" alt="">
             </a>
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

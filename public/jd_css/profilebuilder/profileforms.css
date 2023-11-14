@@ -1,0 +1,128 @@
+.formBox{
+    margin-top: -10px; 
+    width: 100%;
+
+}
+
+.actionBody{
+    background: white;
+    border-radius: 15px;
+    padding: 10px;
+    overflow: hidden;
+    width: 1050px;
+    min-height: 450px;
+    margin-top: -40px; 
+    padding-bottom: 0;
+
+    
+    
+}
+.toggleBtns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: -20px;
+}
+.steps{
+    
+    transition: 300ms ease-in-out;
+}
+
+.toggleBtns button{
+    max-width: 150px;
+    text-align: center;
+    padding: 5px 10px;
+}
+/* important css */
+.progressBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+}
+
+.progressBar .number {
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    line-height: 28px;
+    border-radius: 50%;
+    background: var(--Title);
+    color: white;
+    font-size: 15px;
+
+}
+
+.progressBar .bar{
+    width: 50px;
+    height: 4px;
+    background-color:var(--Title) ;
+    border-radius: 5px;
+}
+
+.progressBar .active ~ div{
+    background: rgb(231, 223, 223);
+    color: gray;
+}
+
+.actionBody .steps{
+    width: 510%;
+    display: flex;
+}
+.actionBody .steps .step{
+    width: 110%;
+    overflow: hidden;
+
+}
+
+/*each step*/
+.stepContainer{
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    
+
+}
+.stepDescription{
+    flex: 1;
+  
+}
+.stepForm{
+    flex:1;
+    justify-content: center;
+   
+}
+
+.stepTitles{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-label{
+    font-size: 10px;
+}
+
+form input , form select{
+    font-size: 13px !important;
+    color: rgb(68, 67, 67);
+    border: 1px solid var(--Title) !important;
+    outline: none;
+}
+
+.plusframe{
+    display: flex;
+    flex-direction: row;
+
+}
+.addbtn {
+    width: 38px;
+    height: 38px;
+    text-transform: uppercase;
+    color: white;
+    background: var(--Title);
+    cursor: pointer;
+    line-height: 38px;
+    text-align: center;
+}

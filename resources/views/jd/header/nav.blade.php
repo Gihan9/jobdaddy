@@ -3,22 +3,22 @@
 <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
     <ul class="navbar-nav navLinks navLinks ms-auto">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link mylinks" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#">Jobs</a>
+            <a class="nav-link mylinks " aria-current="page" href="#">Jobs</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#">People</a>
+            <a class="nav-link mylinks" href="#">People</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Companies</a>
+            <a class="nav-link mylinks" href="#">Companies</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Create a Company</a>
+            <a class="nav-link mylinks" href="#">Create a Company</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Salaries</a>
+            <a class="nav-link mylinks" href="#">Salaries</a>
         </li>
         
     </ul>

@@ -1,0 +1,113 @@
+
+:root{
+    --uglyyellow: #FDD79F;
+}
+/* exclusive for login form*/
+.loginFrame{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loginFormFrame{
+    border: 2px solid var(--primPurple);
+    
+}
+
+
+.pwdForget{
+    float: right;
+    padding: 5px;
+}
+
+.alternateLinks .formText{
+    text-align: center;
+    margin-top:10px ;
+    margin-bottom: 10px;
+}
+
+.formIcons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.formIcons img{
+    width: 30px;
+    margin: 5px;
+    margin-right: 10px;
+}
+
+.googlebtn{
+    background-color: var(--uglyyellow) ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    padding: 3px 20px;
+    padding-left: 8px;
+    border-radius: 4px;
+    width: fit-content;
+    font-weight: 600;
+    border: 1px rgb(128, 122, 32) solid;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+}
+.apiLinks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.googlebtn span{
+    width: 30px;
+    margin-right: 10px;
+    padding: 4px;
+    background-color: aliceblue;
+    border-radius: 3px;
+}
+.googlebtn span img{
+    width: 100%;
+}
+.googlebtn div{
+    margin-top: 4px;
+    padding-left: 10px;
+}
+
+
+/* animated image */
+
+.whyAnime{
+    flex: 1;
+    padding: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.whyAnime img{
+    width: 100%;
+    max-width: 450px;
+
+}
+
+.whyTypingBox{
+    width: 275px;
+    height: 50px;
+    border-radius: 7px;
+    background: rgb(250, 245, 245);
+    position: absolute;
+    top: 160px;
+    left: 220px;
+    font-size: 19px;
+    font-weight: 600;
+    padding: 7px;
+    padding-left: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
+
+@media screen and (max-width: 850px) {
+    .whyAnime{
+        display: none;
+    }
+    
+
+}

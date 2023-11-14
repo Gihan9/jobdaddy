@@ -58,3 +58,31 @@
     text-transform: uppercase;
     margin-left: 16px;
 }
+/*navbar*/
+.nav-item{
+    font-size: 14px;
+    font-weight: 600;
+    padding: 1px 10px;
+    transition:  all 0.3s ease;
+}
+.nav-item:hover{
+    background-color: var(--Title);
+    border-radius: 5px;
+}
+.nav-item:hover > .mylinks {
+    color: white !important;
+}
+.mynav{
+    padding-top: 0px;
+}
+
+.contactBox{
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--Title);
+}
+.contactBox img{
+    margin-right: 8px;
+}
