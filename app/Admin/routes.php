@@ -28,5 +28,6 @@ Route::group([
     $router->resource('jobs', JobsController::class);
     $router->resource('applicants', ApplicantsController::class);
     $router->resource('tests', TestController::class);
+    $router->resource('jobusers', JobuserController::class);
 
 });

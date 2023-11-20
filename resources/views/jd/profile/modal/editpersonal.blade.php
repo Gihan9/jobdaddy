@@ -12,57 +12,55 @@
         <div class="modal-body">
 
             <div class="form">
-                <form action="{{url('/edit')}}" class="row" method="POST">
-                    @csrf
+            <form method="POST" action="{{ url('/jd/profile/update') }}">
+                @csrf
                   
-                     @foreach($jobseeker as $job)
+                    
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                         <label for="name" class="form-label">Name</label>
                         <div class="inframe">
-                            <input class="form-control" id="name" type="text" value="{{$job['name']}}" >
+                        <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $user->name) }}" required>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                         <label for="age" class="form-label formlab">Age</label>
                         <div class="inframe">
-                            <input class="form-control" id="age" type="text" value="{{$job['age']}}">
+                            
+                            <input type="text" name="age" id="age" class="form-control" value="{{ old('age', $profile->age ?? '') }}" >
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12 mb-3">
                         <label for="sex" class="form-label formlab">Sex</label>
                         <div class="inframe">
-                            <select name="sex" id="sex" class="form-select" aria-label="Default select example">
-                                <option value="{{$job->id}}">{{$job->sex}}</option>
-                                
-                                
-                            </select>
+                        <input type="text" name="sex" id="sex" class="form-control" value="{{ old('sex', $profile->sex ?? '') }}">
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12 mb-3">
                         <label for="mStatus" class="form-label formlab">Marital Status</label>
                         <div class="inframe">
-                            <select name="mStatus" id="mStatus" class="form-select" aria-label="Default select example">
-                            <option value="{{$job->id}}">{{$job->marital_status}}</option>
-                                
-                            </select>
+                           
+                            <input type="text" name="marital_status" id="emailLogin" aria-label="email"  class="form-control" value="{{ old('marital_status', $profile->marital_status ?? '') }}">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                         <label for="location" class="form-label formlab">Location</label>
                         <div class="inframe">
-                            <input class="form-control" id="location" type="text" value="{{$job['location']}}">
+                            
+                            <input type="text" name="location" id="emailLogin" aria-label="email"  class="form-control" value="{{ old('location', $profile->location ?? '') }}">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                         <label for="designation" class="form-label formlab">Designation</label>
                         <div class="inframe">
-                            <input class="form-control" id="designation" type="text" value="{{$job['designation']}}">
+                            
+                            <input type="text" name="designation" id="emailLogin" aria-label="email"  class="form-control" value="{{ old('designation', $profile->designation ?? '') }}">
+                            
                         </div>
                     </div>
                     <div class="col-md-12 col-sm-12 mb-3">
                         <label for="emailLogin" class="form-label">Contact Number (WhatsApp)</label>
                         <div class="inframe">
-                            <input class="form-control" id="emailLogin" type="text"  aria-label="email" value="{{$job['phone']}}">
+                            <input type="text" name="phone" id="emailLogin" aria-label="email"  class="form-control" value="{{ old('phone', $profile->phone ?? '') }}">
                         </div>
                         
                     </div>
@@ -71,7 +69,7 @@
                         <button type="button" class="btn btn-secondary cancelBtn" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn saveBtn">Save</button>
                     </div>
-                    @endforeach
+                  
                 </form>
             </div>
 

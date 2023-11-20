@@ -14,12 +14,14 @@ class CreateExperienceTable extends Migration
     public function up()
     {
         Schema::create('Experience', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('job_title')->nullable();
             $table->string('company_name')->nullable();
-            $table->string('date')->nullable();
-            $table->string('description')->nullable();
-            $table->string('user_id')->nullable();
+            $table->string('s_date')->nullable();
+            $table->string('e_date')->nullable();
+            $table->string('location')->nullable();
+            
             $table->timestamps();
         });
     }

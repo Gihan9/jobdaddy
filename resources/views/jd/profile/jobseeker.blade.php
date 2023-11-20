@@ -10,6 +10,7 @@
     @include('jd.profile.modal.editpersonal')
     @include('jd.profile.modal.editworkexp')
     @include('jd.profile.modal.editqualification')
+    @include('jd.profile.modal.propic')
 
 
     <div class="personalBox row " >
@@ -51,5 +52,22 @@
 @endsection
 
 @section('customJs')
-   
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.date-format').on('input', function() {
+            // Get the entered value
+            var enteredValue = $(this).val();
+
+            // Remove any non-digit characters
+            var cleanedValue = enteredValue.replace(/\D/g, '');
+
+            // Format the date as MM/YYYY
+            if (cleanedValue.length >= 2) {
+                var formattedDate = cleanedValue.substring(0, 2) + '/' + cleanedValue.substring(2, 6);
+                $(this).val(formattedDate);
+            }
+        });
+    });
+</script>
 @endsection

@@ -14,48 +14,48 @@
 
     <div class="form">
         <form action="" class="row" >
-        @foreach($jobseeker as $job)
+        
             <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                 <label for="name" class="form-label">Name</label>
                 <div class="inframe">
-                    <input class="form-control" id="name" type="text" value="{{$job['name']}}" readonly >
+                    <input class="form-control" id="name" type="text" value="{{ old('name', $user->name) }}" readonly >
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                 <label for="age" class="form-label formlab">Age</label>
                 <div class="inframe">
-                    <input class="form-control" id="age" type="text" value="{{$job['age']}}" readonly >
+                    <input class="form-control" id="age" type="text" value="{{ old('age', $profile->age ?? '') }}" readonly >
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 mb-3">
                 <label for="sex" class="form-label formlab">Sex</label>
                 <div class="inframe">
-                    <input class="form-control" id="sex" type="text" value="{{$job['sex']}}" readonly >
+                    <input class="form-control" id="sex" type="text" value="{{ old('sex', $profile->sex ?? '') }}" readonly >
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 mb-3">
                 <label for="mStatus" class="form-label formlab">Marital Status</label>
                 <div class="inframe">
-                    <input class="form-control" id="marryStatus" type="text" value="{{$job['marital_status']}}" readonly >
+                    <input class="form-control" id="marryStatus" type="text" value="{{ old('marital_status', $profile->marital_status ?? '') }}" readonly >
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 mb-3">
                 <label for="location" class="form-label formlab">Location</label>
                 <div class="inframe">
-                    <input class="form-control" id="location" type="text"  value="{{$job['location']}}" readonly>
+                    <input class="form-control" id="location" type="text"  value="{{ old('location', $profile->location ?? '') }}"readonly>
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 mb-3">
                 <label for="designation" class="form-label formlab">Designation</label>
                 <div class="inframe">
-                    <input class="form-control" id="designation" type="text"  value="{{$job['designation']}}" readonly>
+                    <input class="form-control" id="designation" type="text" value="{{ old('designation', $profile->designation ?? '') }}" readonly>
                 </div>
             </div>
 
             <div class="col-md-12 col-sm-12 mb-3">
                 <label for="phone" class="form-label">Contact Number (WhatsApp)</label>
                 <div class="inframe">
-                    <input class="form-control" id="phone" type="text" value="{{$job['phone']}}" readonly>
+                    <input class="form-control" id="phone" type="text" value="{{ old('phone', $profile->phone ?? '') }}" readonly>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -64,7 +64,7 @@
                     </label>
                   </div>
             </div>
-            @endforeach
+            
         </form>
     </div>
 

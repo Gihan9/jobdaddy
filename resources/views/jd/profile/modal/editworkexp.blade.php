@@ -11,24 +11,24 @@
             <div class="modal-body">
     
                 <div class="form">
-                    <form action="" class="row">
-            
+                    <form action="{{ url('/jd/profile/store') }}" method="POST">
+                        @csrf
                         <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
                             <label for="position" class="form-label">Position*</label>
                             <div class="inframe">
-                                <input class="form-control" id="position" type="text" >
+                            <input type="text" name="job_title" id="job_title" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
                             <label for="comName" class="form-label formlab">Company Name*</label>
                             <div class="inframe">
-                                <input class="form-control" id="comName" type="text" >
+                            <input type="text" name="company_name" id="company_name" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
                             <label for="location" class="form-label formlab">Location*</label>
                             <div class="inframe">
-                                <input class="form-control" id="location" type="text" >
+                                <input class="form-control" name="location" id="location" type="text" required >
                             </div>
                         </div>
                         
@@ -37,15 +37,9 @@
                             <label for="startdate" class="form-label">Start Date*</label>
                             <div class="inframe row">
                                 <div class="col-5">
-                                    <select  id="startmonth" class="form-select" placeholder="Month" >
-                                        <option value="">Month</option>  
-                                    </select>
+                                <input type="text" name="s_date" id="s_date"  class="form-control date-format" required>
                                 </div>
-                                <div class="col-5">
-                                    <select  id="startyear" class="form-select" placeholder="Year" >
-                                        <option value="">Year</option>  
-                                    </select>
-                                </div>
+                               
                             </div> 
                         </div>
 
@@ -53,21 +47,15 @@
                             <label for="enddate" class="form-label">End Date*</label>
                             <div class="inframe row">
                                 <div class="col-5">
-                                    <select  id="endmonth" class="form-select" placeholder="Month" >
-                                        <option value="">Month</option>  
-                                    </select>
+                                <input type="text" name="e_date" id="e_date"  class="form-control date-format" required>
                                 </div>
-                                <div class="col-5">
-                                    <select  id="endyear" class="form-select" placeholder="Year" >
-                                        <option value="">Year</option>  
-                                    </select>
-                                </div>
+                               
                             </div> 
                         </div>
     
                         <div class="modalBtns">
                             <button type="button" class="btn btn-secondary cancelBtn" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn saveBtn">Save</button>
+                            <button type="submit" class="btn saveBtn">Save</button>
                         </div>
                     </form>
                 </div>

@@ -140,3 +140,10 @@
     background-color: var(--primBlue);
     color: white;
 }
+
+.profCardDeleteBtn {
+    background: none;
+    border: none;
+    color: red; /* or any other color you prefer */
+    cursor: pointer;
+}

@@ -1,5 +1,6 @@
 <div class="loginFormFrame formFrame">
-    <form action="">
+<form method="POST" action="{{ url('/login') }}">
+            @csrf
         <div class="formtitleBox">
             <h5>WELCOME BACK,</h5>
             <h2>Login To Job Daddy</h2>
@@ -19,7 +20,8 @@
         <div class="mb-3">
             <label for="emailLogin" class="form-label">Email Address</label>
             <div class="inframe">
-                <input class="form-control" id="emailLogin" type="text"  aria-label="email">
+                
+                <input type="email" name="email" id="emailLogin" class="form-control" aria-label="email" value="{{ old('email') }}" required>
             </div>
            
         </div>
@@ -27,7 +29,8 @@
             <label for="passwordLogin" class="form-label">Password</label>
             <div class="inframe">
                 <div class="input-group">
-                    <input class="form-control" id="passwordLogin" type="password" aria-label="password">
+                    
+                    <input type="password" name="password" id="passwordLogin" class="form-control" aria-label="password" required>
                     <span class="input-group-text " id="eyebtn"><i id="eyeicon" class="bi bi-eye-fill"></i></span>
                 </div>
             </div>
@@ -37,10 +40,10 @@
             <div class="formText formLink pwdForget">Forgot Password?</div>
         </div>
 
-        <button class="btn formBtn">LOGIN</button>
+        <button type="submit" class="btn formBtn">LOGIN</button>
     </form>
     <div class="alternateLinks">
-    <div style="text-align: center" class="formText">Dont Have An Account ? <span class="formLink">Register Now</span></div>
+    <div style="text-align: center" class="formText">Dont Have An Account ? <span class="formLink"><a href="/jd/register">Register Now</a></span></div>
     </div>
     
 </div>

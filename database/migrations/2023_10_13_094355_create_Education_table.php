@@ -14,12 +14,13 @@ class CreateEducationTable extends Migration
     public function up()
     {
         Schema::create('Education', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('degree_name')->nullable();
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('degree')->nullable();
             $table->string('university')->nullable();
-            $table->date('date')->nullable();
-            $table->string('GPA')->nullable();
-            $table->string('user_id')->nullable();
+            $table->string('start_date')->nullable();
+            $table->string('end_date')->nullable();
+            $table->string('grade')->nullable();
             $table->timestamps();
         });
     }

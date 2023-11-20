@@ -10,10 +10,10 @@
 <h5 style="text-align: center;  margin-top:15px;">How about we create a profile ?</h5>
 <div class="choiceFrame">
     <div class="buttonFrame skip">
-        <h5>Will do it later</h5>
+        <a href="/jd/profile"><h5>Will do it later</h5></a>
     </div>
     <div class="buttonFrame create">
-        <h5>Create a profile</h5>
+       <a href="/jd/build"> <h5>Create a profile</h5></a> 
     </div>
    
 </div>

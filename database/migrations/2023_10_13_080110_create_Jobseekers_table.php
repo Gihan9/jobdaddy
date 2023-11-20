@@ -15,15 +15,16 @@ class CreateJobseekersTable extends Migration
     {
         Schema::create('Jobseekers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('age')->nullable();
             $table->string('sex')->nullable();
             $table->string('marital_status')->nullable();
             $table->string('designation')->nullable();
-            $table->string('email')->nullable();
             $table->integer('phone')->nullable();
             $table->string('location')->nullable();
-            $table->string('password')->nullable();
+            $table->string('profile_picture')->nullable();
+            
             $table->timestamps();
         });
     }

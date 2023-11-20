@@ -9,31 +9,25 @@
     <div class="educations">
         
  <!-- each card should be dynamically added -->
+            @foreach($educations as $ed)
             <div class="subCards profdata mb-3">
                 <div class="profCardTitle">
-                    <div class="subCardTitle">BEng (Hons) In Software Engineering</div>
+                    <div class="subCardTitle">{{$ed->degree}} </div>
                     <div class="subCardIcons">
                         <div class="profCardEditbtn "><i class="bi bi-pencil-square"></i></div>
-                        <div class="profCardEditbtn delbtn"><i class="bi bi-trash-fill"></i></div>    
+                    <form action="{{ route('educations.destroy', ['education' => $ed->id]) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this education qualification?')" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="profCardDeleteBtn"><i class="bi bi-trash"></i></button>
+                    </form>
                     </div>
                     
                 </div>
-                <div class="minidata">University of Colombo, Sri Lanka</div>
-                <div class="minidata">Oct 2016 - 2017 | First Class (Honer)</div>
+                <div class="subCardTitle">{{$ed->university}}</div>
+                <div class="minidata">{{$ed->start_date}} TO {{$ed->end_date}} | {{$ed->grade}}</div>
             </div> 
-
-            <div class="subCards profdata mb-3">
-                <div class="profCardTitle">
-                    <div class="subCardTitle">BEng (Hons) In Software Engineering</div>
-                    <div class="subCardIcons">
-                        <div class="profCardEditbtn "><i class="bi bi-pencil-square"></i></div>
-                        <div class="profCardEditbtn delbtn"><i class="bi bi-trash-fill"></i></div>    
-                    </div>
-                    
-                </div>
-                <div class="minidata">University of Colombo, Sri Lanka</div>
-                <div class="minidata">Oct 2016 - 2017 | First Class (Honer)</div>
-            </div> 
+            @endforeach
+           
 
 
 

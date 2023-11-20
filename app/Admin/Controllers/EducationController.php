@@ -27,11 +27,11 @@ class EducationController extends AdminController
         $grid = new Grid(new Education());
 
         $grid->column('id', __('Id'));
-        $grid->column('degree_name', __('Degree name'));
+        $grid->column('degree', __('Degree'));
         $grid->column('university', __('University'));
-        $grid->column('date', __('Date'));
-        $grid->column('GPA', __('GPA'));
-        $grid->column('user_id', __('User id'));
+        $grid->column('start_date', __('Start Date'));
+        $grid->column('end_date', __('End Date'));
+        $grid->column('grade', __('Grade'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -49,11 +49,11 @@ class EducationController extends AdminController
         $show = new Show(Education::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('degree_name', __('Degree name'));
+        $show->field('degree', __('Degree name'));
         $show->field('university', __('University'));
-        $show->field('date', __('Date'));
-        $show->field('GPA', __('GPA'));
-        $show->field('user_id', __('User id'));
+        $show->field('start_date', __('Start Date'));
+        $show->field('end_date', __('End Date'));
+        $show->field('grade', __('Grade'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -69,12 +69,50 @@ class EducationController extends AdminController
     {
         $form = new Form(new Education());
 
-        $form->text('degree_name', __('Degree name'));
+        $form->text('degree', __('Degree name'));
         $form->text('university', __('University'));
-        $form->date('date', __('Date'))->default(date('Y-m-d'));
-        $form->text('GPA', __('GPA'));
-        $form->text('user_id', __('User id'));
+        $form->date('start_date', __('Start Date'))->default(date('Y-m-d'));
+        $form->text('end_date', __('End Date'));
+        $form->text('grade', __('Grade'));
 
         return $form;
     }
+
+    public function stoed()
+    {
+        request()->validate([
+            'degree' => 'required|string|max:255',
+            'university' => 'required|string|max:255',
+            'start_date' => 'required|string',
+            'end_date' => 'required|string',
+            'grade' => 'required|string|max:255',
+        ]);
+
+
+        // Create a new experience for the authenticated user
+        auth()->user()->educations()->create([
+            'degree' => request()->input('degree'),
+            'university' => request()->input('university'),
+            'start_date' => request()->input('start_date'),
+            'end_date' => request()->input('end_date'),
+            'grade' => request()->input('grade'),
+        ]);
+
+        return redirect('/jd/profile')->with('success', 'Education added successfully!');
+    }
+
+
+    public function destroy($id)
+{
+    $education = Education::findOrFail($id);
+    
+   
+    if ($education->user_id !== auth()->id()) {
+        abort(403, 'Unauthorized action.');
+    }
+
+    $education->delete();
+
+    return redirect('/jd/profile')->with('success', 'Education qualification deleted successfully!');
+}
 }
