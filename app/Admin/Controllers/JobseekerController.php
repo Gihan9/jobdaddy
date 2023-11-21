@@ -9,6 +9,8 @@ use OpenAdmin\Admin\Show;
 use App\Models\Jobseeker;
 use OpenAdmin\Admin\Layout\Content;
 use Illuminate\Http\Request;
+use App\Models\Skill;
+use App\Models\JobPreference;
 
 
 class JobseekerController extends AdminController
@@ -171,6 +173,107 @@ if (!$profile) {
     return redirect('/jd/profile')->with('success', 'Profile picture updated successfully!');
     }
 
-    
+    public function updateCV(Request $request)
+{
+    $request->validate([
+        'cv' => 'file|mimes:pdf|max:2048',
+    ]);
 
+    $user = auth()->user();
+    $profile = $user->profile;
+
+    if (!$profile) {
+        $profile = new Jobseeker();
+        $profile->user_id = $user->id;
+    }
+
+    if ($request->hasFile('cv')) {
+        $cvFile = $request->file('cv');
+        $cvPath = $cvFile->store('cv_files', 'public');
+        $profile->cv_path = $cvPath;
+    }
+
+    $profile->save();
+
+    return redirect('/jd/profile')->with('success', 'CV updated successfully!');
+}
+
+
+
+public function updateSkills(Request $request)
+{
+    // Validate the request
+    $request->validate([
+        'skill' => 'string|max:255',
+    ]);
+
+    // Get the authenticated user
+    $user = auth()->user();
+
+    // Check if the user already has a skill with the provided name
+    $existingSkill = Skill::where('user_id', $user->id)
+                          ->where('skill', $request->input('skill'))
+                          ->first();
+
+    if ($existingSkill) {
+       
+        $existingSkill->update(['skill' => $request->input('skill')]);
+    } else {
+        
+        $user->skills()->create(['skill' => $request->input('skill')]);
+    }
+
+    // Redirect with success message
+    return redirect('/jd/profile')->with('success', 'Skills updated successfully!');
+}
+
+
+public function deleteSkill($skillId)
+{
+    // Get the authenticated user
+    $user = auth()->user();
+
+    
+    $skill = Skill::find($skillId);
+
+    // Check if the skill exists and belongs to the authenticated user
+    if ($skill && $skill->user_id === $user->id) {
+        
+        $skill->delete();
+
+       
+        return redirect('/jd/profile')->with('success', 'Skill deleted successfully!');
+    } else {
+        
+        return redirect('/jd/profile')->with('error', 'Skill not found or you don\'t have permission to delete it.');
+    }
+}
+
+
+public function updatejob(Request $request)
+{
+    
+    $request->validate([
+        'preference' => 'string|max:255',
+    ]);
+
+    // Get the authenticated user
+    $user = auth()->user();
+
+    // Check if the user already has a job preference with the provided name
+    $existingPreference = JobPreference::where('user_id', $user->id)
+                                        ->where('job', $request->input('preference'))
+                                        ->first();
+
+    if ($existingPreference) {
+       
+        $existingPreference->update(['job' => $request->input('preference')]);
+    } else {
+     
+        $user->jobPreferences()->create(['job' => $request->input('preference')]);
+    }
+
+    // Redirect with success message
+    return redirect('/jd/profile')->with('success', 'Job Preferences updated successfully!');
+}
 }

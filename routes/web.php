@@ -49,6 +49,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jd/profile/storeed', [EducationController::class, 'stoed']);
     Route::delete('/educations/{education}', [EducationController::class, 'destroy'])->name('educations.destroy');
     Route::post('/profile/update-picture', [JobseekerController::class, 'updatePicture'])->name('profile.update.picture');
+    Route::post('/jd/profile/update-cv', [JobseekerController::class, 'updateCV'])->name('profile.update.cv');
+    Route::post('/jd/profile/update-skills', [JobseekerController::class, 'updateSkills'])->name('profile.update.skills');
+    Route::delete('/jd/profile/skills/{skillId}', [JobseekerController::class, 'deleteSkill'])->name('skills.delete');
+    
+    Route::post('/jd/profile/update-job', [JobseekerController::class, 'updatejob'])->name('profile.update.job');
+
 });
 
 

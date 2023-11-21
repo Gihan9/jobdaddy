@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Jobpreference extends Model
+class Skill extends Model
 {
-    protected $table = 'Jobpreference';
+    protected $table = 'skills';
 
     protected $fillable = [
-        'job',
+        'skill',
     ];
 
     public function user()

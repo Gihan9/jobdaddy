@@ -24,7 +24,7 @@ class CreateJobseekersTable extends Migration
             $table->integer('phone')->nullable();
             $table->string('location')->nullable();
             $table->string('profile_picture')->nullable();
-            
+            $table->string('cv_path')->nullable();
             $table->timestamps();
         });
     }

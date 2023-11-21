@@ -58,6 +58,14 @@ class User extends Authenticatable
         return $this->hasMany(Education::class);
     }
    
+    public function skills()
+    {
+    return $this->hasMany(Skill::class);
+    }
 
+    public function jobPreferences()
+    {
+        return $this->hasOne(JobPreference::class);
+    }
  
 }

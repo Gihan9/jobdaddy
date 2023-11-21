@@ -11,6 +11,9 @@
     @include('jd.profile.modal.editworkexp')
     @include('jd.profile.modal.editqualification')
     @include('jd.profile.modal.propic')
+    @include('jd.profile.modal.cv')
+    @include('jd.profile.modal.skills')
+    @include('jd.profile.modal.jobpef')
 
 
     <div class="personalBox row " >

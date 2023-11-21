@@ -5,9 +5,16 @@
 
     <div class="uploadCVBox">
         <div class="addCVBtn">
-            <span class="btntext">ADD CV</span>
-            <i class="bi bi-upload"></i>
+            @if($profile && $profile->cv_path)
+            <p>CV: <a href="{{ asset('storage/' . $profile->cv_path) }}" target="_blank">View CV</a></p>
+            @else
+            <span class="btntext">No CV Added </span>
+            @endif
+            
+            
         </div>
+        <div data-bs-toggle="modal" data-bs-target="#cv" class="profCardEditbtn"><span class="btntext">ADD CV</span>
+            <i class="bi bi-upload"></i></div>
         <input style="display:none;" name="cv" id="cv" type="file" accept="image/*">
     </div>
     
