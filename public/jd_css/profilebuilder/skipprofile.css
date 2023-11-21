@@ -1,16 +1,36 @@
-
+body{
+    background: url(/jd_img/skipbg.png);
+    background-size: cover;
+    background-position: right top ;
+    background-repeat: no-repeat;
+    
+}
+.thankuTitle{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 45px;
+    letter-spacing: 1px;
+}
+.thankuSubTitle{
+    font-size: 25px;
+    color: var(--mainDBlue);
+}
 .choiceFrame{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 300px;
+
     
+}
+.thankimgBox{
+    display: flex;
+    justify-content: center;
 }
 
 .buttonFrame{
-    padding: 19px;
-    border: 4px solid var(--Title);
+    padding: 10px 20px;
+    border: 4px solid var(--mainLBlue);
     border-radius: 4px;
     background: white;
     display: flex;
@@ -20,7 +40,7 @@
     margin: 25px;
     margin-top: 0px;
     width: 100%;
-    max-width: 500px;
+    max-width: 300px;
     max-height: 300px;
     
     
@@ -28,8 +48,12 @@
     transition: 0.3s all ease;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
+.buttonFrame a{
+    color: white;
+    text-decoration: none;
+}
 .buttonFrame h5{
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     margin-top: 5px;
 }
@@ -38,18 +62,24 @@
     
 }
 .create{
-    background: green;
+    background: var(--mainLBlue);
     color: white;
 }
 .create:hover{
-    background-color: rgb(24, 78, 31);
+    background-color: var(--mainDBlue);
     
 }
 .skip{
-    background: rgb(211, 87, 87);
+    background: rgb(255, 253, 253);
     color: white;
 }
+.skip a{
+    color: var(--mainLBlue);
+}
 .skip:hover{
-    background: rgb(114, 29, 29);
+    background: var(--mainyellow);
+}
+.skip:hover > a{
+    color: black;
 }
 
