@@ -1,14 +1,13 @@
 @extends('jd.layout.mainlayout')
 @section('header')
-   @include('jd.header.header')
+   @include('jd.header.loginheader')
 @endsection
 
 
 @section('content')
     <div class="loginFrame mt-5">
         <div class="whyAnime hidden cards">
-            <img src="/img/sampleImg/whyguide.png" alt="">
-            <div class="whyTypingBox"><span class="whyTypingBoxSpan"></span></div>
+            <img src="/jd_img/realloginpic.png" alt="">
         </div>
         @include('jd.login.component.loginform')
     </div>
@@ -16,6 +15,7 @@
 @endsection
 
 @section('customCss')
+<link rel="stylesheet" href="/jd_css/colors.css">
 <link rel="stylesheet" href="/jd_css/header/header.css">
 <link rel="stylesheet" href="/jd_css/forms.css">
 <link rel="stylesheet" href="/jd_css/login/login.css">

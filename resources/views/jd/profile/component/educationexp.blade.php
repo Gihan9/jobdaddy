@@ -18,13 +18,15 @@
                     <form action="{{ route('educations.destroy', ['education' => $ed->id]) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this education qualification?')" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="profCardDeleteBtn"><i class="bi bi-trash"></i></button>
+                        <button type="submit" class="profCardDeleteBtn delbtn"><i class="bi bi-trash"></i></button>
                     </form>
                     </div>
                     
                 </div>
-                <div class="subCardTitle">{{$ed->university}}</div>
-                <div class="minidata">{{$ed->start_date}} TO {{$ed->end_date}} | {{$ed->grade}}</div>
+                <div class="profdata jobExpPlace">{{$ed->university}}</div>
+                <div class="profdata jobExpDate">
+                    <span class="minidata">{{$ed->start_date}} TO {{$ed->end_date}} | {{$ed->grade}}</span>
+                </div>
             </div> 
             @endforeach
            

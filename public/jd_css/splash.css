@@ -3,9 +3,9 @@
     z-index: 1;
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--Title);
+    width: 100vw;
+    height: 100vh;
+    background: var(--mainDBlue);
     transition: 1s;
 }
 

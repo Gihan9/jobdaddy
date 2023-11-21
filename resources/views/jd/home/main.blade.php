@@ -11,8 +11,10 @@
         <div class="optionList">
             <div class="item item1">
                 <div class="gridtext">Jobs</div>
+                <div class="homeimgBox"><img src="/jd_img/jobpics.png" alt=""></div>
             </div>
             <div class="item item2">
+                <div class="homeimgBox"><img src="/jd_img/peoplepic.png" alt=""></div>
                 <div class="gridtext">People</div>
             </div>
             
@@ -20,13 +22,12 @@
                 <div class="gridtext">Upload your vacancy</div>
             </div>
             <div class="item item4">
-                <a href="jd/profile">
                 <div class="gridtext">Upload your CV</div>
-                </a>
             </div>
-            <div class="item item5">
+            <div class="item item5 whatsappbox">
                 <div class="gridtext">Customer Support</div>
-                <div>0094 76 311 45 49</div>
+                <div class="homeimgBox whatsappLogo"><img style="width: 60px; height:60px" src="/jd_img/whatsapp.png" alt=""></div>
+                <div class="whatsappNumber">0094 76 311 45 49</div>
             </div>
         </div>
            
@@ -38,6 +39,7 @@
 @endsection
 
 @section('customCss')
+<link rel="stylesheet" href="/jd_css/colors.css">
 <link rel="stylesheet" href="/jd_css/header/header.css">
 <link rel="stylesheet" href="/jd_css/home/home.css">
 <link rel="stylesheet" href="/jd_css/splash.css">

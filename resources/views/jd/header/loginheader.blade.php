@@ -1,10 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin-bottom:0px; background:transparent !important;">
     <div class="container-fluid mynav">
-    <div class="contactBox">
-        <img src="/jd_img/contact.png" alt="" title="Contact Us">
-        <div class="contactNum"> 24/7 0094 76 311 45 49</div>
-       
-    </div>
+    
     <!--<div class="logoText">Job Daddy</div>-->
     <a class="navbar-brand" href="/">
         <img class="companyLogo" src="/jd_img/monkey.png" alt="">
@@ -28,7 +24,7 @@
         @guest
             @if (Route::has('login'))
                 <li class="nav-item navbtn navLogin">
-                    <a class="nav-link" href="/jd/login">{{ __('Login') }}</a>
+                    <a class="nav-link" href="/jd/register">Register</a>
                 </li>
             @endif
 
