@@ -53,7 +53,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jd/profile/update-skills', [JobseekerController::class, 'updateSkills'])->name('profile.update.skills');
     Route::delete('/jd/profile/skills/{skillId}', [JobseekerController::class, 'deleteSkill'])->name('skills.delete');
     
-    Route::post('/jd/profile/update-job', [JobseekerController::class, 'updatejob'])->name('profile.update.job');
+    Route::post('/jd/profile/update-skils', [JobseekerController::class, 'updatejob'])->name('profile.update.job');
 
 });
 

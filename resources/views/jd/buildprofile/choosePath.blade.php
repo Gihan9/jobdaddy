@@ -9,8 +9,8 @@
     <h2 style="text-align: center; margin-bottom:-45px; margin-top:15px;">Select What You Are Looking For</h2>
     <div class="choiceFrame">
         <div class="buttonFrame">
-            <img src="/jd_img/findcom.png" alt="">
-            <h5>Find a job</h5>
+            <a href="/jd/register"><img src="/jd_img/findcom.png" alt="">
+            <h5>Find a job</h5></a>
         </div>
         <div class="buttonFrame">
             <img src="/jd_img/choosecom.png" alt="">

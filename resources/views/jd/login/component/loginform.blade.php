@@ -43,7 +43,7 @@
         <button type="submit" class="btn formBtn">LOGIN</button>
     </form>
     <div class="alternateLinks">
-    <div style="text-align: center" class="formText">Dont Have An Account ? <span class="formLink"><a href="/jd/register">Register Now</a></span></div>
+    <div style="text-align: center" class="formText">Dont Have An Account ? <span class="formLink"><a href="/jd/choice">Register Now</a></span></div>
     </div>
     
 </div>
