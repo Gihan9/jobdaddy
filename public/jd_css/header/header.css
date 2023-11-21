@@ -47,16 +47,11 @@
     border: none;
 }
 
-.navLogin{
-    background-color: var(--loginBtn);
-    color: var(--Title);
-    padding: 1px 12px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    text-transform: uppercase;
-    margin-left: 16px;
+
+.navLogin:hover{
+    background-color: var(--mainyellowHover) !important;
+    color: white !important;
+    
 }
 /*navbar*/
 .nav-item{
@@ -81,8 +76,26 @@
     flex-direction: row;
     font-size: 13px;
     font-weight: 500;
-    color: var(--Title);
+    color: var(--mainDBlue);
 }
 .contactBox img{
     margin-right: 8px;
+}
+
+.navLogin{
+    background-color: var(--mainyellow);
+    color: black;
+    padding: 1px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    margin-left: 16px;
+}
+
+@media screen and (max-width: 700px) {
+    .contactBox{
+        display: none;
+    }
 }

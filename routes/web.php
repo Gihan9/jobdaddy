@@ -93,3 +93,7 @@ Route::get('/jd/choice', function () {
 Route::get('/jd/skip', function () {
     return view('jd.buildprofile.skipProfile');
 });
+
+Route::get('/jd/comprof', function () {
+    return view('jd.companyprofile.company');
+});

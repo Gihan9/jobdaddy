@@ -2,6 +2,15 @@
 :root{
     --uglyyellow: #FDD79F;
 }
+
+body{
+    background: url(/jd_img/loginbg.png);
+    background-size: cover;
+    background-position: right top ;
+    background-repeat: no-repeat;
+    background-color: aqua;
+    
+}
 /* exclusive for login form*/
 .loginFrame{
     display: flex;
@@ -104,6 +113,9 @@
 
 }
 
+.contactBox{
+    display: none;
+}
 @media screen and (max-width: 850px) {
     .whyAnime{
         display: none;
