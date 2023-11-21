@@ -11,13 +11,13 @@
             <div class="modal-body">
     
                 <div class="form">
-                <form action="{{ route('profile.update.job') }}" method="POST">
+                <form action="{{ route('profile.update.job') }}" method="POST" enctype="multipart/form-data">
                       @csrf
                       <label for="jobp">Add/Update Job:</label>
                       <input type="text" name="preference" value="{{ old('preference') }}" placeholder="job">
                       <button type="submit">Add/Update Job Preference</button>
                   </form>
-                    </div>
+                </div>
     
             </div>
           </div>
