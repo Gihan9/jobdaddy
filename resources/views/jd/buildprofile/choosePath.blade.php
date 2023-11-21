@@ -24,6 +24,7 @@
 @endsection
 
 @section('customCss')
+<link rel="stylesheet" href="/jd_css/colors.css">
 <link rel="stylesheet" href="/jd_css/header/header.css">
 <link rel="stylesheet" href="/jd_css/profilebuilder/profilechoice.css">
 

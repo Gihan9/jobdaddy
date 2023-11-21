@@ -28,12 +28,12 @@
                 </div>   
             </div>
             <div class="subCardTitle jobExpPlace">
-            {{$ex->company_name}} | {{$ex->location}} 
-                <span class="minidata"></span>
+           
+                <span class="minidata"> {{$ex->company_name}} | {{$ex->location}} </span>
             </div>
             <div class="profdata jobExpDate">
-            {{$ex->s_date}} TO {{$ex->e_date}}
-                <span class="minidata"></span>
+            
+                <span class="minidata">{{$ex->s_date}} TO {{$ex->e_date}}</span>
             </div>
         </div> 
         @endforeach

@@ -15,7 +15,7 @@
             <form method="POST" action="{{ url('/jd/profile/update') }}">
                 @csrf
                   
-                    
+                    <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                         <label for="name" class="form-label">Name</label>
                         <div class="inframe">
@@ -68,6 +68,7 @@
                     <div class="modalBtns">
                         <button type="button" class="btn btn-secondary cancelBtn" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn saveBtn">Save</button>
+                    </div>
                     </div>
                   
                 </form>

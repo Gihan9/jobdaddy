@@ -97,3 +97,6 @@ Route::get('/jd/skip', function () {
 Route::get('/jd/comprof', function () {
     return view('jd.companyprofile.company');
 });
+Route::get('/jd/testprofile', function () {
+    return view('jobseeker');
+});
