@@ -276,4 +276,25 @@ public function updatejob(Request $request)
     // Redirect with success message
     return redirect('/jd/profile')->with('success', 'Job Preferences updated successfully!');
 }
+
+public function deletejobPreference($jobPreferenceId)
+{
+    // Get the authenticated user
+    $user = auth()->user();
+
+    
+    $job = JobPreference::find($jobPreferenceId);
+
+    // Check if the JobPreference exists and belongs to the authenticated user
+    if ($job && $job->user_id === $user->id) {
+        
+        $job->delete();
+
+       
+        return redirect('/jd/profile')->with('success', 'job Preference deleted successfully!');
+    } else {
+        
+        return redirect('/jd/profile')->with('error', 'job Preference not found or you don\'t have permission to delete it.');
+    }
+}
 }

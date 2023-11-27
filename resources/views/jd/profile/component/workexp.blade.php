@@ -17,8 +17,8 @@
                     <span class="profdata"></span>
                 </div>
                 <div class="subCardIcons">
-                    <div class="profCardEditbtn "><i class="bi bi-pencil-square"></i></div>
                     
+                    <div  data-bs-toggle="modal" data-bs-target="#editWorkExp" ><i class="bi bi-pencil-square"></i></div>
 
                     <form action="{{ route('experiences.destroy', ['experience' => $ex->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this experience?')">
                         @csrf

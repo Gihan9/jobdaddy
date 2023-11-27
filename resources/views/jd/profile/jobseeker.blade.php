@@ -13,7 +13,7 @@
     @include('jd.profile.modal.propic')
     @include('jd.profile.modal.cv')
     @include('jd.profile.modal.skills')
-    @include('jd.profile.modal.jobpef')
+    @include('jd.profile.modal.jobpref')
 
 
     <div class="personalBox row " >

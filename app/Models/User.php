@@ -65,7 +65,7 @@ class User extends Authenticatable
 
     public function jobPreferences()
     {
-        return $this->hasOne(JobPreference::class);
+        return $this->hasMany(JobPreference::class);
     }
  
 }
