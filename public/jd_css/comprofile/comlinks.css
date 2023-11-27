@@ -17,6 +17,14 @@
     margin-right: 10px;
     background-color: #FCB040;
     text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.comlink i{
+    margin-right: 6px;
+    margin-top: -4px;
 }
 
 .comlink:hover{
