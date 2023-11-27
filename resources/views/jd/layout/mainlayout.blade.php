@@ -53,7 +53,7 @@
     @yield('customJs')
 
     <footer class="py-4" style="text-align: center; color:black; font-size:14px; font-weight:600;">
-        Copyright 2021 Job Daddy - Job Portal. All rights Reserved
+        Copyright 2023 Job Daddy - Job Portal. All rights Reserved
     </footer>
 
    

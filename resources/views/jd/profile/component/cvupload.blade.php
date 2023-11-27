@@ -13,8 +13,8 @@
             
             
         </div>
-        <div data-bs-toggle="modal" data-bs-target="#cv" class="profCardEditbtn"><span class="btntext">ADD CV</span>
-            <i class="bi bi-upload"></i></div>
+        <div data-bs-toggle="modal" data-bs-target="#cv" class="profCardEditbtn"><span class="btntext" style="color:white">ADD CV</span>
+            <i class="bi bi-upload" style="color:white"></i></div>
         <input style="display:none;" name="cv" id="cv" type="file" accept="image/*">
     </div>
     

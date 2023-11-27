@@ -1,0 +1,33 @@
+.profdata{
+    color: var(--mainDBlue);
+    font-size: 16px;
+}
+
+.profdatatype{
+    color: var(--mainDBlue);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.editprofBtn{
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: black;
+    background-color: var(--mainyellow);
+    padding: 3px 15px;
+    border-radius: 6px;
+    position: absolute;
+    right: -5%;
+    top: -5%;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.editprofBtn i{
+    margin-top: -4px;
+    margin-right: 6px;
+}

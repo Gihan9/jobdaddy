@@ -6,7 +6,11 @@
     @include('jd.header.nav')
 @endsection
 @section('content')
-   <div class="comProfileInfo row mb-3 mt-3">
+@include('jd.companyprofile.modal.editComDetails')
+@include('jd.companyprofile.modal.editabout')
+@include('jd.companyprofile.modal.addfaq')
+<div class="row">
+    <div class="comProfileInfo row mb-3 mt-3 order-sm-2 order-1">
         <div class="compLogoPic col-lg-4 col-md-4 col-sm-12">
             @include('jd.companyprofile.component.comlogo')
         </div>
@@ -14,9 +18,12 @@
             @include('jd.companyprofile.component.comprofdetails')
         </div>
    </div>
-   <div class="row">
+   <div class="row order-sm-1 order-md-2">
     @include('jd.companyprofile.component.comlinks')
    </div>
+
+</div>
+   
    <div class="row mb-3" style="padding-left: 10px; padding-right:10px">
     @include('jd.companyprofile.component.comdetails')
    </div>
@@ -33,10 +40,12 @@
 @section('customCss')
 <link rel="stylesheet" href="/jd_css/header/header.css">
 <link rel="stylesheet" href="/jd_css/comprofile/comprofile.css">
+<link rel="stylesheet" href="/jd_css/comprofile/comdetails.css">
 <link rel="stylesheet" href="/jd_css/comprofile/general.css">
 <link rel="stylesheet" href="/jd_css/comprofile/comlinks.css">
+<link rel="stylesheet" href="/jd_css/comprofile/faq.css">
 <link rel="stylesheet" href="/jd_css/modal.css">
-   
+<link rel="stylesheet" href="/jd_css/colors.css">
 @endsection
 
 @section('customJs')
