@@ -6,44 +6,54 @@
 
             </div>
             <!--modal target data -->
-            <div data-bs-toggle="modal"  class="profCardEditbtn"><i class="bi bi-pencil-square"></i></div>
+            <div  data-bs-toggle="modal" data-bs-target="#addfaq"  class="profCardEditbtn"><i class="bi bi-pencil-square"></i></div>
         </div>
         <hr>
 
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                  Accordion Item #1
-                </button>
-              </h2>
-              <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                <hr/>
-              </div>
+        <div class="accordion accordion-flush " id="accordionFlushExample">
+
+            <!--dynamicallly add each peice -->
+            <div class="accordframe">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button style="font-weight: bold; color:#135FAF" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Lorem ipsum dolor sit amet consectetur. Maecenas cras risus nunc diam ?
+                      </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <div>Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                            <div class="subCardIcons" style="justify-content: right">
+                                <div class="profCardEditbtn "><i class="bi bi-pencil-square"></i></div>
+                                <div class="profCardEditbtn delbtn"><i class="bi bi-trash-fill"></i></div>    
+                            </div>
+                        </div>    
+                    </div>     
+                  </div>
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                  Accordion Item #2
-                </button>
-              </h2>
-              <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                <hr/>
-              </div>
+
+           
+        
+             <!--dynamicallly add each peice -->
+             <div class="accordframe">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button style="font-weight: bold; color:#135FAF" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Lorem ipsum dolor sit amet consectetur. Maecenas cras risus nunc diam ?
+                      </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <div>Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                            <div class="subCardIcons" style="justify-content: right">
+                                <div class="profCardEditbtn "><i class="bi bi-pencil-square"></i></div>
+                                <div class="profCardEditbtn delbtn"><i class="bi bi-trash-fill"></i></div>    
+                            </div>
+                        </div>    
+                    </div>     
+                  </div>
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                  Accordion Item #3
-                </button>
-              </h2>
-              <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                <hr/>
-              </div>
-            </div>
+
           </div>
 
     </div>

@@ -21,10 +21,10 @@
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
-                        <label for="comemail" class="form-label formlab">Company Email</label>
+                        <label for="comwebaddress" class="form-label formlab">Company Website URL (If have any)</label>
                         <div class="inframe">
                             
-                            <input type="email" name="comemail" id="comemail" class="form-control" >
+                            <input type="email" name="comemail" id="comwebaddress" class="form-control" >
                         </div>
                     </div>
                     <div class="col-md-12 col-sm-12 mb-3">
@@ -57,6 +57,14 @@
                         </div>
                     
                     </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+                        <label for="comemail" class="form-label formlab">Company Email</label>
+                        <div class="inframe">
+                            
+                            <input type="email" name="comemail" id="comemail" class="form-control" >
+                        </div>
+                    </div>
+
                     <div class="col-md-12 col-sm-12 mb-3">
                         <label for="phone" class="form-label formlab">Contact Number </label>
                         <div class="inframe">
@@ -64,6 +72,7 @@
                             <input type="text" name="marital_status" id="phone"  class="form-control" >
                         </div>
                     </div>
+
                     <div class="col-md-12 col-sm-12 mb-3">
                         <label for="location" class="form-label formlab">Location </label>
                         <div class="inframe">

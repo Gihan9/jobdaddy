@@ -1,0 +1,8 @@
+
+
+.accordframe{
+
+    border: 2px solid var(--mainDBlue);
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
