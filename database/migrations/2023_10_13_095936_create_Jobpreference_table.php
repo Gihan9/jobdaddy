@@ -15,9 +15,16 @@ class CreateJobpreferenceTable extends Migration
     {
         Schema::create('Jobpreference', function (Blueprint $table) {
             $table->id();
+            
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('job')->nullable();
             $table->timestamps();
+
+            $table->string('col1')->nullable();
+            $table->string('col2')->nullable();
+            $table->string('col3')->nullable();
+            $table->string('col4')->nullable();
+            $table->string('col5')->nullable();
         });
     }
 

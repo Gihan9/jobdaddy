@@ -9,6 +9,7 @@
 @include('jd.companyprofile.modal.editComDetails')
 @include('jd.companyprofile.modal.editabout')
 @include('jd.companyprofile.modal.addfaq')
+@include('jd.companyprofile.modal.companypropic')
 <div class="row">
     <div class="comProfileInfo row mb-3 mt-3 order-sm-2 order-1">
         <div class="compLogoPic col-lg-4 col-md-4 col-sm-12">

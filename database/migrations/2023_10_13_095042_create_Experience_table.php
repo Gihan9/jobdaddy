@@ -15,6 +15,7 @@ class CreateExperienceTable extends Migration
     {
         Schema::create('Experience', function (Blueprint $table) {
             $table->id();
+           
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('job_title')->nullable();
             $table->string('company_name')->nullable();
@@ -23,6 +24,12 @@ class CreateExperienceTable extends Migration
             $table->string('location')->nullable();
             
             $table->timestamps();
+
+            $table->string('col1')->nullable();
+            $table->string('col2')->nullable();
+            $table->string('col3')->nullable();
+            $table->string('col4')->nullable();
+            $table->string('col5')->nullable();
         });
     }
 

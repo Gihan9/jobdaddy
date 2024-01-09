@@ -18,10 +18,10 @@
         </div>
        
         <div class="mb-3">
-            <label for="emailLogin" class="form-label">Email Address</label>
+            <label for="emailLogin" class="form-label">Phone</label>
             <div class="inframe">
                 
-                <input type="email" name="email" id="emailLogin" class="form-control" aria-label="email" value="{{ old('email') }}" required>
+                <input type="tel" name="phone" id="emailLogin" class="form-control" aria-label="phone" value="{{ old('phone') }}" required>
             </div>
            
         </div>
@@ -43,7 +43,7 @@
         <button type="submit" class="btn formBtn">LOGIN</button>
     </form>
     <div class="alternateLinks">
-    <div style="text-align: center" class="formText">Dont Have An Account ? <span class="formLink"><a href="/jd/choice">Register Now</a></span></div>
+    <div style="text-align: center" class="formText">Dont Have An Account ? <span class="formLink"><a href="/jd/register">Register Now</a></span></div>
     </div>
     
 </div>

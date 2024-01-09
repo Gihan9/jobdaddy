@@ -82,7 +82,8 @@ class JobuserController extends AdminController
         
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users',
+            'email' => 'email|unique:users',
+            'phone' => 'required|string|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
@@ -90,6 +91,7 @@ class JobuserController extends AdminController
         $user = new User([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
             'password' => Hash::make($request->input('password')),
         ]);
 
@@ -105,17 +107,18 @@ class JobuserController extends AdminController
     {
         // Validation
         $request->validate([
-            'email' => 'required|email',
+            'phone' => 'required|string',
             'password' => 'required|string',
         ]);
 
         // Attempt to log in the user
-        if (auth()->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+        if (auth()->attempt(['phone' => $request->input('phone'), 'password' => $request->input('password')])) {
+            
             return redirect('/jd/profile');
         }
 
         // Failed login attempt
-        return back()->withErrors(['email' => 'Invalid credentials']);
+        return back()->withErrors(['phone' => 'Invalid credentials']);
     }
 
 }

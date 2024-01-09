@@ -4,7 +4,7 @@
         <div class="modal-body">
 
             <div class="form">
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('company.profile.storeOrUpdate') }}">
                 @csrf
                   
                     <div class="row">
@@ -13,7 +13,7 @@
                             <h2 >Add Details About Company</h2>
                         </div>
                         <div class="inframe">
-                            <textarea style="width:100%; "  name="aboutcom" rows="5" ></textarea>
+                            <textarea style="width:100%; "  name="about" rows="5" id="about"></textarea>
                         </div>
                     </div>
 

@@ -26,6 +26,12 @@ class CreateJobsTable extends Migration
             $table->unsignedTinyInteger('need_cover_letter')->nullable();
             $table->string('company_id')->nullable();
             $table->timestamps();
+
+            $table->string('col1')->nullable();
+            $table->string('col2')->nullable();
+            $table->string('col3')->nullable();
+            $table->string('col4')->nullable();
+            $table->string('col5')->nullable();
         });
     }
 

@@ -19,6 +19,12 @@ class CreateCategoriesTable extends Migration
             $table->string('Category')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->string('col1')->nullable();
+            $table->string('col2')->nullable();
+            $table->string('col3')->nullable();
+            $table->string('col4')->nullable();
+            $table->string('col5')->nullable();
         });
     }
 

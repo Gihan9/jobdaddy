@@ -10,20 +10,20 @@
         <div class="modal-body">
 
             <div class="form">
-            <form method="POST" action="">
-                @csrf
+            <form action="{{ route('company.qna.store') }}" method="POST">
+            @csrf
                   
                     <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
                         <label for="faqque" class="form-label">Enter Question</label>
                         <div class="inframe">
-                        <input type="text" name="faqanw" id="faqque" class="form-control" >
+                        <input type="text" name="question" id="question" class="form-control" >
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
                         <label for="faqanw" class="form-label formlab">Enter Question Response</label>
                         <div class="inframe">
-                            <textarea style="width:100%; " name="faqanw" id="faqanw"  name="aboutcom" rows="3" ></textarea>
+                            <textarea style="width:100%; " name="answer" id="answer"  name="aboutcom" rows="3" ></textarea>
                         </div>
                     </div>
                     
