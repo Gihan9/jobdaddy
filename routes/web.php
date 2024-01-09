@@ -119,9 +119,10 @@ Route::get('/jd/testprofile', function () {
     return view('jobseeker');
 });
 
-<<<<<<< HEAD
+Route::get('/jd/advert', function () {
+    return view('jd.advertFeed.advertFeed');
+});
 
-=======
 // Display the registration form
 Route::get('/company/register', [CompanyController::class, 'companyshow'])->name('company.register');
 
@@ -166,4 +167,3 @@ Route::middleware(['auth:company'])->group(function () {
     Route::delete('company/qna/{qna}', [CompanyqaController::class, 'destroyqa'])->name('company.qna.destroy');
 });
 
->>>>>>> 0d1b0be386b792f76b5b9fc4c4d5d4847dfb5829
