@@ -4,7 +4,7 @@
 <div class="container">
       <section>
         @include('landing.component.opening')
-        @include('landing.component.techlogo')
+
       </section>
      
 </div>

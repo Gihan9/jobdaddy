@@ -1,0 +1,45 @@
+
+.filterFrame{
+    background: rgb(248, 247, 247);
+    padding: 15px;
+    border-radius: 13px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.filTitle{
+    background: rgb(240, 153, 22);
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 4px 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.filterOptions{
+    padding: 6px;
+    border-radius: 8px;
+    background: #EAEAFF;
+
+}
+
+.option{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    
+}
+
+.option input{
+    border: 1px solid #1c1c52;
+}
+
+.option label{
+    font-size: 15px;
+    color:rgb(28, 28, 82);
+    font-weight: 600;
+}

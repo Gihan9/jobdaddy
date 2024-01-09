@@ -1,6 +1,6 @@
 <div class="intro">
     <div class="logo-header">
-        <div><span class="logo"><img src="/jd_img/whitemonkey.png" alt="" /></span></div>
-        <div><span class="logo">Welcome to <span style="color: rgb(255, 217, 0)">Job Daddy</span></span></div>
+        <div class="logo"><img src="/jd_img/jdlogohead.png" alt="" /></div>
+        <div class="logo logotail"><img src="/jd_img/jdlogotail.png" alt="" /></div>
     </div>
 </div>

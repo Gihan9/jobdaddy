@@ -8,15 +8,15 @@
 }
 .searchBarFrame{
     padding: 10px;
-    border: 2px solid var(--primPurple);
+    border: 2px solid var( --mainDBlue);
     border-radius: 5px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    background-color: var(--white);
+    background-color: white;
     margin-top: 10px;
-    max-width: 300px;
+    max-width: 600px;
 
 }
 
@@ -26,15 +26,15 @@
     font-size: 15px;
     font-weight: 500;
     color: var(--white);
-    background-color: var(--primPurple);
-    border: solid 1px var(--primPurple);
+    background-color: var( --mainDBlue);
+    border: solid 1px var( --mainDBlue);
     border-radius: 4px;
     padding: 4px 9px;
     flex: 0 0 auto;
     
 }
 .searchBtn:hover{
-    background-color: var(--darkerPurple);
+    background-color: rgb(12, 12, 94);
 }
 
 

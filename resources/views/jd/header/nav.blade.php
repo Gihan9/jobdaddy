@@ -6,7 +6,7 @@
             <a class="nav-link mylinks" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link mylinks " aria-current="page" href="#">Jobs</a>
+            <a class="nav-link mylinks " aria-current="page" href="#">All Jobs</a>
         </li>
         <li class="nav-item">
             <a class="nav-link mylinks" href="#">People</a>
@@ -15,11 +15,9 @@
             <a class="nav-link mylinks" href="#">Companies</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link mylinks" href="#">Create a Company</a>
+            <a class="nav-link mylinks" href="#">Support</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link mylinks" href="#">Salaries</a>
-        </li>
+
         
     </ul>
 </div>

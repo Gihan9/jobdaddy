@@ -1,0 +1,25 @@
+.catframe{
+    margin-top: 30px;
+
+}
+.category{
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.categorylist input{
+    display: none;
+}
+
+.categorylist label{
+    border-radius: 8px;
+    background: #EAEAFF;
+    padding: 5px 10px;
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color:rgb(28, 28, 82);
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+}

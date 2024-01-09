@@ -25,6 +25,11 @@ Route::get('/', function () {
     return view('jd.home.main');
 });
 
+Route::get('/devtest/home', function () {
+    return view('landing.landing');
+});
+
+
 
 
 Auth::routes();
@@ -99,4 +104,8 @@ Route::get('/jd/comprof', function () {
 });
 Route::get('/jd/testprofile', function () {
     return view('jobseeker');
+});
+
+Route::get('/jd/advert', function () {
+    return view('jd.advertFeed.advertFeed');
 });

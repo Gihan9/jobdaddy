@@ -1,0 +1,83 @@
+
+
+.adCard{
+    background: white;
+    padding: 15px;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border:  1px solid rgb(154, 154, 226);
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 16px;
+
+}
+.adCard:hover{
+    background: rgb(245, 244, 244);
+}
+
+.adImg{
+    max-width: 200px;
+    max-height: 180px;
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border:  1px solid rgb(154, 154, 226);
+    margin-right: 20px;
+}
+
+.adImg img{
+    width: 100%;
+}
+
+.adTitle{
+    font-size: 20px;
+    font-weight:  bold;
+}
+.Adcom{
+    color: rgb(143, 143, 211) ;
+    margin-bottom: 35px;
+}
+
+.adLoc{
+    font-size: 16px;
+    color: rgb(52, 52, 102);
+    font-weight: 600;
+
+}
+.tags{
+    margin-top: 15px;
+
+}
+.adtag{
+    background: #EAEAFF;
+    color: black;
+    font-size: 13px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    margin: 4px;
+}
+
+.ico{
+    margin-top: -25px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+
+}
+
+.bookmark{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: rgb(238, 76, 76);
+    font-size: 28px;
+}
+
+.paginationBox{
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    color: black;
+}

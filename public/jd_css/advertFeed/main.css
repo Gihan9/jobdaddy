@@ -1,0 +1,21 @@
+.searchBox{
+    display: flex;
+    justify-content: center;
+}
+.adSquare{
+    display: flex;
+    flex-direction: row;
+}
+
+.filterCol{
+
+    padding: 0px;
+    width: 300px;
+    padding: 10px;
+
+}
+.adCol{
+    flex: 1;
+    padding: 10px;
+
+}

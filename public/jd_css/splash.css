@@ -5,14 +5,18 @@
     top: 0;
     width: 100vw;
     height: 100vh;
-    background: var(--mainDBlue);
+    background: linear-gradient(#074383, #2091c2);
     transition: 1s;
+    display: flex;
+    justify-content: center;
+
+
 }
 
 .logo-header{
-    position: absolute;
+    position: relative;
     top: 60%;
-    left: 50%;
+    left: 25%;
     transform: translate(-50%,-50%);
     color: white;
     font-size: 45px;
@@ -23,14 +27,19 @@
     align-items: center;
 }
 .logo-header img{
-    max-width: 200px;
-    margin-bottom: 20px;
+    max-width: 80%;
+}
+.logotail{
+    margin-top: -50px;
 }
 .logo{
     position: relative;
     display: inline-block;
     bottom: -20px;
     opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
