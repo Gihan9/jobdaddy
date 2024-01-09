@@ -22,6 +22,12 @@ class CreateReviewsTable extends Migration
             $table->string('user_id')->nullable();
             $table->string('company_id')->nullable();
             $table->timestamps();
+
+            $table->string('col1')->nullable();
+            $table->string('col2')->nullable();
+            $table->string('col3')->nullable();
+            $table->string('col4')->nullable();
+            $table->string('col5')->nullable();
         });
     }
 

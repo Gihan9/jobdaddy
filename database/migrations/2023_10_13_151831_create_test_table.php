@@ -18,6 +18,12 @@ class CreateTestTable extends Migration
             $table->string('name')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
+
+            $table->string('col1')->nullable();
+            $table->string('col2')->nullable();
+            $table->string('col3')->nullable();
+            $table->string('col4')->nullable();
+            $table->string('col5')->nullable();
         });
     }
 

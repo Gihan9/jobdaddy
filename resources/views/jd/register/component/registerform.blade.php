@@ -15,9 +15,9 @@
         </div>
        
         <div class="mb-3">
-            <label for="emailLogin" class="form-label">Email Address</label>
+            <label for="emailLogin" class="form-label">Phone</label>
             <div class="inframe">
-                <input class="form-control" id="emailLogin" type="email" name="email" aria-label="email" value="{{ old('email') }}" required>
+                <input class="form-control" id="emailLogin" type="tel" name="phone" aria-label="phone" value="{{ old('phone') }}" required>
                 
             </div>
            

@@ -30,6 +30,7 @@ Route::group([
     $router->resource('tests', TestController::class);
     $router->resource('jobusers', JobuserController::class);
     $router->resource('skills', SkillController::class);
+    $router->resource('companyqas', CompanyqaController::class);
 
 
 

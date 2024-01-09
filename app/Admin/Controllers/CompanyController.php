@@ -7,6 +7,9 @@ use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
 use \App\Models\Company;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends AdminController
 {
@@ -68,4 +71,64 @@ class CompanyController extends AdminController
 
         return $form;
     }
+
+
+    public function companyshow()
+    {
+        
+    
+        return view('jd.companyregister.register');
+    }
+    public function showLoginForm()
+    {
+        
+    
+        return view('jd.companylogin.login');
+    }
+    
+    
+    public function register(Request $request)
+{
+    // Validate the request
+    $request->validate([
+        'phone' => 'required|unique:company', // Assuming "companies" is the table name for companies
+        'password' => 'required|min:6|confirmed',
+    ]);
+
+    // Create a new company
+    $company = Company::create([
+        'phone' => $request->input('phone'),
+        'password' => Hash::make($request->input('password')),
+    ]);
+
+    // You may choose to automatically log in the user after registration
+    // Auth::login($company);
+
+    // Redirect to a success page or wherever you want
+    return redirect('/company/login')->with('success', 'Company registered successfully!');
+}
+
+
+public function login(Request $request)
+{
+    // Validate the request
+    $request->validate([
+        'phone' => 'required',
+        'password' => 'required',
+    ]);
+
+    // Attempt to authenticate the company
+    $credentials = [
+        'phone' => $request->input('phone'),
+        'password' => $request->input('password'),
+    ];
+
+    if (Auth::guard('company')->attempt($credentials)) {
+        // Authentication successful
+        return redirect('/company/profile/form'); // Redirect to the company profile or any other desired location
+    } else {
+        // Authentication failed
+        return redirect('/company/login')->with('error', 'Invalid credentials');
+    }
+}
 }

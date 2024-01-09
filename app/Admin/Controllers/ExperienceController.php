@@ -8,7 +8,7 @@ use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
 use \App\Models\Experience;
 use Illuminate\Http\Request;
-
+use OpenAdmin\Admin\Layout\Content;
 class ExperienceController extends BaseController
 {
     /**
@@ -109,23 +109,25 @@ class ExperienceController extends BaseController
     
    
 
-    public function up()
-    {
-        
-     
+public function edit($id, Content $content)
+{
+    $experience = Experience::findOrFail($id);
+    return view('jd.profile.experience.edit', compact('experience'));
+}
 
-        request()->validate([
-            'job_title' => 'required|string|max:255',
-            'company_name' => 'required|string|max:255',
-            's_date' => 'required|date',
-            'e_date' => 'nullable|date|after:start_date',
-            'location' => 'required|string|max:255',
-        ]);
+public function update( $id)
+{
+    request()->validate([
+        'job_title' => 'required|string|max:255',
+        'company_name' => 'required|string|max:255',
+        // Add validation rules for other fields
+    ]);
 
-        
+    $experience = Experience::findOrFail($id);
+    $experience->update(request()->all());
 
-        return redirect('/experiences')->with('success', 'Experience updated successfully!');
-    }
+    return redirect('/jd/profile')->with('success', 'Experience updated successfully!');
+}
 
     public function destroy($id)
     {

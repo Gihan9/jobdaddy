@@ -7,8 +7,20 @@
             <!--modal target data -->
             <div data-bs-toggle="modal" data-bs-target="#editAbout"  class="profCardEditbtn"><i class="bi bi-pencil-square"></i></div>
         </div>
-        <div class="profdata profAboutDescrip">
+
+        @isset($companyProfile) 
+                @if($companyProfile->about)
+                <div class="profdata profAboutDescrip">{{ $companyProfile->about ?? old('about') }} </div> 
+                @else 
+                <div class="profdata profAboutDescrip">
                 Curabitur sit amet maximus ligula. Nam a nulla ante. Nam sodalesCurabitur sit amet maximus ligula. Nam a nulla ante. Nam sodales Nam a nulla ante. Nam sodalesgCurabitur sit amet maximus ligula. Nam a nulla ante. Nam sodalesCurabitur sit amet maximus ligula. Nam a nulla ante. Nam sodalesCurabitur sit amet maximus ligula. Nam a nulla ante. Nam sodales Nam a maximus ligula.
         </div>
+                @endif
+                @else
+                <div class="profdata profAboutDescrip">
+                Curabitur sit amet maximus ligula. Nam a nulla ante. Nam sodalesCurabitur sit amet maximus ligula. Nam a nulla ante. Nam sodales Nam a nulla ante. Nam sodalesgCurabitur sit amet maximus ligula. Nam a nulla ante. Nam sodalesCurabitur sit amet maximus ligula. Nam a nulla ante. Nam sodalesCurabitur sit amet maximus ligula. Nam a nulla ante. Nam sodales Nam a maximus ligula.
+        </div>
+                @endisset    
+        
     </div>
 </div>

@@ -6,6 +6,11 @@ use App\admin\Controllers\JobuserController;
 use App\admin\Controllers\JobseekerController;
 use App\admin\Controllers\ExperienceController;
 use App\admin\Controllers\EducationController;
+use App\admin\Controllers\CompanyController;
+use App\admin\Controllers\CompanyProfileController;
+use App\admin\Controllers\CompanyqaController;
+use App\Livewire\CompanyLogin;
+use App\Livewire\CompanyRegister;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +49,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jd/profile/update', [JobseekerController::class, 'up']);
     Route::post('/jd/profile/store', [ExperienceController::class, 'sto']);
     Route::delete('/jd/experiences/{experience}', [ExperienceController::class, 'destroy'])->name('experiences.destroy');
+    Route::get('/jd/profile/experiences/{id}/edit', [ExperienceController::class, 'edit'])->name('experiences.edit');
+    Route::put('/jd/profile/experiences/{id}', [ExperienceController::class, 'update'])->name('experiences.update');    
+        
     Route::get('/educations', [EducationController::class, 'index']);
     Route::get('/educations/create', [EducationController::class, 'create']);
     Route::post('/jd/profile/storeed', [EducationController::class, 'stoed']);
@@ -55,6 +63,10 @@ Route::middleware(['auth'])->group(function () {
     
     Route::post('/jd/profile/update-jobpref', [JobseekerController::class, 'updatejob'])->name('profile.update.jobpref');
     Route::delete('/jd/profile/jobPreferences/{jobPreferenceId}', [JobseekerController::class, 'deletejobPreference'])->name('jobPreferences.delete');
+
+    Route::post('/jd/profile/updateSalary', [JobseekerController::class, 'updateSalary'])
+    ->name('jobseeker.updateSalary');
+
 
 });
 
@@ -101,3 +113,48 @@ Route::get('/jd/comprof', function () {
 Route::get('/jd/testprofile', function () {
     return view('jobseeker');
 });
+
+// Display the registration form
+Route::get('/company/register', [CompanyController::class, 'companyshow'])->name('company.register');
+
+// Handle the registration form submission
+Route::post('/company/register', [CompanyController::class, 'register'])->name('company.register.submit');
+
+
+// Display the login form
+Route::get('/company/login', [CompanyController::class, 'showLoginForm'])->name('company.login');
+
+// Handle the login form submission
+Route::post('/company/login', [CompanyController::class, 'login'])->name('company.login.submit');
+
+
+
+Route::middleware(['auth:company'])->group(function () {
+    Route::get('/company/profile/form', [CompanyProfileController::class, 'showForm'])->name('company.profile.form');
+    Route::post('/company/profile/store-or-update', [CompanyProfileController::class, 'storeOrUpdate'])->name('company.profile.storeOrUpdate');
+
+    Route::post('/company/profile/update-profile-picture', [CompanyProfileController::class, 'updateProfilePicture'])
+    ->name('company.profile.updateProfilePicture');
+
+    // Show all questions and answers
+    Route::get('company/qna', [CompanyqaController::class, 'so'])->name('company.qna.index');
+
+    // Show the form to create a new question and answer
+    Route::get('company/qna/create', [CompanyqaController::class, 'createqa'])->name('company.qna.create');
+
+    // Store a new question and answer
+    Route::post('company/qna', [CompanyqaController::class, 'storeqa'])->name('company.qna.store');
+
+    // Show a specific question and answer
+    Route::get('company/qna/{qna}', [CompanyqaController::class, 'showqa'])->name('company.qna.show');
+
+    // Show the form to edit a specific question and answer
+    Route::get('company/qna/{qna}/edit', [CompanyqaController::class, 'editqa'])->name('company.qna.edit');
+
+    // Update a specific question and answer
+    Route::put('company/qna/{qna}', [CompanyqaController::class, 'updateqa'])->name('company.qna.update');
+
+    // Delete a specific question and answer
+    Route::delete('company/qna/{qna}', [CompanyqaController::class, 'destroyqa'])->name('company.qna.destroy');
+});
+

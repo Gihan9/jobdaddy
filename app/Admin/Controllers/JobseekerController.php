@@ -11,6 +11,7 @@ use OpenAdmin\Admin\Layout\Content;
 use Illuminate\Http\Request;
 use App\Models\Skill;
 use App\Models\JobPreference;
+use App\Models\Experience;
 
 
 class JobseekerController extends AdminController
@@ -104,7 +105,7 @@ class JobseekerController extends AdminController
     $profile = $user->profile;
     $experiences = auth()->user()->experiences;
     $educations = auth()->user()->educations;
-    return view('jd.profile.jobseeker', compact('user', 'profile', 'experiences', 'educations' ));
+    return view('jd.profile.jobseeker', compact('user', 'profile', 'experiences', 'educations', 'experiences' ));
 }
 
 public function edit($id, Content $content)
@@ -297,4 +298,26 @@ public function deletejobPreference($jobPreferenceId)
         return redirect('/jd/profile')->with('error', 'job Preference not found or you don\'t have permission to delete it.');
     }
 }
+
+
+public function updateSalary(Request $request)
+{
+    $request->validate([
+        'salary_range' => 'string',
+    ]);
+
+    $user = auth()->user();
+    $profile = $user->profile;
+
+    if ($profile) {
+        // If the user already has a profile, update the salary_range
+        $profile->update(['salary_range' => $request->input('salary_range')]);
+    } else {
+        // If the user doesn't have a profile, create a new one
+        $user->profile()->create(['salary_range' => $request->input('salary_range')]);
+    }
+
+    return redirect('/jd/profile')->with('success', 'Salary range updated successfully!');
+}
+
 }

@@ -7,7 +7,9 @@ use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
 use \App\Models\CompanyProfile;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use \App\Models\Companyqa;
 class CompanyProfileController extends AdminController
 {
     /**
@@ -77,4 +79,65 @@ class CompanyProfileController extends AdminController
 
         return $form;
     }
+
+
+    public function showForm()
+    {
+        $company = auth('company')->user();
+        $companyProfile = $company->companyProfile;
+        $companyQnAs = auth('company')->user()->companyQnAs;
+        // Fetch questions and answers related to the logged-in company
+       
+        return view('jd.companyprofile.company', compact('companyProfile', 'companyQnAs'));
+    }
+
+    public function storeOrUpdate(Request $request)
+    {
+        $companyProfile = auth('company')->user()->companyProfile;
+
+        if (!$companyProfile) {
+            $companyProfile = new CompanyProfile();
+            $companyProfile->company_id = auth('company')->id();
+        }
+
+        $companyProfile->fill($request->all());
+        $companyProfile->save();
+
+        return redirect()->route('company.profile.form')->with('success', 'Company profile updated successfully!');
+    }
+
+   
+
+public function updateProfilePicture(Request $request)
+{
+    $request->validate([
+        'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust file types and size as needed
+    ]);
+
+    $user = auth('company')->user();
+    $companyProfile = $user->companyProfile;
+
+    // If the company doesn't have a profile, create one
+    if (!$companyProfile) {
+        $companyProfile = new CompanyProfile();
+        $companyProfile->company_id = $user->id;
+    }
+
+    // Handle file upload
+    if ($request->hasFile('profile_picture')) {
+        $file = $request->file('profile_picture');
+        $path = $file->store('profile_pictures', 'public'); // Adjust storage path as needed
+
+        // Remove old profile picture if exists
+        if ($companyProfile->profile_picture) {
+            Storage::disk('public')->delete($companyProfile->profile_picture);
+        }
+
+        $companyProfile->profile_picture = $path;
+        $companyProfile->save();
+    }
+
+    return redirect()->route('company.profile.form')->with('success', 'Profile picture updated successfully!');
+}
+
 }

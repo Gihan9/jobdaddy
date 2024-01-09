@@ -28,7 +28,7 @@
         @guest
             @if (Route::has('login'))
                 <li class="nav-item navbtn navLogin">
-                    <a class="nav-link" href="/jd/login">{{ __('Login') }}</a>
+                    <a class="nav-link" href="/jd/choice">{{ __('Login') }}</a>
                 </li>
             @endif
 

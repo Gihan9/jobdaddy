@@ -14,13 +14,25 @@ class CreateCompanyProfileTable extends Migration
     public function up()
     {
         Schema::create('Company_Profile', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
+            $table->foreignId('company_id')->constrained('Company')->onDelete('cascade');
             $table->string('name')->nullable();
-            $table->string('about')->nullable();
-            $table->string('established_date')->nullable();
+            $table->string('website')->nullable();
+        
+            $table->string('date')->nullable();
             $table->string('profile_picture')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('location')->nullable();
+            $table->string('about')->nullable();
             $table->string('rating')->nullable();
             $table->timestamps();
+
+            $table->string('col1')->nullable();
+            $table->string('col2')->nullable();
+            $table->string('col3')->nullable();
+            $table->string('col4')->nullable();
+            $table->string('col5')->nullable();
         });
     }
 
