@@ -14,17 +14,32 @@ class CreateJobsTable extends Migration
     public function up()
     {
         Schema::create('Jobs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->nullable();
-            $table->string('description')->nullable();
+            $table->id();
+            $table->foreignId('company_id')->constrained('Company')->onDelete('cascade');
+            $table->string('position')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('company_logo')->nullable();
             $table->string('category')->nullable();
-            $table->string('requirments')->nullable();
-            $table->string('type')->nullable();
+            $table->string('description')->nullable();
+            $table->string('website')->nullable();
+            $table->string('em_type')->nullable();
+            $table->string('work_type')->nullable();
+            $table->string('salary')->nullable();
+            $table->string('phone')->nullable();
             $table->string('location')->nullable();
             $table->string('email')->nullable();
+            $table->string('artwork')->nullable();
+            $table->string('keyword1')->nullable();
+            $table->string('keyword2')->nullable();
+            $table->string('keyword3')->nullable();
+            $table->string('keyword4')->nullable();
+            $table->string('keyword5')->nullable();
             $table->unsignedTinyInteger('need_cv')->nullable();
             $table->unsignedTinyInteger('need_cover_letter')->nullable();
-            $table->string('company_id')->nullable();
+            $table->enum('status', ['published', 'on_hold_not_paid', 'expired', 'on_hold_paid', 'in_process'])->default('on_hold_not_paid');
+            $table->string('duration')->nullable();
+            $table->string('ad_type')->nullable();
+            $table->enum('status_admin', ['active', 'blocked'])->default('active');
             $table->timestamps();
 
             $table->string('col1')->nullable();

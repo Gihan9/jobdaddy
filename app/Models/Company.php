@@ -38,6 +38,11 @@ class Company extends Authenticatable
     {
         return $this->hasMany(Companyqa::class);
     }
+
+    public function jobs()
+    {
+        return $this->hasMany(Jobs::class);
+    }
 }
 
 

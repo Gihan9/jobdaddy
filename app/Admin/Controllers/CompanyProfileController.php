@@ -111,7 +111,7 @@ class CompanyProfileController extends AdminController
 public function updateProfilePicture(Request $request)
 {
     $request->validate([
-        'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust file types and size as needed
+        'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
     ]);
 
     $user = auth('company')->user();
