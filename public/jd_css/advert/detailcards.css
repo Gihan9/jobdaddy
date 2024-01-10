@@ -1,0 +1,117 @@
+.blueframe{
+    background: white;
+    border: 2px solid rgb(43, 43, 121);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.blueframeTitle{
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: rgb(14, 14, 59);
+}
+.blueframeText{
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: rgb(14, 14, 59);
+}
+
+.posterBox{
+    background: rgb(196, 190, 190);
+    border-radius: 15px;
+    width: 100%;
+    height: 200px;
+    overflow-y: scroll;
+}
+.posterBox img{
+    width: 100%;
+}
+
+.aboutAdButtons{
+    display: flex;
+    flex-direction: row;
+    align-items:end;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
+.applybtn{
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background: rgb(42, 42, 133);
+    padding: 10px 20px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+}
+.reportbtn{
+    margin-left: 40px;
+    margin-right: 20px;
+    font-size: 12px;
+    color: rgb(90, 89, 89);
+}
+.reportbtn span{
+    margin-right: 8px;
+}
+.reportbtn:hover{
+    text-decoration: underline;
+}
+
+/* other parts */
+.comBio{
+    display: flex;
+    flex-direction: row;
+}
+
+.comBioImg{
+    max-width: 80px;
+    max-height: 65px;
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border:  1px solid rgb(154, 154, 226);
+    margin-right: 15px;
+}
+
+.comBioImg img{
+    width: 100%;
+}
+
+
+.comBioDetails .comTitle{
+    font-size: 18px;
+    font-weight: 600;
+}
+.verification{
+    color: rgb(80, 212, 190);
+    font-size: 14px;
+}
+.verification span{
+    margin-right: 8px;
+}
+
+.linkImg{
+    width: 150px;
+}
+.linkImg img{
+    width: 100%;
+}
+
+.safetylinks{
+    display: flex;
+    flex-direction: row;
+}
+.safetylinks .link{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}

@@ -1,0 +1,88 @@
+.summaryFrame{
+    background: #e4e4f5;
+    padding: 15px;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: row;
+}
+
+.adcomImg{
+    max-width: 140px;
+    max-height: 125px;
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border:  1px solid rgb(154, 154, 226);
+    margin-right: 20px;
+}
+
+.adcomImg img{
+    width: 100%;
+}
+
+.time{
+    font-size: 11px;
+    color: rgb(58, 58, 58);
+    font-weight: 600;
+}
+
+.adTitle{
+    font-size: 18px;
+    font-weight:  bold;
+}
+
+.comName{
+    font-size: 15px;
+    color: rgb(143, 143, 211) ;
+    margin-bottom: 20px;
+}
+
+.tags{
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    color: rgb(69, 69, 161);
+}
+
+.tag{
+    font-size: 13px;
+    margin-right: 20px;
+}
+.tags .ico{
+    font-size: 15px;
+    margin-right: 5px;
+}
+.adcomDescrip{
+    flex: 1;
+    position: relative;
+}
+.bookmark{
+    display: flex;
+    flex-direction: row;
+    color: rgb(204, 43, 43);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 22px;
+}
+.sharebtn{
+    background: rgb(19, 19, 97);
+    color: white;
+    padding: 3px 12px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    cursor: pointer;
+
+}
+
+.sharebtn:hover{
+    background: rgb(24, 24, 145);
+}
+
+.sharebtn .ico{
+    margin-right: 15px;
+    margin-top: -10px;
+}
