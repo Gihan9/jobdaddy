@@ -100,14 +100,18 @@ class JobsController extends AdminController
     }
 
     public function jobfeed()
-{
-    // Retrieve job posts from the database
-    $jobs = Jobs::latest()->get();
+    {
+        // Retrieve job posts from the database
+        $jobs = Jobs::latest()->get();
 
-    // Pass the jobs data to the view
-    return view('jd.advertFeed.advertFeed', compact('jobs'));
-}
+        // Pass the jobs data to the view
+        return view('jd.advertFeed.advertFeed', compact('jobs'));
+    }
 
+    public function showjob(Jobs $job)
+    {
+        return view('jd.advert.advert', compact('job'));
+    }
     public function createpost()
     {
         $company = auth('company')->user();

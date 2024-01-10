@@ -23,6 +23,7 @@
                 <span class="adtag" id="jobcategory">{{ $job->keyword1 }}</span>
             </div>
         </div>
+        <a href="{{ route('jobs.show', $job) }}" class="job-details-link">View Details</a>
     </div>
     @empty
             <p>No job posts available.</p>

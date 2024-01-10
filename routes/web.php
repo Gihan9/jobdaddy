@@ -122,11 +122,18 @@ Route::get('/jd/testprofile', function () {
 
 
 
-Route::get('/jobs', [JobsController::class, 'jobfeed'])->name('jobs.index');
+
 
 Route::get('/jd/advertdetails', function () {
     return view('jd.advert.advert');
+
+
 });
+
+Route::get('/jobs', [JobsController::class, 'jobfeed'])->name('jobs.index');
+
+Route::get('/jobs/{job}', [JobsController::class, 'showjob'])->name('jobs.show');
+
 
 // Display the registration form
 Route::get('/company/register', [CompanyController::class, 'companyshow'])->name('company.register');
