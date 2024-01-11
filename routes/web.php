@@ -127,6 +127,10 @@ Route::get('/jd/advertdetails', function () {
     return view('jd.advert.advert');
 });
 
+Route::get('/jd/postad', function () {
+    return view('jd.postad.postad');
+});
+
 // Display the registration form
 Route::get('/company/register', [CompanyController::class, 'companyshow'])->name('company.register');
 

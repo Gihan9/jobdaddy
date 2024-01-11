@@ -4,7 +4,7 @@
           <div class="modal-content">
             <div class="modal-header">
                 <div class="contentFrameTitle">
-                    <h2 style="text-align: center">Update lokking for</h2>
+                    <h2 style="text-align: center">Update looking for</h2>
                 </div>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
