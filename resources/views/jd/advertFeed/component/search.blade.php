@@ -4,10 +4,7 @@
   
         <form action="{{ route('jobs.search') }}" method="GET" class="search-form">
         <input type="text" name="query" class="jobtitleInput" id="jobtitleInput" placeholder="I am Looking For...">
-          
-    <button type="submit" class="searchBtn">
-        Find Job
-    </button>
+         <button type="submit" class="searchBtn">Find Job</button>
   </form>
     
     </div>

@@ -1,4 +1,4 @@
-<form action="{{ route('jobs.store') }}" method="POST" enctype="multipart/form-data">
+<!--<form action="{{ route('jobs.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <label for="position">Position:</label>
     <input type="text" name="position" ><br>
@@ -19,21 +19,21 @@
     <select name="em_type">
         <option value="full_time">Full Time</option>
         <option value="part_time">Part Time</option>
-        <!-- Add other employment types as needed -->
+       
     </select><br>
 
     <label for="category">Category:</label>
     <select name="category">
         <option value="Data_Entry">Data Entry</option>
         <option value="Software_Engineer">Software Engineer</option>
-        <!-- Add other employment types as needed -->
+       
     </select><br>
 
     <label for="work_type">Work Type:</label>
     <select name="work_type">
         <option value="remote">Remote</option>
         <option value="office">Office</option>
-        <!-- Add other work types as needed -->
+       
     </select><br>
 
     <label for="category">job type</label>
@@ -44,7 +44,7 @@
         <option value="overseas">overseas</option>
         <option value="NGO">NGO</option>
         <option value="workfromhome">Work from home</option>
-        <!-- Add other employment types as needed -->
+    
     </select><br>
 
 
@@ -59,7 +59,7 @@
     <label for="artwork">Artwork:</label>
     <input type="file" name="artwork" id="artwork" accept="image/*" onchange="previewArtwork(event)">
     
-    <!-- Artwork preview -->
+  
     <div id="artworkPreviewContainer">
         <img id="artworkPreview" alt="Artwork Preview">
     </div>br>
@@ -68,21 +68,21 @@
     
     <label for="keywords">Keywords:</label>
     <div id="keyword-container">
-        <!-- Keyword fields will be dynamically added here -->
+        
     </div>
     <button type="button" onclick="addKeywordField()">+ Add Keyword</button>
 
     <div id="display-keywords">
-        <!-- Display entered keywords above the table -->
+        
     </div>
     <button type="submit">Create Job</button>
-</form>
+</form>-->
 
 
 <div class="postAdFormFrame">
 
-    <form action="" class="row" >
-        
+<form action="{{ route('jobs.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
         <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
             <label for="jbposition" class="form-label">Job Position *</label>
             <div class="inframe">
@@ -106,21 +106,47 @@
         <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
             <label for="comname" class="form-label formlab">Company Name *</label>
             <div class="inframe">
-                <input class="form-control" id="comname" type="text" name="company_name"  >
+                <input class="form-control" id="comname" type="text" name="company_name"  value="{{ $companyProfile->name ?? old('name') }}" readonly>
             </div>
         </div>
-
+            <input type="text" name="company_logo" value="{{ $companyProfile->profile_picture ?? old('profile_picture') }}" readonly style="display: none">
         <div class="col-md-6 col-sm-12 mb-3">
             <label for="workplacement" class="form-label formlab">Work Placement Type</label>
             <div class="inframe">
                 <select name="work_type" id="emplytype" class="form-select" aria-label="selected employement type">
                 <option value="remote">Remote</option>
-        <option value="office">Office</option>
+                <option value="office">Office</option>
                     
                     
                 </select>
             </div>
         </div>
+        <div class="col-md-6 col-sm-12 mb-3">
+            <label for="workplacement" class="form-label formlab">Job category</label>
+            <div class="inframe">
+                <select name="category" id="emplytype" class="form-select" aria-label="selected employement type">
+                <option value="Data_Entry">Data Entry</option>
+                <option value="Software_Engineer">Software Engineer</option>
+                    
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 mb-3">
+            <label for="workplacement" class="form-label formlab">Job category</label>
+            <div class="inframe">
+                <select name="filter" id="emplytype" class="form-select" aria-label="selected employement type">
+                    <option value="freelancer">Freelancer</option>
+                    <option value="goverment">Goverment</option>
+                    <option value="private">Private</option>
+                    <option value="overseas">overseas</option>
+                    <option value="NGO">NGO</option>
+                    <option value="workfromhome">Work from home</option>
+                </select>
+            </div>
+        </div>
+
+        
         <div class="col-md-6 col-sm-12 mb-3">
             <label for="url" class="form-label formlab">Company Website Url</label>
             <div class="inframe">
@@ -157,20 +183,24 @@
         <div class="row mb-3">
             <div class="col-md-12 col-sm-12 mb-3">
                 <label class="form-label formlab">Upload your Artwork</label>
-                <input type="file" name="artwork" id="uploadart" hidden>
+                <input type="file" name="artwork"  id="uploadart" accept="image/*" onchange="previewArtwork(event)" hidden>
 
                  <!-- this disappears when file is added -->
                 <div class="uploadFrame">
                     <div class="uploadBox">
                         <div class="uploadDetails">
                             <div class="uploadImg">
-                                <img src="/jd_img/uploadimg.png" alt="uploadpic">
+                                 <div id="artworkPreviewContainer">
+                                    <img id="artworkPreview" alt="Artwork Preview">
+                                </div>
                             </div>
                             <div class="uploadTitle">Drag and Drop files here</div>
                             <div class="uploadDetails">Files Supported: .jpeg, .bmp</div>
                             <div class="uploadButton">
                                 <label for="uploadart">
-                                    <div class="upbtn">Choose File</div>
+                                     <!-- Artwork preview -->
+                                     <div class="upbtn">Choose File</div>
+  
                                 </label>
                             </div>
                         </div>
@@ -192,7 +222,7 @@
         </div>
 
       
-    <button type="submit">Create Job</button>
+  
         <div class="row mb-3">
             <div class="col-md-12 col-sm-12 mb-3">
                 <label for="keyword" class="form-label formlab">Keywords</label>
@@ -201,7 +231,7 @@
         <!-- Keyword fields will be dynamically added here -->
                  </div>
                     <div class="addbtn">
-                        <i class="bi bi-plus-square-fill"><button type="button" onclick="addKeywordField()"></button></i>
+                        <i class="bi bi-plus-square-fill" type="button" onclick="addKeywordField()"></i>
                     </div>
                   
                 </div>
@@ -215,7 +245,7 @@
 
 
         <div class=" PostAdbtnbox">
-            <div class="nextBtn btn">Next</div>
+           <button> <div class="nextBtn btn" type="submit">Next</div></button>
             <div class="previewbtn btn" data-bs-toggle="modal" data-bs-target="#previewModal">Preview</div>
 
         </div>
@@ -226,7 +256,7 @@
 
 
        
-
+      
        
         
     </form>

@@ -1,0 +1,167 @@
+.postAdFormFrame{
+    margin-top: 40px;
+}
+
+.inframe{
+    border: 1px rgb(145, 144, 145) solid;
+    border-radius: 4px;
+}
+
+.inframe label{
+    font-size: 15px !important;
+    font-weight: 500;
+    color: rgb(28, 28, 95) !important;
+}
+
+
+.inframe:focus-within {
+    box-shadow: 0 0 5px var(--primPurple); 
+    border-color: none;
+    
+}
+
+.inframe input , .input-group-text{
+    border: none;
+    background-color: white;
+}
+
+/*upload*/
+
+.uploadFrame{
+    border: 2px solid rgb(99, 99, 131);
+    border-style: dashed;
+    border-radius: 5px;
+    padding: 8px;
+}
+.uploadFrame2{
+    border: 2px solid rgb(99, 99, 131);
+    border-style: dashed;
+    border-radius: 5px;
+    padding: 8px;
+    width: fit-content;
+}
+.uploadBox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.uploadDetails{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.uploadDetails img{
+    max-width: 30px;
+}
+.uploadDetails .uploadTitle{
+    font-size: 13px;
+    color: black;
+    font-weight: 600;
+}
+
+.uploadDetails{
+    font-size: 8px;
+    color: rgb(85, 85, 189);
+}
+.upbtn{
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(37, 37, 119);
+    border: 2px solid rgb(37, 37, 119);
+    border-radius: 4px;
+    padding: 2px 6px;
+    cursor: pointer;
+    transition:  all 0.5s ease;
+}
+.upbtn:hover{
+    color: white;
+    background: rgb(37, 37, 119);
+}
+
+
+/* other upload */
+.artBox{
+    background : #e4e4f5;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 250px;
+    height: 200px;
+}
+.closeBtn{
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    font-weight: bold;
+    color: white;
+    border-radius: 50%;
+    background: rgb(26, 26, 102);
+    cursor: pointer;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+
+/* addskills */
+
+.skillinputbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.skillinputbox .inframe{
+    max-width: 400px;
+    margin-right: 10px;
+}
+
+.skillinputbox .addbtn{
+    font-size: 35px;
+    color: rgb(36, 36, 97);
+    cursor: pointer;
+    margin-top: -13px;
+}
+
+.tags{
+    margin-top: 15px;
+
+}
+.skilltag{
+    background: #EAEAFF;
+    color: black;
+    font-size: 13px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    margin: 4px;
+}
+
+.nextBtn{
+    background-color: rgb(161, 117, 20);
+    width: 170px;
+    color: white;
+    margin-right: 15px;
+}
+.nextBtn:hover{
+    background-color: rgb(124, 92, 23);
+    color: white;
+}
+
+.previewbtn{
+    color:rgb(49, 49, 102) ;
+    font-weight: 500;
+    width: 170px;
+    border:  2px solid rgb(49, 49, 102);
+}
+.previewbtn:hover{
+    color: white;
+    background: rgb(49, 49, 102);
+}
+
+

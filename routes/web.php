@@ -138,6 +138,10 @@ Route::get('/searchjob', [JobsController::class, 'searchjob'])->name('jobs.searc
 Route::get('/jobsfilter', [JobsController::class, 'filter'])->name('jobs.filter');
 
 
+Route::get('/jd/postad', function () {
+    return view('jd.postad.postad');
+});
+
 Route::get('/filterByCategory', [JobsController::class, 'filterByCategory'])->name('jobs.filterByCategory');
 // Display the registration form
 Route::get('/company/register', [CompanyController::class, 'companyshow'])->name('company.register');

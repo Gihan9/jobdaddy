@@ -1,0 +1,23 @@
+.backLinks{
+    max-height: 23px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+}
+.backLinks img{
+    height: 100%;
+}
+
+.pageTitle{
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(29, 29, 121);
+}
+.pageSubDescrip{
+    font-size: 12px;
+    font-weight: 500;
+    color: rgb(29, 29, 121);
+
+}
