@@ -2,10 +2,10 @@
     <div class="blueframeTitle">About the Company</div>
     <div class="comBio">
         <div class="comBioImg">
-            <img src="/jd_img/samplead2.png" alt="company logo">
+        <img src="{{ asset('storage/' . $job->company_logo) }}" alt="advertisement picture">
         </div>
         <div class="comBioDetails">
-            <div class="comTitle">Express IT Pvt LTD</div>
+            <div class="comTitle">LKR{{ $job->company_name }}</div>
             <div class="verification"><span><i class="bi bi-shield-fill-check"></i></span>Verified Employer</div>
         </div>
     </div>

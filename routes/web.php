@@ -9,6 +9,7 @@ use App\admin\Controllers\EducationController;
 use App\admin\Controllers\CompanyController;
 use App\admin\Controllers\CompanyProfileController;
 use App\admin\Controllers\CompanyqaController;
+use App\admin\Controllers\JobsController;
 use App\Livewire\CompanyLogin;
 use App\Livewire\CompanyRegister;
 /*
@@ -119,13 +120,20 @@ Route::get('/jd/testprofile', function () {
     return view('jobseeker');
 });
 
-Route::get('/jd/advert', function () {
-    return view('jd.advertFeed.advertFeed');
-});
+
+
+
 
 Route::get('/jd/advertdetails', function () {
     return view('jd.advert.advert');
+
+
 });
+
+Route::get('/jobs', [JobsController::class, 'jobfeed'])->name('jobs.index');
+
+Route::get('/jobs/{job}', [JobsController::class, 'showjob'])->name('jobs.show');
+
 
 Route::get('/jd/postad', function () {
     return view('jd.postad.postad');
@@ -173,5 +181,8 @@ Route::middleware(['auth:company'])->group(function () {
 
     // Delete a specific question and answer
     Route::delete('company/qna/{qna}', [CompanyqaController::class, 'destroyqa'])->name('company.qna.destroy');
+
+    Route::get('/jobs/create', [JobsController::class, 'createpost'])->name('jobs.create');
+    Route::post('/jobs/store', [JobsController::class, 'storepost'])->name('jobs.store');
 });
 

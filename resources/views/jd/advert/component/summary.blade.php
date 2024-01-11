@@ -1,23 +1,23 @@
 <div class="summaryFrame">
     <div class="adcomImg">
-        <img src="/jd_img/samplead2.png" alt="advertisement picture">
+    <img src="{{ asset('storage/' . $job->company_logo) }}" alt="advertisement picture">
     </div>
     <div class="adcomDescrip">
         <div class="time">Posted 3 days ago</div>
-        <div class="adTitle">Data Entry Operator (Online) - Part Time</div>
-        <div class="comName">Express IT Pvt LTD</div>
+        <div class="adTitle">{{ $job->position }} - {{ $job->work_type }}</div>
+        <div class="comName">{{ $job->company_name }}</div>
         <div class="tags">
             <div class="tag jobtype">
                 <span class="ico"><i class="bi bi-bullseye"></i></span>
-                <span>Remote</span>
+                <span>{{ $job->em_type }}</span>
             </div>
             <div class="tag location">
                 <span class="ico"><i class="bi bi-geo-alt"></i></span>
-                <span>Kurunagala, Sri Lanka</span>
+                <span>>{{ $job->location }}</span>
             </div>
             <div class="tag salary">
                 <span class="ico"><i class="bi bi-aspect-ratio-fill"></i></span>
-                <span>LKR 35,000 - 50,000</span>
+                <span>LKR{{ $job->salary }}</span>
             </div>
         </div>
         <div class="bookmark">
