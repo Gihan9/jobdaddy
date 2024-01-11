@@ -99,14 +99,36 @@ class JobsController extends AdminController
         return $form;
     }
 
-    public function jobfeed()
-    {
-        // Retrieve job posts from the database
-        $jobs = Jobs::latest()->get();
-
-        // Pass the jobs data to the view
-        return view('jd.advertFeed.advertFeed', compact('jobs'));
+    // YourController.php
+public function jobfeed(Request $request)
+{
+    $category = $request->input('category');
+    $filters = $request->input('filter');
+    
+    $filterOptions = Jobs::distinct('category')->pluck('category');
+    $predefinedFilters = ['freelancer', 'goverment', 'ngo', 'work from home', 'private', 'overseas'];
+    
+    $jobsQuery = Jobs::latest();
+    
+    if ($category) {
+        $jobsQuery->where('category', $category);
     }
+    
+    if ($filters) {
+        foreach ($filters as $filter) {
+            $jobsQuery->whereHas('filters', function ($query) use ($filter) {
+                $query->where('name', $filter);
+            });
+        }
+    }
+    
+    $jobs = $jobsQuery->paginate(10);
+    
+    // Return a JSON response with the updated data
+ 
+    return view('jd.advertFeed.advertFeed', compact('jobs','predefinedFilters'));
+}
+
 
     public function showjob(Jobs $job)
     {
@@ -120,6 +142,57 @@ class JobsController extends AdminController
 
     }
 
+    public function searchjob(Request $request)
+    {
+    $query = $request->input('query');
+
+    // Perform the search query using the $query variable
+
+    // Retrieve job posts from the database based on the search query
+    $jobs = Jobs::where('position', 'like', '%' . $query . '%')
+        ->orWhere('company_name', 'like', '%' . $query . '%')
+        ->paginate(10);
+
+    // Pass the jobs data to the view
+    return view('jd.advertFeed.advertFeed', compact('jobs'));
+    }
+
+    public function filter(Request $request)
+    {
+        $category = $request->input('category');
+        $filters = $request->input('filter');
+
+        // Get unique categories and filters from the database
+        $filterOptions = Jobs::distinct('category')->pluck('category');
+        $predefinedFilters = ['freelancer', 'goverment', 'ngo', 'work from home', 'private', 'overseas'];
+
+        $selectedFilter = $request->input('filter');
+
+     
+
+      
+       
+        $jobsQuery = Jobs::latest();
+
+        if ($category) {
+            $jobsQuery->where('category', $category);
+        }
+
+        if ($filters) {
+            $jobsQuery->whereIn('filter', $selectedFilter);
+        }
+
+        $jobs = $jobsQuery->paginate(10);
+
+       
+        $filters = $request->input('filters', []); // Assuming 'filters' is an array of selected options
+
+        $jobs = Jobs::when($filters, function ($query) use ($filters) {
+            return $query->whereIn('filter', $filters);
+        })->latest()->paginate(10);
+
+        return view('jd.advertFeed.advertFeed', compact('jobs', 'category', 'filterOptions', 'predefinedFilters', 'filters'));
+    }
 
     public function storepost()
 {
@@ -159,6 +232,7 @@ class JobsController extends AdminController
         'salary' => request()->input('salary'),
         'phone' => request()->input('phone'),
         'location' => request()->input('location'),
+        'filter' => request()->input('filter'),
        
         'keyword1' => request()->input('keyword1'),
         'keyword2' => request()->input('keyword2'),

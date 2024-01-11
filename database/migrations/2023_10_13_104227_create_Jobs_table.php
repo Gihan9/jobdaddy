@@ -28,6 +28,7 @@ class CreateJobsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('location')->nullable();
             $table->string('email')->nullable();
+            $table->string('filter')->nullable();
             $table->string('artwork')->nullable();
             $table->string('keyword1')->nullable();
             $table->string('keyword2')->nullable();

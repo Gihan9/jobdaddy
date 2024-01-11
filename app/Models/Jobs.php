@@ -20,6 +20,7 @@ class Jobs extends Model
         'work_type',
         'salary',
         'location',
+        'filter',
         'phone',
         'artwork', 
         'keyword1',

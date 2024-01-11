@@ -134,7 +134,11 @@ Route::get('/jobs', [JobsController::class, 'jobfeed'])->name('jobs.index');
 
 Route::get('/jobs/{job}', [JobsController::class, 'showjob'])->name('jobs.show');
 
+Route::get('/searchjob', [JobsController::class, 'searchjob'])->name('jobs.search');
+Route::get('/jobsfilter', [JobsController::class, 'filter'])->name('jobs.filter');
 
+
+Route::get('/filterByCategory', [JobsController::class, 'filterByCategory'])->name('jobs.filterByCategory');
 // Display the registration form
 Route::get('/company/register', [CompanyController::class, 'companyshow'])->name('company.register');
 
@@ -177,8 +181,9 @@ Route::middleware(['auth:company'])->group(function () {
 
     // Delete a specific question and answer
     Route::delete('company/qna/{qna}', [CompanyqaController::class, 'destroyqa'])->name('company.qna.destroy');
-
-    Route::get('/jobs/create', [JobsController::class, 'createpost'])->name('jobs.create');
+Route::get('/cc', [JobsController::class, 'createpost'])->name('jobs.create');
+   
     Route::post('/jobs/store', [JobsController::class, 'storepost'])->name('jobs.store');
 });
 
+ 

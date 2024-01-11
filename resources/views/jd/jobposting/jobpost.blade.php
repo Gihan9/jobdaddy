@@ -1,4 +1,4 @@
-<form action="{{ route('jobs.store') }}" method="POST">
+<form action="{{ route('jobs.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <label for="position">Position:</label>
     <input type="text" name="position" ><br>
@@ -22,7 +22,7 @@
         <!-- Add other employment types as needed -->
     </select><br>
 
-    <label for="category">Employment Type:</label>
+    <label for="category">Category:</label>
     <select name="category">
         <option value="Data_Entry">Data Entry</option>
         <option value="Software_Engineer">Software Engineer</option>
@@ -35,6 +35,18 @@
         <option value="office">Office</option>
         <!-- Add other work types as needed -->
     </select><br>
+
+    <label for="category">job type</label>
+    <select name="filter">
+        <option value="freelancer">Freelancer</option>
+        <option value="goverment">Goverment</option>
+        <option value="private">Private</option>
+        <option value="overseas">overseas</option>
+        <option value="NGO">NGO</option>
+        <option value="workfromhome">Work from home</option>
+        <!-- Add other employment types as needed -->
+    </select><br>
+
 
     <label for="salary">Salary:</label>
     <input type="text" name="salary"><br>

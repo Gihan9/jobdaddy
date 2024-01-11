@@ -5,6 +5,23 @@
     </div>
     <div class="filterOptions">
 
+    <form action="{{ route('jobs.filter') }}" method="GET">
+        @foreach ($predefinedFilters  as $option)
+            <div class="form-check option">
+                <div>
+                    <label class="form-check-label" for="{{ $option }}">
+                        {{ $option }}
+                    </label>
+                </div>
+                <div>
+                    <input class="form-check-input" type="checkbox" name="filters[]" id="{{ $option }}" value="{{ $option }}">
+                </div>
+            </div>
+        @endforeach
+
+        <button type="submit">Apply Filters</button>
+    </form>
+    
         <!--option -->
         <div class="form-check option">
             <div>

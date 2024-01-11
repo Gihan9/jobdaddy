@@ -14,6 +14,7 @@
             <div class="filterFrame">
                 @include('jd.advertFeed.component.filter')
                 @include('jd.advertFeed.component.category')
+                
             </div>
            
         </div>
@@ -50,6 +51,36 @@
     });
 }
 </script>
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<!-- Add this script for dynamic filtering -->
+<script>
+    $(document).ready(function () {
+        $('body').on('change', '#category, input[name^="filters"]', function () {
+            updateJobFeed();
+        });
+
+        function updateJobFeed() {
+            var category = $('#category').val();
+            var filters = [];
+            $('input[name^="filters"]:checked').each(function () {
+                filters.push($(this).val());
+            });
+
+            $.ajax({
+                type: 'GET',
+                url: '{{ route("jobs.index") }}',
+                data: { category: category, filter: filters },
+                success: function (data) {
+                    $('#job-list').html(data.jobs);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+    });
+</script>
 
 @endsection
