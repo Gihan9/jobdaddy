@@ -89,7 +89,7 @@ class CompanyqaController extends AdminController
 
     public function so()
     {
-        $companyQnAs = auth('company')->user()->companyQnAs;
+        $companyQnAs = auth()->user()->companyQnAs;
        
         return view('jd.companyprofile.company', compact('companyQnAs'));
     }
@@ -107,7 +107,7 @@ class CompanyqaController extends AdminController
         ]);
 
         $companyQnA = Companyqa::create([
-            'company_id' => auth('company')->user()->id,
+            'user_id' => auth()->user()->id,
             'question' => $request->input('question'),
             'answer' => $request->input('answer'),
         ]);

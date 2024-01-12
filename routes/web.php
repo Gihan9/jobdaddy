@@ -158,7 +158,7 @@ Route::post('/company/login', [CompanyController::class, 'login'])->name('compan
 
 
 
-Route::middleware(['auth:company'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/company/profile/form', [CompanyProfileController::class, 'showForm'])->name('company.profile.form');
     Route::post('/company/profile/store-or-update', [CompanyProfileController::class, 'storeOrUpdate'])->name('company.profile.storeOrUpdate');
 

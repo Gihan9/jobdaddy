@@ -13,7 +13,7 @@
             </div>
             <div class="tag location">
                 <span class="ico"><i class="bi bi-geo-alt"></i></span>
-                <span>>{{ $job->location }}</span>
+                <span>{{ $job->location }}</span>
             </div>
             <div class="tag salary">
                 <span class="ico"><i class="bi bi-aspect-ratio-fill"></i></span>

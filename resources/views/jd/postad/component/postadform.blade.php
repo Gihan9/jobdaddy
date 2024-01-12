@@ -109,11 +109,11 @@
                 <input class="form-control" id="comname" type="text" name="company_name"  value="{{ $companyProfile->name ?? old('name') }}" readonly>
             </div>
         </div>
-            <input type="text" name="company_logo" value="{{ $companyProfile->profile_picture ?? old('profile_picture') }}" readonly style="display: none">
+            <input type="text" name="company_logo" id="comimg" value="{{ $companyProfile->profile_picture ?? old('profile_picture') }}" readonly style="display: none">
         <div class="col-md-6 col-sm-12 mb-3">
             <label for="workplacement" class="form-label formlab">Work Placement Type</label>
             <div class="inframe">
-                <select name="work_type" id="emplytype" class="form-select" aria-label="selected employement type">
+                <select name="work_type" id="work_type" class="form-select" aria-label="selected employement type">
                 <option value="remote">Remote</option>
                 <option value="office">Office</option>
                     
@@ -236,8 +236,7 @@
                   
                 </div>
                 <div class="tags" id="display-keywords">
-                    <span class="skilltag" id="type">Data <span class="ico"><i class="bi bi-x"></i></span></span>
-                    <span class="skilltag" id="type">Data Entry <span class="ico"><i class="bi bi-x"></i></span></span>
+                    
                 </div>
                 
             </div>
@@ -265,7 +264,17 @@
 </div>
 
 
-
+<!-- Preview Modal -->
+<div class="modal fade" id="previewModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="closeModalbtn" data-bs-dismiss="modal">x</div>
+            <div class="modal-body" id="previewContent">
+                <!-- Preview content will be dynamically updated here -->
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -299,34 +308,34 @@
     let keywordCount = 0;
 
     function addKeywordField() {
-        if (keywordCount < 5) {
-            const container = document.getElementById('keyword-container');
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.name = `keyword${keywordCount + 1}`; // Use a counter to generate unique names
-            input.placeholder = 'Enter keyword';
+    if (keywordCount < 5) {
+        const container = document.getElementById('keyword-container');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = `keyword${keywordCount + 1}`; // Use a counter to generate unique names
+        input.placeholder = 'Enter keyword';
 
-            // Log the generated name to the console
-            console.log(`Generated name: ${input.name}`);
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.innerHTML = '<i class="bi bi-x"></i>'; // Use Bootstrap icon for 'x'
+        deleteButton.classList.add('delete-button');
+        deleteButton.addEventListener('click', function () {
+            container.removeChild(keywordField);
+            keywordCount--;
+        });
 
-            const deleteButton = document.createElement('button');
-            deleteButton.type = 'button';
-            deleteButton.textContent = 'Delete';
-            deleteButton.addEventListener('click', function () {
-                container.removeChild(keywordField);
-                keywordCount--;
-            });
+        const keywordField = document.createElement('div');
+        keywordField.classList.add('skilltag'); // Add class for styling
+        keywordField.appendChild(input);
+        keywordField.appendChild(deleteButton);
+        container.appendChild(keywordField);
 
-            const keywordField = document.createElement('div');
-            keywordField.appendChild(input);
-            keywordField.appendChild(deleteButton);
-            container.appendChild(keywordField);
-
-            keywordCount++;
-        } else {
-            alert('You can add a maximum of 5 keywords.');
-        }
+        keywordCount++;
+    } else {
+        alert('You can add a maximum of 5 keywords.');
     }
+}
+
 
     // Function to display entered keywords above the table
     function displayKeywords() {
@@ -368,4 +377,107 @@
             previewContainer.style.display = 'none';
         }
     }
+</script>
+
+
+<script>
+    function updatePreview() {
+        // Gather form input values
+        const position = document.getElementById('jbposition').value;
+        const emType = document.getElementById('emplytype').value;
+        const companyName = document.getElementById('comname').value;
+        const workType = document.getElementById('work_type').value;
+        const website = document.getElementById('url').value;
+        const salary = document.getElementById('salary').value;
+        const location = document.getElementById('location').value;
+        const phone = document.getElementById('contact').value;
+        const description = document.getElementById('about').value;
+        const cname = document.getElementById('comname').value;
+       
+        
+      
+
+        const artwork = document.getElementById('uploadart').files[0]; // Get the file object
+
+
+
+        // Update preview modal content
+        const previewContent = document.getElementById('previewContent');
+        previewContent.innerHTML = `
+            <div class="adSummary mb-3">
+                <div class="summaryFrame">
+                    <div class="adcomImg">
+                    <img src="{{ asset('storage/' . $companyProfile->profile_picture) }}" alt="Profile Picture">
+                    </div>
+                    <div class="adcomDescrip">
+                        <div class="time">Posted now</div>
+                        <div class="adTitle">${position}</div>
+                        <div class="comName">${companyName}</div>
+                        <div class="tags">
+                            <div class="tag jobtype">
+                                <span class="ico"><i class="bi bi-bullseye"></i></span>
+                                <span>${emType}</span>
+                            </div>
+                            <div class="tag location">
+                                <span class="ico"><i class="bi bi-geo-alt"></i></span>
+                                <span>${location}</span>
+                            </div>
+                            <div class="tag salary">
+                                <span class="ico"><i class="bi bi-aspect-ratio-fill"></i></span>
+                                <span>${salary}</span>
+                            </div>
+                        </div>
+                        <div class="bookmark">
+                            <i class="bi bi-bookmark"></i>
+                        </div>
+                        <div class="sharebtn"><span class="ico"><i class="bi bi-share-fill"></i></span><span>Share</span></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="adDetails">
+                <div class="row">
+                    <div class="col-8 aboutAd">
+                        <div class="aboutFrame blueframe">
+                            <div class="rolebox blueframesection">
+                                <div class="blueframeTitle">About the role</div>
+                                <div class="blueframeText">${description}</div>
+                            </div>
+                            <div class="contactbox blueframesection">
+                                <div class="blueframeTitle">Contact Us</div>
+                                <div class="blueframeText">${phone}</div>
+                            </div>
+                            <!-- only visible if image exists -->
+                            <div class="posterBox" id="artworkPreviewContainer">
+                            <img src="${artwork ? URL.createObjectURL(artwork) : '/jd_img/samplead2.png'}" alt="Profile Picture">
+                          
+                            </div>
+                        
+                            <div class="aboutAdButtons">
+                                <div class="applybtn">Apply Now</div>
+                                <div class="reportbtn"><span><i class="bi bi-bookmark-x-fill"></i></span>Report this Ad</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 adProps">
+                        <div class="aboutComFrame blueframe">
+                            <div class="blueframeTitle">About the Company</div>
+                            <div class="comBio">
+                                <div class="comBioImg">
+                                <img src="{{ asset('storage/' . $companyProfile->profile_picture) }}" alt="Profile Picture">
+                                </div>
+                                <div class="comBioDetails">
+                                    <div class="comTitle">${companyName}</div>
+                                    <div class="verification"><span><i class="bi bi-shield-fill-check"></i></span>Verified Employer</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Trigger the updatePreview function when the user clicks the "Preview" button
+    document.querySelector('.previewbtn').addEventListener('click', updatePreview);
 </script>

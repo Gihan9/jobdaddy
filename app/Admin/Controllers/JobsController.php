@@ -133,7 +133,7 @@ public function jobfeed(Request $request)
     }
     public function createpost()
     {
-        $company = auth('company')->user();
+        $company = auth()->user();
         $companyProfile = $company->companyProfile;
         return view('jd.postad.postad', compact('companyProfile'));
 
@@ -208,7 +208,7 @@ public function jobfeed(Request $request)
 
     // Create a new record in the database
     $job = Jobs::create([
-        'company_id' => auth('company')->id(),
+        'user_id' => auth()->id(),
         'position' => request()->input('position'),
         'company_name' => request()->input('company_name'),
         'company_logo' => request()->input('company_logo'),

@@ -9,7 +9,7 @@ class Jobs extends Model
     protected $table = 'Jobs';
 
     protected $fillable = [
-        'company_id',
+        'user_id',
         'position',
         'company_name',
         'company_logo',
@@ -31,7 +31,7 @@ class Jobs extends Model
         // Add other fields as needed
     ];
 
-    public function company()
+    public function user()
     {
         return $this->belongsTo(Company::class);
     }

@@ -15,7 +15,7 @@ class CreateJobsTable extends Migration
     {
         Schema::create('Jobs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained('Company')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('position')->nullable();
             $table->string('company_name')->nullable();
             $table->string('company_logo')->nullable();

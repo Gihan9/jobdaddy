@@ -10,6 +10,7 @@ use OpenAdmin\Admin\Show;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JobuserController extends AdminController
 {
@@ -81,8 +82,10 @@ class JobuserController extends AdminController
     {
         
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'string|max:255',
             'email' => 'email|unique:users',
+            'acc_type' => 'string|max:255',
+
             'phone' => 'required|string|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
@@ -90,6 +93,7 @@ class JobuserController extends AdminController
         // Create a new user
         $user = new User([
             'name' => $request->input('name'),
+            'acc_type' => $request->input('acc_type'),
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
             'password' => Hash::make($request->input('password')),
@@ -104,21 +108,31 @@ class JobuserController extends AdminController
     }
 
     public function login(Request $request)
-    {
-        // Validation
-        $request->validate([
-            'phone' => 'required|string',
-            'password' => 'required|string',
-        ]);
+{
+    // Validation
+    $request->validate([
+        'phone' => 'required|string',
+        'password' => 'required|string',
+    ]);
 
-        // Attempt to log in the user
-        if (auth()->attempt(['phone' => $request->input('phone'), 'password' => $request->input('password')])) {
-            
+    // Attempt to log in the user
+    if (Auth::attempt(['phone' => $request->input('phone'), 'password' => $request->input('password')])) {
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        // Check the account type and redirect accordingly
+        if ($user->acc_type === 'company') {
+            return redirect('/company/profile/form');
+        } elseif ($user->acc_type === 'user') {
             return redirect('/jd/profile');
+        } else {
+            // Handle other account types or errors
+            return back()->withErrors(['phone' => 'Invalid account type']);
         }
-
-        // Failed login attempt
-        return back()->withErrors(['phone' => 'Invalid credentials']);
     }
+
+    // Failed login attempt
+    return back()->withErrors(['phone' => 'Invalid credentials']);
+}
 
 }

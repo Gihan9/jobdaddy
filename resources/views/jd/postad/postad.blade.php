@@ -6,7 +6,7 @@
     @include('jd.header.nav')
 @endsection
 @section('content')
-    @include('jd.postad.modal.preview')
+
     <div class="row postadBox">
         <div class="backLinks">
             <!--<span class="backLink"><i class="bi bi-arrow-left"></i>Back</span>-->
