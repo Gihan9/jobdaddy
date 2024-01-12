@@ -424,7 +424,7 @@
                             </div>
                             <div class="tag salary">
                                 <span class="ico"><i class="bi bi-aspect-ratio-fill"></i></span>
-                                <span>${salary}</span>
+                                <span>LKR ${salary}</span>
                             </div>
                         </div>
                         <div class="bookmark">

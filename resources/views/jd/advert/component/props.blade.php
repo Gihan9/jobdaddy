@@ -5,7 +5,7 @@
         <img src="{{ asset('storage/' . $job->company_logo) }}" alt="advertisement picture">
         </div>
         <div class="comBioDetails">
-            <div class="comTitle">LKR{{ $job->company_name }}</div>
+            <div class="comTitle">{{ $job->company_name }}</div>
             <div class="verification"><span><i class="bi bi-shield-fill-check"></i></span>Verified Employer</div>
         </div>
     </div>

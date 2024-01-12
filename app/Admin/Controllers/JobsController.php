@@ -127,9 +127,12 @@ public function jobfeed(Request $request)
 }
 
 
-    public function showjob(Jobs $job)
+    public function showjob($id)
     {
-        return view('jd.advert.advert', compact('job'));
+        $job = Jobs::find($id);
+        $relatedJobs = Jobs::where('category', $job->category)->where('id', '<>', $job->id)->limit(5)->get();
+    
+        return view('jd.advert.advert', compact('job', 'relatedJobs'));
     }
     public function createpost()
     {

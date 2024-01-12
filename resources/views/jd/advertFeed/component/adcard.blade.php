@@ -22,7 +22,7 @@
                 <span class="adtag" id="salary">LKR{{ $job->salary }}</span>
                 <span class="adtag" id="jobcategory">{{ $job->keyword1 }}</span>
             </div>
-             <a href="{{ route('jobs.show', $job) }}" class="job-details-link">View Details</a>
+             <a href="{{ route('jobs.show', $job->id) }}" class="job-details-link">View Details</a>
         </div>
        
     </div>
