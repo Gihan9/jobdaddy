@@ -28,7 +28,7 @@
         @guest
             @if (Route::has('login'))
                 <li class="nav-item navbtn navLogin">
-                    <a class="nav-link" href="/jd/choice">{{ __('Login') }}</a>
+                    <a class="nav-link" href="/jd/login">{{ __('Login') }}</a>
                 </li>
             @endif
 
@@ -40,7 +40,7 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <div style="font-weight: bold; text-align:center;">{{ Auth::user()->name }} </div>
+                <div style="font-weight: bold; text-align:center;">{{ Auth::user()->name }}</div>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">

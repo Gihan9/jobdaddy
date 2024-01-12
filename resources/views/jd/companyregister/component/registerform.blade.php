@@ -2,7 +2,7 @@
 @if (session('error'))
         <div>{{ session('error') }}</div>
     @endif
-    <form method="POST" action="{{ url('company/register') }}">
+    <form method="POST" action="{{ url('register') }}">
         @csrf
         <div class="formtitleBox">
             <h2 style="text-align: center">Create An Account</h2>
@@ -14,9 +14,12 @@
             <div class="inframe">
                 <input class="form-control" id="emailLogin" type="tel" name="phone" aria-label="phone" value="{{ old('phone') }}" required>
                 
-            </div>
+            </div
+            >
            
         </div>
+        <input class="form-control" id="emailLogin" type="text" name="acc_type"  value="company" required readonly style="display: none">
+                
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <div class="inframe">

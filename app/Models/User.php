@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'acc_type',
         'email',
         'phone',
         'password',
@@ -69,4 +70,18 @@ class User extends Authenticatable
         return $this->hasMany(JobPreference::class);
     }
  
+    public function companyProfile()
+    {
+        return $this->hasOne(CompanyProfile::class);
+    }
+
+    public function companyQnAs()
+    {
+        return $this->hasMany(Companyqa::class);
+    }
+
+    public function jobs()
+    {
+        return $this->hasMany(Jobs::class);
+    }
 }

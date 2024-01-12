@@ -109,26 +109,5 @@ class CompanyController extends AdminController
 }
 
 
-public function login(Request $request)
-{
-    // Validate the request
-    $request->validate([
-        'phone' => 'required',
-        'password' => 'required',
-    ]);
 
-    // Attempt to authenticate the company
-    $credentials = [
-        'phone' => $request->input('phone'),
-        'password' => $request->input('password'),
-    ];
-
-    if (Auth::guard('company')->attempt($credentials)) {
-        // Authentication successful
-        return redirect('/company/profile/form'); // Redirect to the company profile or any other desired location
-    } else {
-        // Authentication failed
-        return redirect('/company/login')->with('error', 'Invalid credentials');
-    }
-}
 }

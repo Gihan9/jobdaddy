@@ -13,7 +13,7 @@
     </div>
     <!-- only visible if image exists -->
     <div class="posterBox">
-        <img src="" alt="">
+    <img src="{{ asset('storage/' . $job->artwork) }}" alt="advertisement picture">
     </div>
 
     <div class="aboutAdButtons">

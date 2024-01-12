@@ -15,7 +15,7 @@ class CreateCompanyProfileTable extends Migration
     {
         Schema::create('Company_Profile', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained('Company')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('website')->nullable();
         

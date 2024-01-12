@@ -99,38 +99,100 @@ class JobsController extends AdminController
         return $form;
     }
 
-    public function jobfeed()
-    {
-        // Retrieve job posts from the database
-        $jobs = Jobs::latest()->get();
+    // YourController.php
+public function jobfeed(Request $request)
+{
+    $selectedCategory = $request->input('category');
+    $filters = $request->input('filters');
+    
 
-        // Pass the jobs data to the view
-        return view('jd.advertFeed.advertFeed', compact('jobs'));
+    
+   
+    
+    $jobsQuery = Jobs::latest();
+    
+    if ($selectedCategory) {
+        $jobsQuery->where('category', $selectedCategory);
     }
+    
+    
+    if ($filters) {
+        $jobsQuery->whereIn('filter', $filters);
+          }
+    $jobs = $jobsQuery->paginate(10);
+  
+    // Return a JSON response with the updated data
+ 
+    return view('jd.advertFeed.advertFeed', compact('jobs', 'selectedCategory', 'filters'));
+}
 
-    public function showjob(Jobs $job)
+
+    public function showjob($id)
     {
-        return view('jd.advert.advert', compact('job'));
+        $job = Jobs::find($id);
+        $relatedJobs = Jobs::where('category', $job->category)->where('id', '<>', $job->id)->limit(5)->get();
+    
+        return view('jd.advert.advert', compact('job', 'relatedJobs'));
     }
     public function createpost()
     {
-        $company = auth('company')->user();
+        $company = auth()->user();
         $companyProfile = $company->companyProfile;
-        return view('jd.jobposting.jobpost', compact('companyProfile'));
+        return view('jd.postad.postad', compact('companyProfile'));
 
     }
 
+    public function searchjob(Request $request)
+    {
+    $query = $request->input('query');
+
+    // Perform the search query using the $query variable
+
+    // Retrieve job posts from the database based on the search query
+    $jobs = Jobs::where('position', 'like', '%' . $query . '%')
+        ->orWhere('company_name', 'like', '%' . $query . '%')
+        ->paginate(10);
+
+        $selectedCategory = $request->input('category');
+        $filters = $request->input('filters');
+        
+    
+        
+       
+        
+        $jobsQuery = Jobs::latest();
+        
+        if ($selectedCategory) {
+            $jobsQuery->where('category', $selectedCategory);
+        }
+        
+        
+        if ($filters) {
+            $jobsQuery->whereIn('filter', $filters);
+              }
+        $jobs = $jobsQuery->paginate(10);
+      
+        // Return a JSON response with the updated data
+     
+        return view('jd.advertFeed.advertFeed', compact('jobs', 'selectedCategory', 'filters'));
+    }
+
+  
+
+
+    
 
     public function storepost()
 {
     
 
+    
     request()->validate([
         'position' => 'required|string|max:255',
         'company_name' => 'required|string|max:255',
         'description' => 'required|string',
         'website' => 'nullable|string',
-        'em_type' => 'required|in:full_time,part_time', // Adjust as needed
+       
         'work_type' => 'required|in:remote,office', // Adjust as needed
         'salary' => 'nullable|string|max:255',
         'phone' => 'nullable|string|max:20',
@@ -145,9 +207,11 @@ class JobsController extends AdminController
        
     ]);
 
+    
+
     // Create a new record in the database
     $job = Jobs::create([
-        'company_id' => auth('company')->id(),
+        'user_id' => auth()->id(),
         'position' => request()->input('position'),
         'company_name' => request()->input('company_name'),
         'company_logo' => request()->input('company_logo'),
@@ -159,6 +223,7 @@ class JobsController extends AdminController
         'salary' => request()->input('salary'),
         'phone' => request()->input('phone'),
         'location' => request()->input('location'),
+        'filter' => request()->input('filter'),
        
         'keyword1' => request()->input('keyword1'),
         'keyword2' => request()->input('keyword2'),
@@ -179,10 +244,39 @@ class JobsController extends AdminController
     // You can add any additional logic here if needed
 
     // Return a response, for example, a JSON response with the created job data
-    return response()->json(['message' => 'Job created successfully', 'job' => $job]);
+    return redirect()->route('company.profile.form')->with('success', 'Profile picture updated successfully!');
     
 }
 
     
+public function filterByCategory(Request $request)
+{
+    // Retrieve the selected category and filters from the request
+    $selectedCategory = $request->input('category');
+    $filters = $request->input('filter');
 
+    // Get unique categories from the database
+   
+
+    // Initialize a query to retrieve jobs
+    $jobsQuery = Jobs::latest();
+
+    // Apply filters
+    $jobsQuery->when($selectedCategory && $selectedCategory !== 'all', function ($query) use ($selectedCategory) {
+        return $query->where('category', $selectedCategory);
+    });
+
+    $jobsQuery->when($filters, function ($query) use ($filters) {
+        return $query->where('filter', $filters);
+    });
+  
+
+    // Retrieve the filtered jobs
+    $jobs = $jobsQuery->paginate(10);
+
+    
+
+    // Pass the filtered jobs data to the view
+    return view('jd.advertFeed.advertFeed', compact('jobs', 'selectedCategory', 'filters'));
+}
 }

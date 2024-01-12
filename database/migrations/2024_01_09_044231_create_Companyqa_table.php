@@ -15,7 +15,7 @@ class CreateCompanyqaTable extends Migration
     {
         Schema::create('Companyqa', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreignId('company_id')->constrained('Company')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('question')->nullable();
             $table->string('answer')->nullable();
             $table->string('col1')->nullable();

@@ -12,7 +12,7 @@ class CompanyProfile extends Model
     use HasFactory;
 
     protected $fillable = [
-        'company_id',
+        'user_id',
         'name',
         'website',
         'location',
@@ -24,7 +24,7 @@ class CompanyProfile extends Model
         'rating',
     ];
 
-    public function company()
+    public function user()
     {
         return $this->belongsTo(Company::class);
     }

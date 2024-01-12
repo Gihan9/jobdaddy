@@ -12,9 +12,9 @@ class Companyqa extends Model
 
      protected $table = 'Companyqa';
 
-    protected $fillable = ['company_id', 'question', 'answer'];
+    protected $fillable = ['user_id', 'question', 'answer'];
 
-    public function company()
+    public function user()
     {
         return $this->belongsTo(Company::class);
     }

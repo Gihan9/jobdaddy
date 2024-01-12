@@ -1,4 +1,4 @@
-<form action="{{ route('jobs.store') }}" method="POST">
+<form action="{{ route('jobs.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <label for="position">Position:</label>
     <input type="text" name="position" ><br>
@@ -22,7 +22,7 @@
         <!-- Add other employment types as needed -->
     </select><br>
 
-    <label for="category">Employment Type:</label>
+    <label for="category">Category:</label>
     <select name="category">
         <option value="Data_Entry">Data Entry</option>
         <option value="Software_Engineer">Software Engineer</option>
@@ -35,6 +35,18 @@
         <option value="office">Office</option>
         <!-- Add other work types as needed -->
     </select><br>
+
+    <label for="category">job type</label>
+    <select name="filter">
+        <option value="freelancer">Freelancer</option>
+        <option value="goverment">Goverment</option>
+        <option value="private">Private</option>
+        <option value="overseas">overseas</option>
+        <option value="NGO">NGO</option>
+        <option value="workfromhome">Work from home</option>
+        <!-- Add other employment types as needed -->
+    </select><br>
+
 
     <label for="salary">Salary:</label>
     <input type="text" name="salary"><br>
@@ -65,6 +77,193 @@
     </div>
     <button type="submit">Create Job</button>
 </form>
+
+
+<div class="postAdFormFrame">
+
+    <form action="" class="row" >
+        
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+            <label for="jbposition" class="form-label">Job Position *</label>
+            <div class="inframe">
+                <input class="form-control" id="jbposition" type="text" name="position"  >
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+            <label for="emplytype" class="form-label formlab">Employment Type</label>
+            <div class="inframe">
+                <select name="em_type" id="emplytype" class="form-select" aria-label="selected employement type">
+                    <option value="fulltime" >Full-time</option>
+                    <option value="parttime">Part-time</option>
+                    <option value="internship">Internship</option>
+                    <option value="remote">Remote</option>
+                    
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+            <label for="comname" class="form-label formlab">Company Name *</label>
+            <div class="inframe">
+                <input class="form-control" id="comname" type="text" name="company_name"  >
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 mb-3">
+            <label for="workplacement" class="form-label formlab">Work Placement Type</label>
+            <div class="inframe">
+                <select name="work_type" id="emplytype" class="form-select" aria-label="selected employement type">
+                <option value="remote">Remote</option>
+        <option value="office">Office</option>
+                    
+                    
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-3">
+            <label for="url" class="form-label formlab">Company Website Url</label>
+            <div class="inframe">
+                <input class="form-control" id="url" type="text"  name="website">
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-3">
+            <label for="salary" class="form-label formlab">Salary Range</label>
+            <div class="inframe">
+                <input class="form-control" id="salary" type="text" name="salary">
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-3">
+            <label for="location" class="form-label formlab">Location *</label>
+            <div class="inframe">
+                <input class="form-control" id="location" type="text" name="location">
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 mb-3">
+            <label for="]contact" class="form-label formlab">Contact Number *</label>
+            <div class="inframe">
+                <input class="form-control" id="contact" type="text" name="phone">
+            </div>
+        </div>
+
+        <div class="col-md-12 col-sm-12 mb-3">
+            <label for="aboutrole" class="form-label formlab">About the Role</label>
+            <div class="">
+                <textarea style="width:100%; "  name="description" rows="5" id="about"></textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12 col-sm-12 mb-3">
+                <label class="form-label formlab">Upload your Artwork</label>
+                <input type="file" name="artwork" id="uploadart" hidden>
+
+                 <!-- this disappears when file is added -->
+                <div class="uploadFrame">
+                    <div class="uploadBox">
+                        <div class="uploadDetails">
+                            <div class="uploadImg">
+                                <img src="/jd_img/uploadimg.png" alt="uploadpic">
+                            </div>
+                            <div class="uploadTitle">Drag and Drop files here</div>
+                            <div class="uploadDetails">Files Supported: .jpeg, .bmp</div>
+                            <div class="uploadButton">
+                                <label for="uploadart">
+                                    <div class="upbtn">Choose File</div>
+                                </label>
+                            </div>
+                        </div>
+                </div>
+
+
+                <!-- this appears when file is added -->
+                <!--<div class="uploadFrame2">
+                        <div class="artBox">
+                            <div class="closeBtn">x</div>
+                            <div class="uppedImg">
+                                <img src="/jd_img/placeholdeimg.png" alt="uploadpic">
+                            </div>
+                        </div>
+                    </div>-->
+
+                </div>
+            </div>
+        </div>
+
+      
+    <button type="submit">Create Job</button>
+        <div class="row mb-3">
+            <div class="col-md-12 col-sm-12 mb-3">
+                <label for="keyword" class="form-label formlab">Keywords</label>
+                <div class="skillinputbox">
+                <div id="keyword-container">
+        <!-- Keyword fields will be dynamically added here -->
+                 </div>
+                    <div class="addbtn">
+                        <i class="bi bi-plus-square-fill"><button type="button" onclick="addKeywordField()"></button></i>
+                    </div>
+                  
+                </div>
+                <div class="tags" id="display-keywords">
+                    <span class="skilltag" id="type">Data <span class="ico"><i class="bi bi-x"></i></span></span>
+                    <span class="skilltag" id="type">Data Entry <span class="ico"><i class="bi bi-x"></i></span></span>
+                </div>
+                
+            </div>
+        </div>
+
+
+        <div class=" PostAdbtnbox">
+            <div class="nextBtn btn">Next</div>
+            <div class="previewbtn btn" data-bs-toggle="modal" data-bs-target="#previewModal">Preview</div>
+
+        </div>
+        
+
+
+
+
+
+       
+
+       
+        
+    </form>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
     let keywordCount = 0;

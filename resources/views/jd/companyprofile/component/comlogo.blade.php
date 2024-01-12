@@ -1,7 +1,7 @@
 <div class="contentframe blueframe profilePicFrame">
    
     <div class="imageFrame mt-2">
-        <label for="profilePic"><div  data-bs-toggle="modal" data-bs-target="#companypropic"  class="profCardEditbtn" ><i class="bi bi-pencil-square"></i></div>
+        <label for="profilePic">
         <div style="position: relative">
         <div class="profImgHolder">
          @isset($companyProfile)
@@ -15,7 +15,8 @@
         @endisset  
         </div>
             <label for="comphoto" class="editprofphotbtn" style="font-size: 25px; cursor: pointer; color:rgb(241, 236, 236);" d> 
-                <i class="bi bi-plus"></i>
+            <div  data-bs-toggle="modal" data-bs-target="#companypropic"  class="profCardEditbtn" >
+                <i class="bi bi-plus"></i></div>
             </label>
             
             <input ata-bs-toggle="modal" data-bs-target="#companypropic" style="display:none;" name="comphoto" id="comphoto" />

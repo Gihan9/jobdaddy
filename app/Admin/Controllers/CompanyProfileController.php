@@ -83,9 +83,9 @@ class CompanyProfileController extends AdminController
 
     public function showForm()
     {
-        $company = auth('company')->user();
+        $company = auth()->user();
         $companyProfile = $company->companyProfile;
-        $companyQnAs = auth('company')->user()->companyQnAs;
+        $companyQnAs = auth()->user()->companyQnAs;
         // Fetch questions and answers related to the logged-in company
        
         return view('jd.companyprofile.company', compact('companyProfile', 'companyQnAs'));
@@ -93,11 +93,11 @@ class CompanyProfileController extends AdminController
 
     public function storeOrUpdate(Request $request)
     {
-        $companyProfile = auth('company')->user()->companyProfile;
+        $companyProfile = auth()->user()->companyProfile;
 
         if (!$companyProfile) {
             $companyProfile = new CompanyProfile();
-            $companyProfile->company_id = auth('company')->id();
+            $companyProfile->user_id = auth()->id();
         }
 
         $companyProfile->fill($request->all());
@@ -114,13 +114,13 @@ public function updateProfilePicture(Request $request)
         'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
     ]);
 
-    $user = auth('company')->user();
+    $user = auth()->user();
     $companyProfile = $user->companyProfile;
 
     // If the company doesn't have a profile, create one
     if (!$companyProfile) {
         $companyProfile = new CompanyProfile();
-        $companyProfile->company_id = $user->id;
+        $companyProfile->user_id = $user->id;
     }
 
     // Handle file upload

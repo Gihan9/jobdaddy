@@ -29,20 +29,7 @@ class Company extends Authenticatable
         return password_verify($credentials['password'], $user->getAuthPassword());
     }
 
-    public function companyProfile()
-    {
-        return $this->hasOne(CompanyProfile::class);
-    }
-
-    public function companyQnAs()
-    {
-        return $this->hasMany(Companyqa::class);
-    }
-
-    public function jobs()
-    {
-        return $this->hasMany(Jobs::class);
-    }
+    
 }
 
 
