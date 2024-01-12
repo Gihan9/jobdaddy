@@ -120,6 +120,11 @@ Route::get('/jd/testprofile', function () {
     return view('jobseeker');
 });
 
+Route::get('/jd/people', function () {
+    return view('jd.peoplefeed.people');
+
+
+});
 
 
 
