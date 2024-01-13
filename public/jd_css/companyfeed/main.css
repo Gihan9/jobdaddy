@@ -1,0 +1,15 @@
+.companiesBox{
+    margin-top: 15px;
+}
+.companiesTitle{
+    font-size: 45px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(29, 29, 121);
+}
+.pageSubDescrip{
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(29, 29, 121);
+
+}

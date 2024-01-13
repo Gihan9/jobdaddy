@@ -126,6 +126,20 @@ Route::get('/jd/people', function () {
 
 });
 
+Route::get('/jd/companies', function () {
+    return view('jd.companyFeed.companyFeed');
+
+
+});
+
+
+
+Route::get('/jd/outcomprof', function () {
+    return view('jd.outcomProfile.outcomProfile');
+
+
+});
+
 
 
 
