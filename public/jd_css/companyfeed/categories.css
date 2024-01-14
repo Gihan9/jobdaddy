@@ -1,0 +1,34 @@
+.categoryListBox{
+    padding: 25px;
+    border-radius: 15px;
+    background: rgb(241, 223, 224);
+    padding-bottom: 15px;
+}
+
+.categoryListFrame{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.catCardBox{
+    padding: 15px;
+}
+
+.catCard{
+    border-radius: 9px;
+    padding: 15px 10px;
+    background: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    cursor: pointer;
+}
+
+.catType{
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.catCount{
+    font-size: 10px;
+    font-weight: 500;
+    color: rgb(100, 100, 100);
+}
