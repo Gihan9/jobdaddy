@@ -45,3 +45,18 @@ form input , form select{
     border: none;
     height: 93%;
 }
+
+.tabs .nav-link{
+    margin-left: 20px;
+    background: rgb(255, 166, 0) !important;
+    color: black;
+    font-weight: bold;
+}
+
+.tabs .active{
+    margin-left: 20px;
+    background: rgb(207, 99, 28) !important;
+    color: rgb(255, 255, 255);
+}
+
+
