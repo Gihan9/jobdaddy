@@ -10,4 +10,9 @@ class Categories extends Model
     use SoftDeletes;
 
     protected $table = 'Categories';
+
+    public function jobs()
+    {
+        return $this->hasMany(Jobs::class);
+    }
 }

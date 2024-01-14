@@ -6,9 +6,9 @@
   <a href="{{ route('jobs.show', $job->id) }}" class="job-details-link" style="text-decoration:none" >
     <div class="adCard">
         <div class="bookmark">
-            <!-- need to handle click logic here -->
+            <!-- need to handle click logic here 
             <i class="bi bi-bookmark"></i>
-            <i class="bi bi-bookmark-fill"></i>
+            <i class="bi bi-bookmark-fill"></i>-->
         </div>
         <div class="adImg">
             

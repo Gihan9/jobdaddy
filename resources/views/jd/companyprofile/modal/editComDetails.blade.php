@@ -50,7 +50,7 @@
                         <div class="inframe">
                         <input type="text" name="phone" value="{{ $companyProfile->phone ?? old('phone') }}">
                         </div>
-                        </div>
+                        
                     </div>
 
                     <div class="col-md-12 col-sm-12 mb-3">

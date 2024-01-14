@@ -9,7 +9,7 @@ use OpenAdmin\Admin\Show;
 use \App\Models\CompanyProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use \App\Models\Companyqa;
+use \App\Models\jobs;
 class CompanyProfileController extends AdminController
 {
     /**
@@ -138,6 +138,69 @@ class CompanyProfileController extends AdminController
         }
 
         return redirect()->route('company.profile.form')->with('success', 'Profile picture updated successfully!');
+    }
+
+    
+    public function savedCompanies()
+{
+    // Retrieve paginated list of saved companies
+    $savedCompanies = CompanyProfile::paginate(10);
+
+    // Retrieve a specific job, replace '1' with the actual job ID you want
+    $job = Jobs::find(1);
+
+   
+    // Check if the job exists
+    if ($job) {
+        // Retrieve related jobs with the same category
+        $categories = Jobs::where('category', $job->category)
+            ->where('id', '<>', $job->id)
+            ->limit(5)
+            ->get();
+
+        // Count the number of related jobs
+        $jobsCount = $categories->count();
+    } else {
+        // Handle the case when the job is not found
+        $categories = collect(); // An empty collection if the job is not found
+        $jobsCount = 0;
+    }
+
+    return view('jd.companyFeed.companyFeed', compact('savedCompanies', 'categories', 'jobsCount'));
+}
+
+
+public function searchcompany(Request $request)
+    {
+        $query = $request->input('query');
+       $savedCompanies = CompanyProfile::paginate(10);
+        // Retrieve job seekers from the database based on the search query
+        $savedCompanies = CompanyProfile::where('name', 'like', '%' . $query . '%')
+            ->paginate(10);
+
+            $job = Jobs::find(1);
+
+   
+            // Check if the job exists
+            if ($job) {
+                // Retrieve related jobs with the same category
+                $categories = Jobs::where('category', $job->category)
+                    ->where('id', '<>', $job->id)
+                    ->limit(5)
+                    ->get();
+        
+                // Count the number of related jobs
+                $jobsCount = $categories->count();
+            } else {
+                // Handle the case when the job is not found
+                $categories = collect(); // An empty collection if the job is not found
+                $jobsCount = 0;
+            }
+        // Load the skills relationship for the job seekers
+       
+
+        // Return the view with the job seekers and skills
+        return view('jd.companyfeed.companyfeed', [ 'savedCompanies' => $savedCompanies,'categories' => $categories, 'jobsCount' => $jobsCount   ]);
     }
 
 }

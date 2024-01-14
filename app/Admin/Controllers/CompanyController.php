@@ -79,7 +79,7 @@ class CompanyController extends AdminController
     
         return view('jd.companyregister.register');
     }
-    
+
     public function showLoginForm()
     {
         

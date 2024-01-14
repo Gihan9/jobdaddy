@@ -1,12 +1,16 @@
 <div class="searchBarFrame">
     <div class="comnpaniesFrame inputFrame">
         <label for="companiesInput"><i class="bi bi-search"></i></label>
-        <input type="text" class="jobtitleInput" id="companiesInput" placeholder="Enter Company Name">
+        <form action="{{ route('company.search') }}" method="GET" class="search-form">
+            <input type="text" name="query" class="jobtitleInput" id="jobtitleInput" placeholder="I am Looking For...">
+
+            <button class="searchBtn">
+                Search
+            </button>
+        </form>  
     </div>
     
-    <button class="searchBtn">
-        Search
-    </button>
+   
 </div>
 <div class="searchbarFooter">
    

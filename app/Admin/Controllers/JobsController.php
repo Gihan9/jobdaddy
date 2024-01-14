@@ -7,6 +7,7 @@ use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
 use \App\Models\Jobs;
+use \App\Models\Categories;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
@@ -33,6 +34,8 @@ class JobsController extends AdminController
         $grid = new Grid(new Jobs());
 
         $grid->column('id', __('Id'));
+        $grid->column('name', __('Name'));
+        $grid->column('company_name', __('Company Name'));
         $grid->column('name', __('Name'));
         $grid->column('description', __('Description'));
         $grid->column('category', __('Category'));
@@ -138,7 +141,12 @@ class JobsController extends AdminController
     {
         $company = auth()->user();
         $companyProfile = $company->companyProfile;
-        return view('jd.postad.postad', compact('companyProfile'));
+
+
+        $categories = Categories::pluck('Category', 'id');
+
+    return view('jd.postad.postad', compact('companyProfile', 'categories'));
+
 
     }
 

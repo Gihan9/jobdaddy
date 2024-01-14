@@ -78,3 +78,13 @@
         margin-bottom: 10px;
     }
 }
+.search-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+.search-form input{
+    flex: 1;
+}
+

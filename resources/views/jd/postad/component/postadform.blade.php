@@ -81,62 +81,66 @@
 
 <div class="postAdFormFrame">
 
-<form action="{{ route('jobs.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
-            <label for="jbposition" class="form-label">Job Position *</label>
-            <div class="inframe">
-                <input class="form-control" id="jbposition" type="text" name="position"  >
-            </div>
-            @error('position')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-        </div>
+    <form action="{{ route('jobs.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    <label for="jbposition" class="form-label">Job Position *</label>
+                    <div class="inframe">
+                        <input class="form-control" id="jbposition" type="text" name="position"  >
+                    </div>
+                        @error('position')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                </div>
 
-        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
-            <label for="emplytype" class="form-label formlab">Employment Type</label>
-            <div class="inframe">
-                <select name="em_type" id="emplytype" class="form-select" aria-label="selected employement type">
-                    <option value="fulltime" >Full-time</option>
-                    <option value="parttime">Part-time</option>
-                    <option value="internship">Internship</option>
-                    <option value="remote">Remote</option>
-                    
-                </select>
-            </div>
-        </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    <label for="emplytype" class="form-label formlab">Employment Type</label>
+                    <div class="inframe">
+                        <select name="em_type" id="emplytype" class="form-select" aria-label="selected employement type">
+                            <option value="fulltime" >Full-time</option>
+                            <option value="parttime">Part-time</option>
+                            <option value="internship">Internship</option>
+                            <option value="remote">Remote</option>
+                            
+                        </select>
+                    </div>
+                </div>
 
-        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
-            <label for="comname" class="form-label formlab">Company Name *</label>
-            <div class="inframe">
-                <input class="form-control" id="comname" type="text" name="company_name"  value="{{ $companyProfile->name ?? old('name') }}" readonly>
-            </div>
-        </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    <label for="comname" class="form-label formlab">Company Name *</label>
+                    <div class="inframe">
+                        <input class="form-control" id="comname" type="text" name="company_name"  value="{{ $companyProfile->name ?? old('name') }}" readonly>
+                    </div>
+                </div>
+
             <input type="text" name="company_logo" id="comimg" value="{{ $companyProfile->profile_picture ?? old('profile_picture') }}" readonly style="display: none">
-        <div class="col-md-6 col-sm-12 mb-3">
-            <label for="workplacement" class="form-label formlab">Work Placement Type</label>
-            <div class="inframe">
-                <select name="work_type" id="work_type" class="form-select" aria-label="selected employement type">
-                <option value="remote">Remote</option>
-                <option value="office">Office</option>
-                    
-                    
-                </select>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 mb-3">
-            <label for="workplacement" class="form-label formlab">Job category</label>
-            <div class="inframe">
-                <select name="category" id="emplytype" class="form-select" aria-label="selected employement type">
-                <option value="Data_Entry">Data Entry</option>
-                <option value="Software_Engineer">Software Engineer</option>
-                    
-                </select>
-            </div>
-        </div>
 
-        <div class="col-md-6 col-sm-12 mb-3">
-            <label for="workplacement" class="form-label formlab">Job category</label>
+            <div class="col-md-6 col-sm-12 mb-3">
+                <label for="workplacement" class="form-label formlab">Work Placement Type</label>
+                <div class="inframe">
+                    <select name="work_type" id="work_type" class="form-select" aria-label="selected employement type">
+                    <option value="remote">Remote</option>
+                    <option value="office">Office</option>
+                        
+                        
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12 mb-3">
+                <label for="workplacement" class="form-label formlab">Job category</label>
+                <div class="inframe">
+                    <select name="category" id="emplytype" class="form-select" aria-label="selected employement type">
+                    @foreach($categories as $categoryId => $categoryName)
+                    <option value="{{ $categoryName }}">{{ $categoryName }}</option>
+                     @endforeach
+                        
+                    </select>
+                </div>
+            </div>
+
+       <!-- <div class="col-md-6 col-sm-12 mb-3">
+            <label for="workplacement" class="form-label formlab"></label>
             <div class="inframe">
                 <select name="filter" id="emplytype" class="form-select" aria-label="selected employement type">
                     <option value="freelancer">Freelancer</option>
@@ -147,7 +151,7 @@
                     <option value="workfromhome">Work from home</option>
                 </select>
             </div>
-        </div>
+        </div>-->
 
         
         <div class="col-md-6 col-sm-12 mb-3">

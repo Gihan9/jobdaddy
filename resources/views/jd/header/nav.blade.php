@@ -12,7 +12,7 @@
             <a class="nav-link mylinks" href="/job_seekers">People</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link mylinks" href="#">Companies</a>
+            <a class="nav-link mylinks" href="/saved-companies">Companies</a>
         </li>
         <li class="nav-item">
             <a class="nav-link mylinks" href="#">Support</a>
