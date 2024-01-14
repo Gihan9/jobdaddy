@@ -40,4 +40,8 @@ class Jobs extends Model
     {
         return $this->hasMany(Keyword::class);
     }
+
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
 }

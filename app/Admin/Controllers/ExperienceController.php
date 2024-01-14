@@ -85,49 +85,49 @@ class ExperienceController extends BaseController
 
    
     public function sto()
-{
-    request()->validate([
-        'job_title' => 'required|string|max:255',
-        'company_name' => 'required|string|max:255',
-        's_date' => 'required|string',
-        'e_date' => 'required|string',
-        'location' => 'required|string|max:255',
-    ]);
+    {
+        request()->validate([
+            'job_title' => 'required|string|max:255',
+            'company_name' => 'required|string|max:255',
+            's_date' => 'required|string',
+            'e_date' => 'required|string',
+            'location' => 'required|string|max:255',
+        ]);
 
-    // Create a new experience for the authenticated user
-    auth()->user()->experiences()->create([
-        'job_title' => request()->input('job_title'),
-        'company_name' => request()->input('company_name'),
-        's_date' => request()->input('s_date'),
-        'e_date' => request()->input('e_date'),
-        'location' => request()->input('location'),
-    ]);
+        // Create a new experience for the authenticated user
+        auth()->user()->experiences()->create([
+            'job_title' => request()->input('job_title'),
+            'company_name' => request()->input('company_name'),
+            's_date' => request()->input('s_date'),
+            'e_date' => request()->input('e_date'),
+            'location' => request()->input('location'),
+        ]);
 
-    return redirect('/jd/profile')->with('success', 'Experience added successfully!');
-}
+        return redirect('/jd/profile')->with('success', 'Experience added successfully!');
+    }
 
+        
     
-   
 
-public function edit($id, Content $content)
-{
-    $experience = Experience::findOrFail($id);
-    return view('jd.profile.experience.edit', compact('experience'));
-}
+    public function edit($id, Content $content)
+    {
+        $experience = Experience::findOrFail($id);
+        return view('jd.profile.experience.edit', compact('experience'));
+    }
 
-public function update( $id)
-{
-    request()->validate([
-        'job_title' => 'required|string|max:255',
-        'company_name' => 'required|string|max:255',
-        // Add validation rules for other fields
-    ]);
+    public function update( $id)
+    {
+        request()->validate([
+            'job_title' => 'required|string|max:255',
+            'company_name' => 'required|string|max:255',
+           
+        ]);
 
-    $experience = Experience::findOrFail($id);
-    $experience->update(request()->all());
+        $experience = Experience::findOrFail($id);
+        $experience->update(request()->all());
 
-    return redirect('/jd/profile')->with('success', 'Experience updated successfully!');
-}
+        return redirect('/jd/profile')->with('success', 'Experience updated successfully!');
+    }
 
     public function destroy($id)
     {

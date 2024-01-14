@@ -108,36 +108,36 @@ class CompanyProfileController extends AdminController
 
    
 
-public function updateProfilePicture(Request $request)
-{
-    $request->validate([
-        'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
-    ]);
+    public function updateProfilePicture(Request $request)
+    {
+        $request->validate([
+            'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+        ]);
 
-    $user = auth()->user();
-    $companyProfile = $user->companyProfile;
+        $user = auth()->user();
+        $companyProfile = $user->companyProfile;
 
-    // If the company doesn't have a profile, create one
-    if (!$companyProfile) {
-        $companyProfile = new CompanyProfile();
-        $companyProfile->user_id = $user->id;
-    }
-
-    // Handle file upload
-    if ($request->hasFile('profile_picture')) {
-        $file = $request->file('profile_picture');
-        $path = $file->store('profile_pictures', 'public'); // Adjust storage path as needed
-
-        // Remove old profile picture if exists
-        if ($companyProfile->profile_picture) {
-            Storage::disk('public')->delete($companyProfile->profile_picture);
+        // If the company doesn't have a profile, create one
+        if (!$companyProfile) {
+            $companyProfile = new CompanyProfile();
+            $companyProfile->user_id = $user->id;
         }
 
-        $companyProfile->profile_picture = $path;
-        $companyProfile->save();
-    }
+        // Handle file upload
+        if ($request->hasFile('profile_picture')) {
+            $file = $request->file('profile_picture');
+            $path = $file->store('profile_pictures', 'public'); 
 
-    return redirect()->route('company.profile.form')->with('success', 'Profile picture updated successfully!');
-}
+            // Remove old profile picture if exists
+            if ($companyProfile->profile_picture) {
+                Storage::disk('public')->delete($companyProfile->profile_picture);
+            }
+
+            $companyProfile->profile_picture = $path;
+            $companyProfile->save();
+        }
+
+        return redirect()->route('company.profile.form')->with('success', 'Profile picture updated successfully!');
+    }
 
 }

@@ -13,4 +13,10 @@ class Jobseeker extends Model
     {
         return $this->belongsTo(Jobuser::class);
     }
+
+
+    public function skills()
+    {
+        return $this->hasMany(Skill::class, 'user_id');
+    }
 }

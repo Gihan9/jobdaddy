@@ -100,31 +100,31 @@ class JobsController extends AdminController
     }
 
     // YourController.php
-public function jobfeed(Request $request)
-{
-    $selectedCategory = $request->input('category');
-    $filters = $request->input('filters');
-    
+    public function jobfeed(Request $request)
+    {
+        $selectedCategory = $request->input('category');
+        $filters = $request->input('filters');
+        
 
+        
     
-   
+        
+        $jobsQuery = Jobs::latest();
+        
+        if ($selectedCategory) {
+            $jobsQuery->where('category', $selectedCategory);
+        }
+        
+        
+        if ($filters) {
+            $jobsQuery->whereIn('filter', $filters);
+            }
+        $jobs = $jobsQuery->paginate(10);
     
-    $jobsQuery = Jobs::latest();
+        
     
-    if ($selectedCategory) {
-        $jobsQuery->where('category', $selectedCategory);
+        return view('jd.advertFeed.advertFeed', compact('jobs', 'selectedCategory', 'filters'));
     }
-    
-    
-    if ($filters) {
-        $jobsQuery->whereIn('filter', $filters);
-          }
-    $jobs = $jobsQuery->paginate(10);
-  
-    // Return a JSON response with the updated data
- 
-    return view('jd.advertFeed.advertFeed', compact('jobs', 'selectedCategory', 'filters'));
-}
 
 
     public function showjob($id)
@@ -142,141 +142,139 @@ public function jobfeed(Request $request)
 
     }
 
-    public function searchjob(Request $request)
+    public function searchJob(Request $request)
     {
-    $query = $request->input('query');
-
-    // Perform the search query using the $query variable
-
-    // Retrieve job posts from the database based on the search query
-    $jobs = Jobs::where('position', 'like', '%' . $query . '%')
-        ->orWhere('company_name', 'like', '%' . $query . '%')
-        ->paginate(10);
-
+        $query = $request->input('query');
         $selectedCategory = $request->input('category');
         $filters = $request->input('filters');
-        
     
-        
-       
-        
         $jobsQuery = Jobs::latest();
-        
+    
+        // Perform the search query using the $query variable
+        if ($query) {
+            $jobsQuery->where(function ($q) use ($query) {
+                $q->where('position', 'like', '%' . $query . '%')
+                    ->orWhere('company_name', 'like', '%' . $query . '%');
+            });
+        }
+    
+        // Apply category filter
         if ($selectedCategory) {
             $jobsQuery->where('category', $selectedCategory);
         }
-        
-        
+    
+        // Apply filters
         if ($filters) {
             $jobsQuery->whereIn('filter', $filters);
-              }
+        }
+    
+        // Retrieve job posts from the database based on the search query, category, and filters
         $jobs = $jobsQuery->paginate(10);
-      
-        // Return a JSON response with the updated data
-     
+    
+        // Return a view with the updated data
         return view('jd.advertFeed.advertFeed', compact('jobs', 'selectedCategory', 'filters'));
     }
-
+    
   
 
 
     
 
     public function storepost()
-{
-    
-
-    
-    request()->validate([
-        'position' => 'required|string|max:255',
-        'company_name' => 'required|string|max:255',
-        'description' => 'required|string',
-        'website' => 'nullable|string',
-       
-        'work_type' => 'required|in:remote,office', // Adjust as needed
-        'salary' => 'nullable|string|max:255',
-        'phone' => 'nullable|string|max:20',
-        'location' => 'nullable|string|max:255',
-       
-      // Adjust file types and size as needed
-        'keyword1' => 'nullable|string|max:255',
-        'keyword2' => 'nullable|string|max:255',
-        'keyword3' => 'nullable|string|max:255',
-        'keyword4' => 'nullable|string|max:255',
-        'keyword5' => 'nullable|string|max:255',
-       
-    ]);
-
-    
-
-    // Create a new record in the database
-    $job = Jobs::create([
-        'user_id' => auth()->id(),
-        'position' => request()->input('position'),
-        'company_name' => request()->input('company_name'),
-        'company_logo' => request()->input('company_logo'),
-        'category' => request()->input('category'),
-        'description' => request()->input('description'),
-        'website' => request()->input('website'),
-        'em_type' => request()->input('em_type'),
-        'work_type' => request()->input('work_type'),
-        'salary' => request()->input('salary'),
-        'phone' => request()->input('phone'),
-        'location' => request()->input('location'),
-        'filter' => request()->input('filter'),
-       
-        'keyword1' => request()->input('keyword1'),
-        'keyword2' => request()->input('keyword2'),
-        'keyword3' => request()->input('keyword3'),
-        'keyword4' => request()->input('keyword4'),
-        'keyword5' => request()->input('keyword5'),
-       
+    {
         
-    ]);
 
-     // Handle file upload for artwork
-     if (request()->hasFile('artwork')) {
-        $artworkPath = request()->file('artwork')->store('artwork', 'public'); // Adjust storage path as needed
-        $job->update(['artwork' => $artworkPath]);
+        
+        request()->validate([
+            'position' => 'required|string|max:255',
+            'company_name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'website' => 'nullable|string',
+        
+            'work_type' => 'required|in:remote,office', 
+            'salary' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'location' => 'required|string|max:255',
+        
+        
+            'keyword1' => 'nullable|string|max:255',
+            'keyword2' => 'nullable|string|max:255',
+            'keyword3' => 'nullable|string|max:255',
+            'keyword4' => 'nullable|string|max:255',
+            'keyword5' => 'nullable|string|max:255',
+        
+        ]);
+
+        
+
+        // Create a new record in the database
+        $job = Jobs::create([
+            'user_id' => auth()->id(),
+            'position' => request()->input('position'),
+            'company_name' => request()->input('company_name'),
+            'company_logo' => request()->input('company_logo'),
+            'category' => request()->input('category'),
+            'description' => request()->input('description'),
+            'website' => request()->input('website'),
+            'em_type' => request()->input('em_type'),
+            'work_type' => request()->input('work_type'),
+            'salary' => request()->input('salary'),
+            'phone' => request()->input('phone'),
+            'location' => request()->input('location'),
+            'filter' => request()->input('filter'),
+        
+            'keyword1' => request()->input('keyword1'),
+            'keyword2' => request()->input('keyword2'),
+            'keyword3' => request()->input('keyword3'),
+            'keyword4' => request()->input('keyword4'),
+            'keyword5' => request()->input('keyword5'),
+        
+            
+        ]);
+
+        // Handle file upload for artwork
+        if (request()->hasFile('artwork')) {
+            $artworkPath = request()->file('artwork')->store('artwork', 'public'); // Adjust storage path as needed
+            $job->update(['artwork' => $artworkPath]);
+        }
+
+    
+      
+
+       
+        return redirect()->route('company.profile.form')->with('success', 'Profile picture updated successfully!');
+        
     }
 
-  
-    // You can add any additional logic here if needed
-
-    // Return a response, for example, a JSON response with the created job data
-    return redirect()->route('company.profile.form')->with('success', 'Profile picture updated successfully!');
     
-}
+    public function filterByCategory(Request $request)
+    {
+        // Retrieve the selected category and filters from the request
+        $selectedCategory = $request->input('category');
+        $filters = $request->input('filter');
 
-    
-public function filterByCategory(Request $request)
-{
-    // Retrieve the selected category and filters from the request
-    $selectedCategory = $request->input('category');
-    $filters = $request->input('filter');
-
-    // Get unique categories from the database
-   
-
-    // Initialize a query to retrieve jobs
-    $jobsQuery = Jobs::latest();
-
-    // Apply filters
-    $jobsQuery->when($selectedCategory && $selectedCategory !== 'all', function ($query) use ($selectedCategory) {
-        return $query->where('category', $selectedCategory);
-    });
-
-    $jobsQuery->when($filters, function ($query) use ($filters) {
-        return $query->where('filter', $filters);
-    });
-  
-
-    // Retrieve the filtered jobs
-    $jobs = $jobsQuery->paginate(10);
-
+        
     
 
-    // Pass the filtered jobs data to the view
-    return view('jd.advertFeed.advertFeed', compact('jobs', 'selectedCategory', 'filters'));
-}
+        // Initialize a query to retrieve jobs
+        $jobsQuery = Jobs::latest();
+
+        // Apply filters
+        $jobsQuery->when($selectedCategory && $selectedCategory !== 'all', function ($query) use ($selectedCategory) {
+            return $query->where('category', $selectedCategory);
+        });
+
+        $jobsQuery->when($filters, function ($query) use ($filters) {
+            return $query->where('filter', $filters);
+        });
+    
+
+        // Retrieve the filtered jobs
+        $jobs = $jobsQuery->paginate(10);
+
+        
+
+        // Pass the filtered jobs data to the view
+        return view('jd.advertFeed.advertFeed', compact('jobs', 'selectedCategory', 'filters'));
+    }
 }

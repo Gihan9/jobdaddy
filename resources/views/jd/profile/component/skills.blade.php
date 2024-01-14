@@ -10,7 +10,7 @@
         <form method="post" action="{{ route('skills.delete', ['skillId' =>      $skill->id]) }}">
             @csrf
             @method('DELETE')
-            <span type="submit"> <i class="bi bi-x"></i></span>
+            <button type="submit"> <i class="bi bi-x"></i></button>
         </form>
           
             <span>{{ $skill->skill }}</span>

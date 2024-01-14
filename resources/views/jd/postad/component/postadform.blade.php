@@ -88,6 +88,9 @@
             <div class="inframe">
                 <input class="form-control" id="jbposition" type="text" name="position"  >
             </div>
+            @error('position')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
@@ -158,12 +161,18 @@
             <div class="inframe">
                 <input class="form-control" id="salary" type="text" name="salary">
             </div>
+            @error('salary')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
         </div>
         <div class="col-md-6 col-sm-12 mb-3">
             <label for="location" class="form-label formlab">Location *</label>
             <div class="inframe">
                 <input class="form-control" id="location" type="text" name="location">
             </div>
+            @error('location')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
         </div>
 
         <div class="col-md-6 col-sm-12 mb-3">
@@ -171,6 +180,9 @@
             <div class="inframe">
                 <input class="form-control" id="contact" type="text" name="phone">
             </div>
+            @error('phone')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
         </div>
 
         <div class="col-md-12 col-sm-12 mb-3">
@@ -178,6 +190,9 @@
             <div class="">
                 <textarea style="width:100%; "  name="description" rows="5" id="about"></textarea>
             </div>
+            @error('description')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
         </div>
 
         <div class="row mb-3">

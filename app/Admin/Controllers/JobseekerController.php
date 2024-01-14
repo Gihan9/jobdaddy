@@ -10,6 +10,9 @@ use App\Models\Jobseeker;
 use OpenAdmin\Admin\Layout\Content;
 use Illuminate\Http\Request;
 use App\Models\Skill;
+use App\Models\User;
+
+
 use App\Models\JobPreference;
 use App\Models\Experience;
 
@@ -99,225 +102,248 @@ class JobseekerController extends AdminController
     }
 
     public function so()
-{
-    // Fetch user details and profile
-    $user = auth()->user();
-    $profile = $user->profile;
-    $experiences = auth()->user()->experiences;
-    $educations = auth()->user()->educations;
-    return view('jd.profile.jobseeker', compact('user', 'profile', 'experiences', 'educations', 'experiences' ));
-}
+    {
+        // Fetch user details and profile
+        $user = auth()->user();
+        $profile = $user->profile;
+        $experiences = auth()->user()->experiences;
+        $educations = auth()->user()->educations;
+        return view('jd.profile.jobseeker', compact('user', 'profile', 'experiences', 'educations', 'experiences' ));
+    }
 
-public function edit($id, Content $content)
-{
-    // Fetch user details and profile
-    $user = auth()->user();
-    $profile = $user->profile;
-    return view('jd.profile.edit', compact('user', 'profile'));
-}
+    public function edit($id, Content $content)
+    {
+        // Fetch user details and profile
+        $user = auth()->user();
+        $profile = $user->profile;
+        return view('jd.profile.edit', compact('user', 'profile'));
+    }
 
-public function up()
-{
-    
-    request()->validate([
-        'name' => 'required|string|max:255',
-        'age' => 'nullable|integer',
-        'sex' => 'nullable|string|max:10',
-        'phone' => 'nullable|string|max:20',
-        'location' => 'nullable|string|max:255',
-        'marital_status' => 'nullable|string|max:255',
-        'designation' => 'nullable|string|max:255',
-    ]);
+    public function up()
+    {
+        
+        request()->validate([
+            'name' => 'required|string|max:255',
+            'age' => 'nullable|integer',
+            'sex' => 'nullable|string|max:10',
+            'phone' => 'nullable|string|max:20',
+            'location' => 'nullable|string|max:255',
+            'marital_status' => 'nullable|string|max:255',
+            'designation' => 'nullable|string|max:255',
+        ]);
 
-    // Update user details
-    $user = auth()->user();
-    $user->update(['name' => request()->input('name')]);
+        // Update user details
+        $user = auth()->user();
+        $user->update(['name' => request()->input('name')]);
 
-    // Update or create profile data
-    $profile = $user->profile;
+        // Update or create profile data
+        $profile = $user->profile;
+        if (!$profile) {
+            $profile = new Jobseeker();
+            $profile->user_id = $user->id;
+        }
+        $profile->fill(request()->only(['name', 'age', 'sex', 'phone', 'location', 'marital_status', 'designation']));
+        $profile->save();
+
+        return redirect('/jd/profile');
+    }
+
+    public function updatePicture(Request $request)
+    {
+        
+
+        $user = auth()->user();
+
+        $profile = $user->profile;
+
     if (!$profile) {
         $profile = new Jobseeker();
         $profile->user_id = $user->id;
     }
-    $profile->fill(request()->only(['name', 'age', 'sex', 'phone', 'location', 'marital_status', 'designation']));
-    $profile->save();
 
-    return redirect('/jd/profile');
-}
+    // Handle the uploaded profile picture
+        if (request()->hasFile('profile_picture')) {
+        $request->validate([
+            'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-public function updatePicture(Request $request)
-{
-    
+        $profilePicture = request()->file('profile_picture');
+        $path = $profilePicture->store('profile_pictures', 'public');
+        $profile->profile_picture = $path;
+        }
 
-    $user = auth()->user();
+        $profile->save();
 
-    $profile = $user->profile;
-
-if (!$profile) {
-    $profile = new Jobseeker();
-    $profile->user_id = $user->id;
-}
-
-// Handle the uploaded profile picture
-    if (request()->hasFile('profile_picture')) {
-    $request->validate([
-        'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-    ]);
-
-    $profilePicture = request()->file('profile_picture');
-    $path = $profilePicture->store('profile_pictures', 'public');
-    $profile->profile_picture = $path;
-    }
-
-    $profile->save();
-
-    return redirect('/jd/profile')->with('success', 'Profile picture updated successfully!');
+        return redirect('/jd/profile')->with('success', 'Profile picture updated successfully!');
     }
 
     public function updateCV(Request $request)
-{
-    $request->validate([
-        'cv' => 'file|mimes:pdf|max:2048',
-    ]);
+    {
+        $request->validate([
+            'cv' => 'file|mimes:pdf|max:2048',
+        ]);
 
-    $user = auth()->user();
-    $profile = $user->profile;
+        $user = auth()->user();
+        $profile = $user->profile;
 
-    if (!$profile) {
-        $profile = new Jobseeker();
-        $profile->user_id = $user->id;
+        if (!$profile) {
+            $profile = new Jobseeker();
+            $profile->user_id = $user->id;
+        }
+
+        if ($request->hasFile('cv')) {
+            $cvFile = $request->file('cv');
+            $cvPath = $cvFile->store('cv_files', 'public');
+            $profile->cv_path = $cvPath;
+        }
+
+        $profile->save();
+
+        return redirect('/jd/profile')->with('success', 'CV updated successfully!');
     }
 
-    if ($request->hasFile('cv')) {
-        $cvFile = $request->file('cv');
-        $cvPath = $cvFile->store('cv_files', 'public');
-        $profile->cv_path = $cvPath;
-    }
-
-    $profile->save();
-
-    return redirect('/jd/profile')->with('success', 'CV updated successfully!');
-}
 
 
+    public function updateSkills(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'skill' => 'string|max:255',
+        ]);
 
-public function updateSkills(Request $request)
-{
-    // Validate the request
-    $request->validate([
-        'skill' => 'string|max:255',
-    ]);
+        // Get the authenticated user
+        $user = auth()->user();
 
-    // Get the authenticated user
-    $user = auth()->user();
+        // Check if the user already has a skill with the provided name
+        $existingSkill = Skill::where('user_id', $user->id)
+                            ->where('skill', $request->input('skill'))
+                            ->first();
 
-    // Check if the user already has a skill with the provided name
-    $existingSkill = Skill::where('user_id', $user->id)
-                          ->where('skill', $request->input('skill'))
-                          ->first();
-
-    if ($existingSkill) {
-       
-        $existingSkill->update(['skill' => $request->input('skill')]);
-    } else {
+        if ($existingSkill) {
         
-        $user->skills()->create(['skill' => $request->input('skill')]);
+            $existingSkill->update(['skill' => $request->input('skill')]);
+        } else {
+            
+            $user->skills()->create(['skill' => $request->input('skill')]);
+        }
+
+        // Redirect with success message
+        return redirect('/jd/profile')->with('success', 'Skills updated successfully!');
     }
 
-    // Redirect with success message
-    return redirect('/jd/profile')->with('success', 'Skills updated successfully!');
-}
 
+    public function deleteSkill($skillId)
+    {
+        // Get the authenticated user
+        $user = auth()->user();
 
-public function deleteSkill($skillId)
-{
-    // Get the authenticated user
-    $user = auth()->user();
-
-    
-    $skill = Skill::find($skillId);
-
-    // Check if the skill exists and belongs to the authenticated user
-    if ($skill && $skill->user_id === $user->id) {
         
-        $skill->delete();
+        $skill = Skill::find($skillId);
 
-       
-        return redirect('/jd/profile')->with('success', 'Skill deleted successfully!');
-    } else {
+        // Check if the skill exists and belongs to the authenticated user
+        if ($skill && $skill->user_id === $user->id) {
+            
+            $skill->delete();
+
         
-        return redirect('/jd/profile')->with('error', 'Skill not found or you don\'t have permission to delete it.');
-    }
-}
-
-
-public function updatejob(Request $request)
-{
-    
-    $request->validate([
-        'preference' => 'string|max:255',
-    ]);
-
-    // Get the authenticated user
-    $user = auth()->user();
-
-    // Check if the user already has a job preference with the provided name
-    $existingPreference = JobPreference::where('user_id', $user->id)
-                                        ->where('job', $request->input('preference'))
-                                        ->first();
-
-    if ($existingPreference) {
-       
-        $existingPreference->update(['job' => $request->input('preference')]);
-    } else {
-     
-        $user->jobPreferences()->create(['job' => $request->input('preference')]);
+            return redirect('/jd/profile')->with('success', 'Skill deleted successfully!');
+        } else {
+            
+            return redirect('/jd/profile')->with('error', 'Skill not found or you don\'t have permission to delete it.');
+        }
     }
 
-    // Redirect with success message
-    return redirect('/jd/profile')->with('success', 'Job Preferences updated successfully!');
-}
 
-public function deletejobPreference($jobPreferenceId)
-{
-    // Get the authenticated user
-    $user = auth()->user();
-
-    
-    $job = JobPreference::find($jobPreferenceId);
-
-    // Check if the JobPreference exists and belongs to the authenticated user
-    if ($job && $job->user_id === $user->id) {
+    public function updatejob(Request $request)
+    {
         
-        $job->delete();
+        $request->validate([
+            'preference' => 'string|max:255',
+        ]);
 
-       
-        return redirect('/jd/profile')->with('success', 'job Preference deleted successfully!');
-    } else {
+        // Get the authenticated user
+        $user = auth()->user();
+
+        // Check if the user already has a job preference with the provided name
+        $existingPreference = JobPreference::where('user_id', $user->id)
+                                            ->where('job', $request->input('preference'))
+                                            ->first();
+
+        if ($existingPreference) {
         
-        return redirect('/jd/profile')->with('error', 'job Preference not found or you don\'t have permission to delete it.');
-    }
-}
+            $existingPreference->update(['job' => $request->input('preference')]);
+        } else {
+        
+            $user->jobPreferences()->create(['job' => $request->input('preference')]);
+        }
 
-
-public function updateSalary(Request $request)
-{
-    $request->validate([
-        'salary_range' => 'string',
-    ]);
-
-    $user = auth()->user();
-    $profile = $user->profile;
-
-    if ($profile) {
-        // If the user already has a profile, update the salary_range
-        $profile->update(['salary_range' => $request->input('salary_range')]);
-    } else {
-        // If the user doesn't have a profile, create a new one
-        $user->profile()->create(['salary_range' => $request->input('salary_range')]);
+        // Redirect with success message
+        return redirect('/jd/profile')->with('success', 'Job Preferences updated successfully!');
     }
 
-    return redirect('/jd/profile')->with('success', 'Salary range updated successfully!');
-}
+    public function deletejobPreference($jobPreferenceId)
+    {
+        // Get the authenticated user
+        $user = auth()->user();
+
+        
+        $job = JobPreference::find($jobPreferenceId);
+
+        // Check if the JobPreference exists and belongs to the authenticated user
+        if ($job && $job->user_id === $user->id) {
+            
+            $job->delete();
+
+        
+            return redirect('/jd/profile')->with('success', 'job Preference deleted successfully!');
+        } else {
+            
+            return redirect('/jd/profile')->with('error', 'job Preference not found or you don\'t have permission to delete it.');
+        }
+    }
+
+
+    public function updateSalary(Request $request)
+    {
+        $request->validate([
+            'salary_range' => 'string',
+        ]);
+
+        $user = auth()->user();
+        $profile = $user->profile;
+
+        if ($profile) {
+            // If the user already has a profile, update the salary_range
+            $profile->update(['salary_range' => $request->input('salary_range')]);
+        } else {
+            // If the user doesn't have a profile, create a new one
+            $user->profile()->create(['salary_range' => $request->input('salary_range')]);
+        }
+
+        return redirect('/jd/profile')->with('success', 'Salary range updated successfully!');
+    }
+
+    public function showJobSeekers()
+    {
+        $jobSeekers = JobSeeker::paginate(10); 
+        $skills = JobSeeker::with('skills');
+        return view('jd.peoplefeed.people', ['jobSeekers' => $jobSeekers, 'skills' => $skills ]);
+    }
+
+    public function searchpeople(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Retrieve job seekers from the database based on the search query
+        $jobSeekers = JobSeeker::where('designation', 'like', '%' . $query . '%')
+            ->paginate(10);
+
+        // Load the skills relationship for the job seekers
+        $jobSeekers->load('skills');
+
+        // Return the view with the job seekers and skills
+        return view('jd.peoplefeed.people', ['jobSeekers' => $jobSeekers]);
+    }
+
 
 }

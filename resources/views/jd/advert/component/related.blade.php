@@ -9,6 +9,7 @@
 
         <div class="relatedJobsBox">
             <!--a related job card -->
+            <a href="{{ route('jobs.show', $relatedJob->id) }}" class="view-details-btn" style="text-decoration:none">
             <div class="relatedJobCard">
                 <div class="relatedImg">
                 <img src="{{ asset('storage/' . $relatedJob->company_logo) }}" alt="advertisement picture">
@@ -30,8 +31,9 @@
 
                 </div>
                 
-                <a href="{{ route('jobs.show', $relatedJob->id) }}" class="view-details-btn">View Details</a>
+                
             </div>
+            </a>
     @endforeach
     No related jobs
    

@@ -23,9 +23,6 @@ use App\Livewire\CompanyRegister;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
 
 Route::get('/', function () {
     return view('jd.home.main');
@@ -134,6 +131,11 @@ Route::get('/jd/advertdetails', function () {
 
 
 });
+
+
+
+Route::get('/job_seekers', [JobSeekerController::class, 'showJobSeekers'])->name('job_seekers.show');
+Route::get('/searchpeople', [JobSeekerController::class, 'searchpeople'])->name('people.search');
 
 Route::get('/jobs', [JobsController::class, 'jobfeed'])->name('jobs.index');
 

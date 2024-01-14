@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Jobseeker;
 
 class JobuserController extends AdminController
 {
@@ -31,11 +32,17 @@ class JobuserController extends AdminController
         $grid = new Grid(new User());
 
         $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
+        $grid->column('name', __('Name'))->filter('like');
+        $grid->column('acc_type', __('Account type'));
         $grid->column('email', __('Email'));
         $grid->column('password', __('Password'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
+
+        $grid->filter(function ($filter) {
+            $filter->disableIdFilter();
+            $filter->equal('acc_type', 'Account Type')->select(['company' => 'Company', 'user' => 'user']);
+        });
 
         return $grid;
     }
@@ -52,6 +59,7 @@ class JobuserController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
+        $show->field('acc_type', __('Account Type'));
         $show->field('email', __('Email'));
         $show->field('password', __('Password'));
         $show->field('created_at', __('Created at'));
@@ -70,6 +78,7 @@ class JobuserController extends AdminController
         $form = new Form(new User());
 
         $form->text('name', __('Name'));
+        $form->text('acc_type', __('Account Type'));
         $form->email('email', __('Email'));
         $form->password('password', __('Password'));
 
@@ -85,9 +94,10 @@ class JobuserController extends AdminController
             'name' => 'string|max:255',
             'email' => 'email|unique:users',
             'acc_type' => 'string|max:255',
-
             'phone' => 'required|string|unique:users',
             'password' => 'required|string|min:8|confirmed',
+        ], [
+            'password.confirmed' => 'The password confirmation does not match.',
         ]);
 
         // Create a new user
@@ -104,35 +114,37 @@ class JobuserController extends AdminController
        
         auth()->login($user);
 
+        
         return redirect('/jd/skip');
     }
 
     public function login(Request $request)
-{
-    // Validation
-    $request->validate([
-        'phone' => 'required|string',
-        'password' => 'required|string',
-    ]);
+    {
+        // Validation
+        $request->validate([
+            'phone' => 'required|string',
+            'password' => 'required|string',
+        ]);
 
-    // Attempt to log in the user
-    if (Auth::attempt(['phone' => $request->input('phone'), 'password' => $request->input('password')])) {
-        // Retrieve the authenticated user
-        $user = Auth::user();
+        // Attempt to log in the user
+        if (Auth::attempt(['phone' => $request->input('phone'), 'password' => $request->input('password')])) {
+            // Retrieve the authenticated user
+            $user = Auth::user();
 
-        // Check the account type and redirect accordingly
-        if ($user->acc_type === 'company') {
-            return redirect('/company/profile/form');
-        } elseif ($user->acc_type === 'user') {
-            return redirect('/jd/profile');
-        } else {
-            // Handle other account types or errors
-            return back()->withErrors(['phone' => 'Invalid account type']);
+            // Check the account type and redirect accordingly
+            if ($user->acc_type === 'company') {
+                return redirect('/company/profile/form');
+            } elseif ($user->acc_type === 'user') {
+                return redirect('/jd/profile');
+            } else {
+                // Handle other account types or errors
+                return back()->withErrors(['phone' => 'Invalid account type']);
+            }
         }
+
+        // Failed login attempt
+        return back()->withErrors(['phone' => 'Invalid credentials']);
     }
 
-    // Failed login attempt
-    return back()->withErrors(['phone' => 'Invalid credentials']);
-}
 
 }

@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 mb-3">
-                <label for="designation" class="form-label formlab">Designation</label>
+                <label for="designation" class="form-label formlab">Job Title</label>
                 <div class="inframe">
                     <input class="form-control" id="designation" type="text" value="{{ old('designation', $profile->designation ?? '') }}" readonly>
                 </div>
