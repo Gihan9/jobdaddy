@@ -13,11 +13,11 @@
                     </div>
                     <!-- Add other job details as needed -->
                     <div class="bookmark">
-                        <!-- Bookmark logic here -->
+                        <!-- Bookmark logic here 
                         <i class="bi bi-bookmark"></i>
-                        <i class="bi bi-bookmark-fill"></i>
+                        <i class="bi bi-bookmark-fill"></i>-->
                     </div>
-                    <div class="sharebtn"><span class="ico"><i class="bi bi-share-fill"></i></span><span>View Offer</span></div>
+                    <div class="sharebtn"><a href="{{ route('jobs.show', $job->id) }}" class="job-details-link" style="text-decoration:none" ><span> View Offer</span></a></div>
                 </div>
             </div>
             @empty

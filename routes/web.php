@@ -168,8 +168,9 @@ Route::get('/jd/postad', function () {
 });
 
 Route::get('/filterByCategory', [JobsController::class, 'filterByCategory'])->name('jobs.filterByCategory');
+
 // Display the registration form
-Route::get('/company/registerform', [CompanyController::class, 'companyregister'])->name('company.register');
+Route::get('/companyregister', [CompanyController::class, 'companyregister'])->name('company.register');
 
 // Handle the registration form submission
 Route::post('/company/register', [CompanyController::class, 'register'])->name('company.register.submit');

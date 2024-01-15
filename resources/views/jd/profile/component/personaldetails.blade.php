@@ -58,10 +58,11 @@
                     <input class="form-control" id="phone" type="text" value="{{ old('phone', $profile->phone ?? '') }}" readonly>
                 </div>
                 <div class="form-check">
+                    <!--
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         If you want to recruiters to see your contact details
-                    </label>
+                    </label>-->
                   </div>
             </div>
             

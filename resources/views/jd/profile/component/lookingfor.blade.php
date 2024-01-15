@@ -10,7 +10,9 @@
         <form method="post" action="{{ route('jobPreferences.delete', ['jobPreferenceId' =>      $job->id]) }}">
             @csrf
             @method('DELETE')
-            <span type="submit"> <i class="bi bi-x"></i></span>
+            <button type="submit" class="icon-button">
+                <i class="bi bi-x" ></i>
+            </button>
         </form>
           
             <span>{{ $job->job }}</span>
@@ -29,3 +31,12 @@
     
 
 </div>
+
+<style>
+    .icon-button {
+        border: none;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+    }
+</style>

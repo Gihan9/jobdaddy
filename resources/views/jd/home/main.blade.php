@@ -20,12 +20,24 @@
                 <div class="gridtext">People</div>
             </div>
             
-            <div class="item item3"><a href="/company/profile/form">
-                <div class="gridtext">Upload your vacancy</div></a>
-            </div>
-            <div class="item item4"><a href="/jd/profile">
-                <div class="gridtext">Upload your CV</div></a>
-            </div>
+           
+            @if(auth()->check())
+                @if(auth()->user()->acc_type == 'company')
+                    <!-- Show link for company -->
+                    <div class="item item3">
+                        <a href="/company/profile/form">
+                            <div class="gridtext">Upload your vacancy</div>
+                        </a>
+                    </div>
+                @else
+                    <!-- Show link for user -->
+                    <div class="item item4">
+                        <a href="/jd/profile">
+                            <div class="gridtext">Upload your CV</div>
+                        </a>
+                    </div>
+                @endif
+            @endif
             <div class="item item5 whatsappbox">
                 <div class="gridtext">Customer Support</div>
                 <div class="homeimgBox whatsappLogo"><img style="width: 60px; height:60px" src="/jd_img/whatsapp.png" alt=""></div>
