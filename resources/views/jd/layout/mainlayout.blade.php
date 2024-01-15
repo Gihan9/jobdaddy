@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Jdbeta</title>
-    <link rel="icon" type="image/x-icon" href="/jd_img/icon.jpeg">
+    <link rel="icon" type="image/x-icon" href="/jd_img/icon.ico">
 
 
     <!-- Fonts -->
