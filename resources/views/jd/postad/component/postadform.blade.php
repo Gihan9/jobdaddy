@@ -245,10 +245,13 @@
         <div class="row mb-3">
             <div class="col-md-12 col-sm-12 mb-3">
                 <label for="keyword" class="form-label formlab">Keywords</label>
-                <div class="skillinputbox">
                 <div id="keyword-container">
-        <!-- Keyword fields will be dynamically added here -->
-                 </div>
+                </div>
+                <div class="skillinputbox">
+                
+                 <div class="inframe">
+                    <input class="form-control" id="skillinput" type="text" name="skillinput">
+                </div>
                  
                     <div class="addbtn">
                         <i class="bi bi-plus-square-fill" type="button" onclick="addKeywordField()"></i>
@@ -330,10 +333,13 @@
     function addKeywordField() {
     if (keywordCount < 5) {
         const container = document.getElementById('keyword-container');
+        const maininput = document.getElementById('skillinput');
         const input = document.createElement('input');
+        input.classList.add('basicIn');
         input.type = 'text';
+        input.readOnly = true;
         input.name = `keyword${keywordCount + 1}`; // Use a counter to generate unique names
-        input.placeholder = 'Enter keyword';
+        input.value = maininput.value;
 
         const deleteButton = document.createElement('button');
         deleteButton.type = 'button';
@@ -349,6 +355,7 @@
         keywordField.appendChild(input);
         keywordField.appendChild(deleteButton);
         container.appendChild(keywordField);
+        maininput.value = '';
 
         keywordCount++;
     } else {
