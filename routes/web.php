@@ -129,12 +129,18 @@ Route::get('/jd/companies', function () {
 
 });
 
-
-
 Route::get('/jd/outcomprof', function () {
     return view('jd.outcomProfile.outcomProfile');
 
 
+});
+
+Route::get('/jd/outpeople', function () {
+    return view('jd.outpeople.outpeople');
+});
+
+Route::get('/jd/test', function () {
+    return view('jd.test.test');
 });
 
 
