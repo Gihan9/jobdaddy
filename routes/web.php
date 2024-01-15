@@ -142,6 +142,13 @@ Route::get('/jd/outcomprof', function () {
 
 
 
+Route::get('/jd/outpeople', function () {
+    return view('jd.outpeople.outpeople');
+
+
+});
+
+
 
 Route::get('/jd/advertdetails', function () {
     return view('jd.advert.advert');
