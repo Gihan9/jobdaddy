@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+
 use OpenAdmin\Admin\Controllers\AdminController;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
@@ -139,6 +140,9 @@ class JobsController extends AdminController
     }
     public function createpost()
     {
+        if (!auth()->user()->CompanyProfile) {
+            return view('jd/profile_error', ['error' => 'Please complete your profile before posting a job.']);
+        }
         $company = auth()->user();
         $companyProfile = $company->companyProfile;
 

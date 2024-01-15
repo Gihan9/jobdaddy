@@ -147,6 +147,8 @@ Route::get('/jd/advertdetails', function () {
 });
 
 
+Route::get('/company/{id}', [CompanyProfileController::class, 'showcompany'])->name('company.show');
+
 
 Route::get('/job_seekers', [JobSeekerController::class, 'showJobSeekers'])->name('job_seekers.show');
 Route::get('/searchpeople', [JobSeekerController::class, 'searchpeople'])->name('people.search');
@@ -167,7 +169,7 @@ Route::get('/jd/postad', function () {
 
 Route::get('/filterByCategory', [JobsController::class, 'filterByCategory'])->name('jobs.filterByCategory');
 // Display the registration form
-Route::get('/company/register', [CompanyController::class, 'companyshow'])->name('company.register');
+Route::get('/company/registerform', [CompanyController::class, 'companyregister'])->name('company.register');
 
 // Handle the registration form submission
 Route::post('/company/register', [CompanyController::class, 'register'])->name('company.register.submit');
@@ -184,7 +186,7 @@ Route::post('/company/login', [CompanyController::class, 'login'])->name('compan
 
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','checkProfile'])->group(function () {
 
 
 

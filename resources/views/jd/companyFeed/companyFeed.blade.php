@@ -12,18 +12,18 @@
         <div class="companySearch row">
             @include('jd.companyFeed.component.search')
         </div>
+        
         <div class="companyList">
             @include('jd.companyFeed.component.companylist')
             @include('jd.companyFeed.component.categories')
         </div>  
 
 
-        {{--this part is only visisble when search is active}}
-        <div class="comsearchList">
-            @include('jd.companyFeed.component.filteredlist')
-        </div>
+        
+        
+       
 
-        --}}
+        
     </div>
 
 @endsection

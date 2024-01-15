@@ -15,12 +15,15 @@
                         <div class="location">
                             <span class="ico"><i class="bi bi-geo-alt-fill"></i></span>
                             <span>{{ $company->location }}</span>
-                        </div>
+                           <a href="{{ route('company.show', ['id' => $company->id]) }}">view</a>
+                        </div> 
                     </div>
-                </div>
-            @endforeach
+</div>
+        @endforeach
 
-
+            
+                   
+                
        
             
 

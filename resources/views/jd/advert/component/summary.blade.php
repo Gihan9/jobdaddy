@@ -20,11 +20,11 @@
                 <span>LKR{{ $job->salary }}</span>
             </div>
         </div>
-        <div class="bookmark">
-            <!-- need to handle click logic here -->
+       <!-- <div class="bookmark">
+            
             <i class="bi bi-bookmark"></i>
-            <i class="bi bi-bookmark-fill"></i>
-        </div>
+            <i class="bi bi-bookmark-fill">
+        </div></i>-->
         <div class="sharebtn"><span class="ico"><i class="bi bi-share-fill"></i></span><span>Share</span></div>
 
     </div>

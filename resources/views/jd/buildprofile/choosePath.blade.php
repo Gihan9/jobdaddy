@@ -13,7 +13,7 @@
             <h5>Find a job</h5></a>
         </div>
         <div class="buttonFrame">
-        <a href="/company/register"><<img src="/jd_img/choosecom.png" alt="">
+        <a href="{{route('company.register')}}"><img src="/jd_img/choosecom.png" alt="">
             <h5>Hire employees</h5>
         </div>
        

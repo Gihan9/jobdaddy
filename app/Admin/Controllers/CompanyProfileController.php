@@ -10,6 +10,7 @@ use \App\Models\CompanyProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use \App\Models\jobs;
+use \App\Models\Companyqa;
 class CompanyProfileController extends AdminController
 {
     /**
@@ -142,32 +143,31 @@ class CompanyProfileController extends AdminController
 
     
     public function savedCompanies()
-{
-    // Retrieve paginated list of saved companies
-    $savedCompanies = CompanyProfile::paginate(10);
+    {
+        // Retrieve paginated list of saved companies
+        $savedCompanies = CompanyProfile::paginate(10);
 
-    // Retrieve a specific job, replace '1' with the actual job ID you want
-    $job = Jobs::find(1);
+        // Retrieve a specific job, replace '1' with the actual job ID you want
+        $job = Jobs::find(1);
 
-   
-    // Check if the job exists
-    if ($job) {
-        // Retrieve related jobs with the same category
-        $categories = Jobs::where('category', $job->category)
-            ->where('id', '<>', $job->id)
-            ->limit(5)
-            ->get();
+    
+        // Check if the job exists
+        if ($job) {
+            // Retrieve related jobs with the same category
+            $categories = Jobs::where('category', $job->category)
+                ->where('id','<>', $job->id)
+                ->get();
 
-        // Count the number of related jobs
-        $jobsCount = $categories->count();
-    } else {
-        // Handle the case when the job is not found
-        $categories = collect(); // An empty collection if the job is not found
-        $jobsCount = 0;
+            // Count the number of related jobs
+            $jobsCount = $categories->count();
+        } else {
+            // Handle the case when the job is not found
+            $categories = collect(); // An empty collection if the job is not found
+            $jobsCount = 0;
+        }
+
+        return view('jd.companyFeed.companyFeed', compact('savedCompanies', 'categories', 'jobsCount'));
     }
-
-    return view('jd.companyFeed.companyFeed', compact('savedCompanies', 'categories', 'jobsCount'));
-}
 
 
 public function searchcompany(Request $request)
@@ -200,7 +200,17 @@ public function searchcompany(Request $request)
        
 
         // Return the view with the job seekers and skills
-        return view('jd.companyfeed.companyfeed', [ 'savedCompanies' => $savedCompanies,'categories' => $categories, 'jobsCount' => $jobsCount   ]);
+        return view('jd.companyfeed.component.filteredlist', [ 'savedCompanies' => $savedCompanies,'categories' => $categories, 'jobsCount' => $jobsCount , 'query' => $query  ]);
+    }
+
+    public function showcompany($id)
+    {
+        // Retrieve the company details based on the provided ID
+        $company = CompanyProfile::findOrFail($id);
+        $jobs = Jobs::where('user_id', $company->user_id)->get();
+        $qaList = Companyqa::where('user_id', $company->user_id)->get();
+
+        return view('jd.outcomProfile.outcomProfile', ['company' => $company, 'jobs' => $jobs, 'qaList' => $qaList]);
     }
 
 }

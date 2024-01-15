@@ -1,6 +1,7 @@
 <div class="contentframe personalDetailsFrame" style="position: relative">
     <div class="editprofBtn" data-bs-toggle="modal" data-bs-target="#editComDetails"> <i class="bi bi-pencil-fill"></i><span>Edit Profile</span></div>
     <div class="form">
+    <h5 style="margin-bottom: 30px; margin-top:10px">General Information</h5>
         <form action="" class="row" >
        
             <div class="col-lg-5 col-md-5 col-sm-12 mb-3">

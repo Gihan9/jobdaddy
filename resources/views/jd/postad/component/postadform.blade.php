@@ -81,7 +81,7 @@
 
 <div class="postAdFormFrame">
 
-    <form action="{{ route('jobs.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('jobs.store') }}" method="POST" enctype="multipart/form-data" class="row">
         @csrf
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                     <label for="jbposition" class="form-label">Job Position *</label>
@@ -231,7 +231,7 @@
                         <div class="artBox">
                             <div class="closeBtn">x</div>
                             <div class="uppedImg">
-                                <img src="/jd_img/placeholdeimg.png" alt="uploadpic">
+                                <img src="/jd_img/placeholdeimg.png" alt="uploadpic" id="artworkPreview">
                             </div>
                         </div>
                     </div>-->
@@ -249,6 +249,7 @@
                 <div id="keyword-container">
         <!-- Keyword fields will be dynamically added here -->
                  </div>
+                 
                     <div class="addbtn">
                         <i class="bi bi-plus-square-fill" type="button" onclick="addKeywordField()"></i>
                     </div>
@@ -263,7 +264,7 @@
 
 
         <div class=" PostAdbtnbox">
-           <button> <div class="nextBtn btn" type="submit">Next</div></button>
+           <button class="nextBtn btn">Next</button>
             <div class="previewbtn btn" data-bs-toggle="modal" data-bs-target="#previewModal">Preview</div>
 
         </div>

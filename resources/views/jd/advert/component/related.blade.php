@@ -3,7 +3,8 @@
     <hr>
 
     
-    @foreach($relatedJobs as $relatedJob)
+    
+    @forelse($relatedJobs as $relatedJob)
                  
               
 
@@ -34,8 +35,9 @@
                 
             </div>
             </a>
-    @endforeach
+    @empty
     No related jobs
+    @endforelse
    
 
             

@@ -73,7 +73,7 @@ class CompanyController extends AdminController
     }
 
 
-    public function companyshow()
+    public function companyregister()
     {
         
     

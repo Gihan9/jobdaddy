@@ -4,14 +4,14 @@
 
         <h3>Top categories</h3>
 
-        @foreach($categories as $category)
-    <div class="catCardBox col-3">
-        <div class="catCard">
-            <div class="catType">{{ $category->category }}</div>
-            <div class="catCount">{{ $jobsCount }} Open position</div>
+    @foreach($categories as $category)
+        <div class="catCardBox col-3">
+            <div class="catCard">
+                <div class="catType">{{ $category->category }}</div>
+                <div class="catCount">{{ $jobsCount }} Open position</div>
+            </div>
         </div>
-    </div>
-@endforeach
+    @endforeach
 
 
          <!-- new category card --->

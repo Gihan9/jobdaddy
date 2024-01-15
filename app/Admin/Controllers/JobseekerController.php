@@ -11,6 +11,7 @@ use OpenAdmin\Admin\Layout\Content;
 use Illuminate\Http\Request;
 use App\Models\Skill;
 use App\Models\User;
+use Livewire\Components\SearchPeople;
 
 
 use App\Models\JobPreference;
@@ -325,12 +326,12 @@ class JobseekerController extends AdminController
 
     public function showJobSeekers()
     {
-        $jobSeekers = JobSeeker::paginate(10); 
-        $skills = JobSeeker::with('skills');
-        return view('jd.peoplefeed.people', ['jobSeekers' => $jobSeekers, 'skills' => $skills ]);
+        $jobSeekers = JobSeeker::with(['user', 'skills'])->paginate(10);
+       
+        return view('jd.peoplefeed.people', ['jobSeekers' => $jobSeekers ]);
     }
 
-    public function searchpeople(Request $request)
+   public function searchpeople(Request $request)
     {
         $query = $request->input('query');
 
@@ -344,6 +345,11 @@ class JobseekerController extends AdminController
         // Return the view with the job seekers and skills
         return view('jd.peoplefeed.people', ['jobSeekers' => $jobSeekers]);
     }
+
+   /* public function searchpeople(Request $request, SearchPeople $searchPeople)
+    {
+        return view('jd.peoplefeed.people')->with('searchPeople', $searchPeople);
+    }*/
 
 
 }
