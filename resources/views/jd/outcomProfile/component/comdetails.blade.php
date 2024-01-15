@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<div class="descriptionBox  mb-3" >
+<div class="descriptionBox faqs mb-3" >
     <div class="aboutCompany profCard ">
         <div class="profCardTitle mb-3">
             <div class="contentFrameTitle">
@@ -50,4 +50,5 @@
        
 
 </div>
-    </div>
+</div>
+</div>
