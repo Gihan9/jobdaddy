@@ -155,6 +155,10 @@ Route::get('/jd/advertdetails', function () {
 
 Route::get('/company/{id}', [CompanyProfileController::class, 'showcompany'])->name('company.show');
 
+Route::get('/user/details/{id}', [JobSeekerController::class, 'showDetails'])->name('user.details');
+
+
+
 
 Route::get('/job_seekers', [JobSeekerController::class, 'showJobSeekers'])->name('job_seekers.show');
 Route::get('/searchpeople', [JobSeekerController::class, 'searchpeople'])->name('people.search');

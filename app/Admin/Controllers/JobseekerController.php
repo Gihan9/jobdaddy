@@ -352,4 +352,14 @@ class JobseekerController extends AdminController
     }*/
 
 
+    public function showDetails($id)
+    {
+        // Fetch job seeker details and related information based on $id
+        $jobSeeker = user::with(['jobSeeker','skills', 'jobPreferences', 'experiences', 'educations'])
+                               ->find($id);
+    
+        // Return a view with job seeker details
+        return view('jd.outpeople.outpeople', ['jobSeeker' => $jobSeeker]);
+    }
+
 }
