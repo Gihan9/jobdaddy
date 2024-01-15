@@ -17,8 +17,8 @@
     @csrf
     <label for="salary_range">Salary Range:</label>
     <select name="salary_range" id="salary_range">
-        <option value="Rs.50000">RS.50000</option>
-        <option value="Rs.100000">Rs.100000</option>
+        <option value="50000">RS.50000</option>
+        <option value="100000">Rs.100000</option>
         <!-- Add more options as needed -->
     </select>
 

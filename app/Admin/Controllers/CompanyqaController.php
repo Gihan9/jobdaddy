@@ -137,7 +137,7 @@ class CompanyqaController extends AdminController
 
     public function destroyqa($id)
     {
-        // Soft delete logic - Mark as deleted without actually removing from the database
+        
         $qna = Companyqa::findOrFail($id);
         $qna->delete();
 

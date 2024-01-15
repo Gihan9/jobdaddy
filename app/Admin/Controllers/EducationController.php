@@ -103,16 +103,16 @@ class EducationController extends AdminController
 
 
     public function destroy($id)
-{
-    $education = Education::findOrFail($id);
+    {
+        $education = Education::findOrFail($id);
+        
     
-   
-    if ($education->user_id !== auth()->id()) {
-        abort(403, 'Unauthorized action.');
+        if ($education->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $education->delete();
+
+        return redirect('/jd/profile')->with('success', 'Education qualification deleted successfully!');
     }
-
-    $education->delete();
-
-    return redirect('/jd/profile')->with('success', 'Education qualification deleted successfully!');
-}
 }

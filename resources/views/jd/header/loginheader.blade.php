@@ -24,7 +24,7 @@
         @guest
             @if (Route::has('login'))
                 <li class="nav-item navbtn navLogin">
-                    <a class="nav-link" href="/jd/register">Register</a>
+                    <a class="nav-link" href="/jd/choice">Register</a>
                 </li>
             @endif
 

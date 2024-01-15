@@ -9,11 +9,11 @@
     <h2 style="text-align: center; margin-bottom:-45px; margin-top:15px;">Select What You Are Looking For</h2>
     <div class="choiceFrame">
         <div class="buttonFrame">
-            <a href="/jd/login"><img src="/jd_img/findcom.png" alt="">
+            <a href="/jd/register"><img src="/jd_img/findcom.png" alt="">
             <h5>Find a job</h5></a>
         </div>
         <div class="buttonFrame">
-        <a href="/company/login"><<img src="/jd_img/choosecom.png" alt="">
+        <a href="{{route('company.register')}}"><img src="/jd_img/choosecom.png" alt="">
             <h5>Hire employees</h5>
         </div>
        

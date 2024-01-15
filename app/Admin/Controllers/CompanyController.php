@@ -73,12 +73,13 @@ class CompanyController extends AdminController
     }
 
 
-    public function companyshow()
+    public function companyregister()
     {
         
     
         return view('jd.companyregister.register');
     }
+
     public function showLoginForm()
     {
         
@@ -88,25 +89,25 @@ class CompanyController extends AdminController
     
     
     public function register(Request $request)
-{
-    // Validate the request
-    $request->validate([
-        'phone' => 'required|unique:company', // Assuming "companies" is the table name for companies
-        'password' => 'required|min:6|confirmed',
-    ]);
+    {
+        // Validate the request
+        $request->validate([
+            'phone' => 'required|unique:company', 
+            'password' => 'required|min:6|confirmed',
+        ]);
 
-    // Create a new company
-    $company = Company::create([
-        'phone' => $request->input('phone'),
-        'password' => Hash::make($request->input('password')),
-    ]);
+        // Create a new company
+        $company = Company::create([
+            'phone' => $request->input('phone'),
+            'password' => Hash::make($request->input('password')),
+        ]);
 
-    // You may choose to automatically log in the user after registration
-    // Auth::login($company);
+        
+        // Auth::login($company);
 
-    // Redirect to a success page or wherever you want
-    return redirect('/company/login')->with('success', 'Company registered successfully!');
-}
+        // Redirect to a success page 
+        return redirect('/company/login')->with('success', 'Company registered successfully!');
+    }
 
 
 

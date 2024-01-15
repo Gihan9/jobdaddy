@@ -20,7 +20,7 @@
         @endforeach
         </ul>
     @else
-        <p>No skills added</p>
+        <p>No positions added</p>
     @endif
    
     <div  data-bs-toggle="modal" data-bs-target="#jobpref" class="profCardEditbtn mainAddIcon"> <div class="addTypeBtn">

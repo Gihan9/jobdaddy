@@ -23,9 +23,6 @@ use App\Livewire\CompanyRegister;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
 
 Route::get('/', function () {
     return view('jd.home.main');
@@ -156,6 +153,15 @@ Route::get('/jd/advertdetails', function () {
 
 });
 
+
+Route::get('/company/{id}', [CompanyProfileController::class, 'showcompany'])->name('company.show');
+
+
+Route::get('/job_seekers', [JobSeekerController::class, 'showJobSeekers'])->name('job_seekers.show');
+Route::get('/searchpeople', [JobSeekerController::class, 'searchpeople'])->name('people.search');
+
+Route::get('/searchcompany', [CompanyProfileController::class, 'searchcompany'])->name('company.search');
+
 Route::get('/jobs', [JobsController::class, 'jobfeed'])->name('jobs.index');
 
 Route::get('/jobs/{job}', [JobsController::class, 'showjob'])->name('jobs.show');
@@ -170,7 +176,7 @@ Route::get('/jd/postad', function () {
 
 Route::get('/filterByCategory', [JobsController::class, 'filterByCategory'])->name('jobs.filterByCategory');
 // Display the registration form
-Route::get('/company/register', [CompanyController::class, 'companyshow'])->name('company.register');
+Route::get('/company/registerform', [CompanyController::class, 'companyregister'])->name('company.register');
 
 // Handle the registration form submission
 Route::post('/company/register', [CompanyController::class, 'register'])->name('company.register.submit');
@@ -182,9 +188,15 @@ Route::get('/company/login', [CompanyController::class, 'showLoginForm'])->name(
 // Handle the login form submission
 Route::post('/company/login', [CompanyController::class, 'login'])->name('company.login.submit');
 
+    Route::get('/saved-companies', [CompanyProfileController::class, 'savedCompanies'])
+    ->name('saved.companies');
 
 
-Route::middleware(['auth'])->group(function () {
+
+Route::middleware(['auth','checkProfile'])->group(function () {
+
+
+
     Route::get('/company/profile/form', [CompanyProfileController::class, 'showForm'])->name('company.profile.form');
     Route::post('/company/profile/store-or-update', [CompanyProfileController::class, 'storeOrUpdate'])->name('company.profile.storeOrUpdate');
 
@@ -211,7 +223,9 @@ Route::middleware(['auth'])->group(function () {
 
     // Delete a specific question and answer
     Route::delete('company/qna/{qna}', [CompanyqaController::class, 'destroyqa'])->name('company.qna.destroy');
-Route::get('/cc', [JobsController::class, 'createpost'])->name('jobs.create');
+
+    //job post form
+    Route::get('/cc', [JobsController::class, 'createpost'])->name('jobs.create');
    
     Route::post('/jobs/store', [JobsController::class, 'storepost'])->name('jobs.store');
 });

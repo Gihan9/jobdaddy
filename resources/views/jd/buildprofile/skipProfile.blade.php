@@ -12,11 +12,19 @@
 <h2 style="text-align: center; " class="thankuTitle ">Thank you for registering !</h2>
 <h5 style="text-align: center;  margin-top:15px;" class="thankuSubTitle">How about we create a profile ?</h5>
 <div class="choiceFrame mt-4">
-    <div class="buttonFrame skip">
-        <a href="/jd/profile"><h5>Will do it later</h5></a>
+<div class="buttonFrame skip">
+        @if(auth()->user()->acc_type === 'company')
+            <a href="/company/profile/form"><h5>Will do it later</h5></a>
+        @else
+            <a href="/jd/profile"><h5>Will do it later</h5></a>
+        @endif
     </div>
     <div class="buttonFrame create">
-       <a href="/jd/build"> <h5>Create a profile</h5></a> 
+        @if(auth()->user()->acc_type === 'company')
+            <a href="/company/build"><h5>Create a profile</h5></a>
+        @else
+            <a href="/jd/build"><h5>Create a profile</h5></a>
+        @endif
     </div>
    
 </div>

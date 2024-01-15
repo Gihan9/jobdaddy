@@ -10,7 +10,7 @@
     <div class="row postadBox">
         <div class="backLinks">
             <!--<span class="backLink"><i class="bi bi-arrow-left"></i>Back</span>-->
-            <img src="/jd_img/backbtn.png" alt="back button">
+            <a href="/company/profile/form"><img src="/jd_img/backbtn.png" alt="back button"></a>
         </div>
         <div class="pageTitle">Create a Job Post</div>
         <div class="pageSubDescrip">Fill following details to post your job</div>

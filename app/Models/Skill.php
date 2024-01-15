@@ -16,4 +16,9 @@ class Skill extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function jobSeeker()
+    {
+        return $this->belongsTo(JobSeeker::class, 'user_id');
+    }
+    
 }

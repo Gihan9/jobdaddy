@@ -23,9 +23,9 @@
 
             <!-- Accounting and Finance -->
             <div class="form-check category">
-                <label class="form-check-label catlabel {{ $selectedCategory === 'software_engineer' ? 'selected' : '' }}" for="accfin">
+                <label class="form-check-label catlabel {{ $selectedCategory === 'software' ? 'selected' : '' }}" for="accfin">
                     software engineer
-                    <input class="form-check-input" type="radio" name="category" id="accfin" value="software_engineer"  onchange="submitFilterForm()">
+                    <input class="form-check-input" type="radio" name="category" id="accfin" value="software"  onchange="submitFilterForm()">
                 </label>
             </div>
 
@@ -39,9 +39,9 @@
 
             <!-- Design Jobs -->
             <div class="form-check category">
-                <label class="form-check-label catlabel {{ $selectedCategory === 'design' ? 'selected' : '' }}" for="dsgn">
-                    Design Jobs
-                    <input class="form-check-input" type="radio" name="category" id="dsgn" value="design"  onchange="submitFilterForm()">
+                <label class="form-check-label catlabel {{ $selectedCategory === 'account' ? 'selected' : '' }}" for="dsgn">
+                    Accountant
+                    <input class="form-check-input" type="radio" name="category" id="dsgn" value="account"  onchange="submitFilterForm()">
                 </label>
             </div>
 

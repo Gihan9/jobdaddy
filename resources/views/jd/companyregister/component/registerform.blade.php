@@ -14,8 +14,10 @@
             <div class="inframe">
                 <input class="form-control" id="emailLogin" type="tel" name="phone" aria-label="phone" value="{{ old('phone') }}" required>
                 
-            </div
-            >
+            </div>
+            @error('phone')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
            
         </div>
         <input class="form-control" id="emailLogin" type="text" name="acc_type"  value="company" required readonly style="display: none">
@@ -29,6 +31,9 @@
                    
                 </div>
             </div>
+            @error('password')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
         </div>
         <div class="mb-3">
             <label for="password_confirmation" class="form-label">Confirm Password</label>
@@ -38,12 +43,18 @@
                     <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
                 </div>
             </div>
+            @error('password_confirmation')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+                @error('password.confirmed')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
         </div>
 
         <button type="submit" class="btn formBtn">REGISTER</button>
     </form>
     <div class="alternateLinks">
-    <div style="text-align: center" class="formText">Already Have An Account ? <span class="formLink"><a href="/company/login">Login Now</a></span></div>
+    <div style="text-align: center" class="formText">Already Have An Account ? <span class="formLink"><a href="/jd/login">Login Now</a></span></div>
     </div>
     
 </div>

@@ -23,6 +23,9 @@
                 
                 <input type="tel" name="phone" id="emailLogin" class="form-control" aria-label="phone" value="{{ old('phone') }}" required>
             </div>
+            @error('phone')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
            
         </div>
         <div class="mb-3">
@@ -34,6 +37,9 @@
                     <span class="input-group-text " id="eyebtn"><i id="eyeicon" class="bi bi-eye-fill"></i></span>
                 </div>
             </div>
+            @error('password')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             
 
             
@@ -43,7 +49,7 @@
         <button type="submit" class="btn formBtn">LOGIN</button>
     </form>
     <div class="alternateLinks">
-    <div style="text-align: center" class="formText">Dont Have An Account ? <span class="formLink"><a href="/jd/register">Register Now</a></span></div>
+    <div style="text-align: center" class="formText">Dont Have An Account ? <span class="formLink"><a href="/jd/choice">Register Now</a></span></div>
     </div>
     
 </div>

@@ -9,6 +9,7 @@ use OpenAdmin\Admin\Show;
 use \App\Models\CompanyProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use \App\Models\jobs;
 use \App\Models\Companyqa;
 class CompanyProfileController extends AdminController
 {
@@ -108,36 +109,108 @@ class CompanyProfileController extends AdminController
 
    
 
-public function updateProfilePicture(Request $request)
-{
-    $request->validate([
-        'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
-    ]);
+    public function updateProfilePicture(Request $request)
+    {
+        $request->validate([
+            'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+        ]);
 
-    $user = auth()->user();
-    $companyProfile = $user->companyProfile;
+        $user = auth()->user();
+        $companyProfile = $user->companyProfile;
 
-    // If the company doesn't have a profile, create one
-    if (!$companyProfile) {
-        $companyProfile = new CompanyProfile();
-        $companyProfile->user_id = $user->id;
-    }
-
-    // Handle file upload
-    if ($request->hasFile('profile_picture')) {
-        $file = $request->file('profile_picture');
-        $path = $file->store('profile_pictures', 'public'); // Adjust storage path as needed
-
-        // Remove old profile picture if exists
-        if ($companyProfile->profile_picture) {
-            Storage::disk('public')->delete($companyProfile->profile_picture);
+        // If the company doesn't have a profile, create one
+        if (!$companyProfile) {
+            $companyProfile = new CompanyProfile();
+            $companyProfile->user_id = $user->id;
         }
 
-        $companyProfile->profile_picture = $path;
-        $companyProfile->save();
+        // Handle file upload
+        if ($request->hasFile('profile_picture')) {
+            $file = $request->file('profile_picture');
+            $path = $file->store('profile_pictures', 'public'); 
+
+            // Remove old profile picture if exists
+            if ($companyProfile->profile_picture) {
+                Storage::disk('public')->delete($companyProfile->profile_picture);
+            }
+
+            $companyProfile->profile_picture = $path;
+            $companyProfile->save();
+        }
+
+        return redirect()->route('company.profile.form')->with('success', 'Profile picture updated successfully!');
     }
 
-    return redirect()->route('company.profile.form')->with('success', 'Profile picture updated successfully!');
-}
+    
+    public function savedCompanies()
+    {
+        // Retrieve paginated list of saved companies
+        $savedCompanies = CompanyProfile::paginate(10);
+
+        // Retrieve a specific job, replace '1' with the actual job ID you want
+        $job = Jobs::find(1);
+
+    
+        // Check if the job exists
+        if ($job) {
+            // Retrieve related jobs with the same category
+            $categories = Jobs::where('category', $job->category)
+                ->where('id','<>', $job->id)
+                ->get();
+
+            // Count the number of related jobs
+            $jobsCount = $categories->count();
+        } else {
+            // Handle the case when the job is not found
+            $categories = collect(); // An empty collection if the job is not found
+            $jobsCount = 0;
+        }
+
+        return view('jd.companyFeed.companyFeed', compact('savedCompanies', 'categories', 'jobsCount'));
+    }
+
+
+public function searchcompany(Request $request)
+    {
+        $query = $request->input('query');
+       $savedCompanies = CompanyProfile::paginate(10);
+        // Retrieve job seekers from the database based on the search query
+        $savedCompanies = CompanyProfile::where('name', 'like', '%' . $query . '%')
+            ->paginate(10);
+
+            $job = Jobs::find(1);
+
+   
+            // Check if the job exists
+            if ($job) {
+                // Retrieve related jobs with the same category
+                $categories = Jobs::where('category', $job->category)
+                    ->where('id', '<>', $job->id)
+                    ->limit(5)
+                    ->get();
+        
+                // Count the number of related jobs
+                $jobsCount = $categories->count();
+            } else {
+                // Handle the case when the job is not found
+                $categories = collect(); // An empty collection if the job is not found
+                $jobsCount = 0;
+            }
+        // Load the skills relationship for the job seekers
+       
+
+        // Return the view with the job seekers and skills
+        return view('jd.companyfeed.component.filteredlist', [ 'savedCompanies' => $savedCompanies,'categories' => $categories, 'jobsCount' => $jobsCount , 'query' => $query  ]);
+    }
+
+    public function showcompany($id)
+    {
+        // Retrieve the company details based on the provided ID
+        $company = CompanyProfile::findOrFail($id);
+        $jobs = Jobs::where('user_id', $company->user_id)->get();
+        $qaList = Companyqa::where('user_id', $company->user_id)->get();
+
+        return view('jd.outcomProfile.outcomProfile', ['company' => $company, 'jobs' => $jobs, 'qaList' => $qaList]);
+    }
 
 }

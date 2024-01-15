@@ -3,7 +3,7 @@
     <img src="{{ asset('storage/' . $job->company_logo) }}" alt="advertisement picture">
     </div>
     <div class="adcomDescrip">
-        <div class="time">Posted 3 days ago</div>
+        <div class="time">Posted {{ $job->created_at->diffForHumans() }}</div>
         <div class="adTitle">{{ $job->position }} - {{ $job->work_type }}</div>
         <div class="comName">{{ $job->company_name }}</div>
         <div class="tags">
@@ -20,11 +20,11 @@
                 <span>LKR{{ $job->salary }}</span>
             </div>
         </div>
-        <div class="bookmark">
-            <!-- need to handle click logic here -->
+       <!-- <div class="bookmark">
+            
             <i class="bi bi-bookmark"></i>
-            <i class="bi bi-bookmark-fill"></i>
-        </div>
+            <i class="bi bi-bookmark-fill">
+        </div></i>-->
         <div class="sharebtn"><span class="ico"><i class="bi bi-share-fill"></i></span><span>Share</span></div>
 
     </div>

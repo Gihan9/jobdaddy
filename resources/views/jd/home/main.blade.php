@@ -9,20 +9,22 @@
     @include('jd.splash')
     <div>
         <div class="optionList">
+           
             <div class="item item1">
                 <div class="gridtext">Jobs</div>
-                <div class="homeimgBox"><img src="/jd_img/jobpics.png" alt=""></div>
+                <div class="homeimgBox"> <a href="/jobs"><img src="/jd_img/jobpics.png" alt=""></a></div>
             </div>
+
             <div class="item item2">
-                <div class="homeimgBox"><img src="/jd_img/peoplepic.png" alt=""></div>
+                <div class="homeimgBox"><a href="/job_seekers"><img src="/jd_img/peoplepic.png" alt=""></a></div>
                 <div class="gridtext">People</div>
             </div>
             
-            <div class="item item3">
-                <div class="gridtext">Upload your vacancy</div>
+            <div class="item item3"><a href="/company/profile/form">
+                <div class="gridtext">Upload your vacancy</div></a>
             </div>
-            <div class="item item4">
-                <div class="gridtext">Upload your CV</div>
+            <div class="item item4"><a href="/jd/profile">
+                <div class="gridtext">Upload your CV</div></a>
             </div>
             <div class="item item5 whatsappbox">
                 <div class="gridtext">Customer Support</div>
