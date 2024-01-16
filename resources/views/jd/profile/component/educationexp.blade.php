@@ -14,8 +14,8 @@
                 <div class="profCardTitle">
                     <div class="subCardTitle">{{$ed->degree}} </div>
                     <div class="subCardIcons">
-                        <div class="profCardEditbtn "><i class="bi bi-pencil-square"></i></div>
-                    <form action="{{ route('educations.destroy', ['education' => $ed->id]) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this education qualification?')" style="display: inline;">
+                       <!-- <div class="profCardEditbtn "><i class="bi bi-pencil-square"></i></div>-->
+                    <form action="{{ route('educations.destroy', ['education' => $ed->id]) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this education qualification?')" style="display: inline;"
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="profCardDeleteBtn delbtn"><i class="bi bi-trash"></i></button>

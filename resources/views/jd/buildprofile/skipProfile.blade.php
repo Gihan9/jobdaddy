@@ -21,9 +21,29 @@
     </div>
     <div class="buttonFrame create">
         @if(auth()->user()->acc_type === 'company')
-            <a href="/company/build"><h5>Create a profile</h5></a>
+           
+
+            <a href="#" onclick="showCompany()">
+                            <div class="gridtext"><h5>Create a profile</h5></div>
+                        </a>
+
+                        <script>
+                            function showCompany() {
+                                alert('Comming Soon.');
+                            }
+                        </script>
         @else
-            <a href="/jd/build"><h5>Create a profile</h5></a>
+           
+
+            <a href="#" onclick="showCompany()">
+                            <div class="gridtext"><h5>Create a profile</h5></div>
+                        </a>
+
+                        <script>
+                            function showCompany() {
+                                alert('Comming Soon.');
+                            }
+                        </script>
         @endif
     </div>
    

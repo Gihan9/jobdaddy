@@ -4,10 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <meta name="author" content="F4">
+    <meta name="description" content="Beta version 1.040 for Job Daddy Program ">
+    <meta name="keywords" content="jd, job daddy, jobdaddy">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Jobdaddy') }}</title>
+    <title>Jdbeta</title>
+    <link rel="icon" type="image/x-icon" href="/jd_img/icon.ico">
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">

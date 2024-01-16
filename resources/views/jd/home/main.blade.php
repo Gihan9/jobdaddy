@@ -20,12 +20,62 @@
                 <div class="gridtext">People</div>
             </div>
             
-            <div class="item item3"><a href="/company/profile/form">
-                <div class="gridtext">Upload your vacancy</div></a>
+           
+   
+            <div class="item item3">
+                @if(auth()->check())
+                    @if(auth()->user()->acc_type == 'user')
+                        <!-- Show link for company with message -->
+                        <a href="#" onclick="showCompanyMessageVacancy()">
+                            <div class="gridtext">Upload your vacancy</div>
+                        </a>
+
+                        <script>
+                            function showCompanyMessageVacancy() {
+                                alert('You are logged in as a user. Please log in as a company if you want to upload a vacancy.');
+                            }
+                        </script>
+                    @else
+                        <!-- Show link for user -->
+                        <a href="/company/profile/form">
+                            <div class="gridtext">Upload your vacancy</div>
+                        </a>
+                    @endif
+                @else
+                    <!-- Show link for user -->
+                    <a href="/company/profile/form">
+                        <div class="gridtext">Upload your vacancy</div>
+                    </a>
+                @endif
             </div>
-            <div class="item item4"><a href="/jd/profile">
-                <div class="gridtext">Upload your CV</div></a>
+
+            <div class="item item4">
+                @if(auth()->check())
+                    @if(auth()->user()->acc_type == 'company')
+                        <!-- Show link for company with message -->
+                        <a href="#" onclick="showCompanyMessage()">
+                            <div class="gridtext">Upload your CV</div>
+                        </a>
+
+                        <script>
+                            function showCompanyMessage() {
+                                alert('You are logged in as a company. Please log in as a user if you want to create a user profile.');
+                            }
+                        </script>
+                    @else
+                        <!-- Show link for user -->
+                        <a href="/jd/profile">
+                            <div class="gridtext">Upload your CV</div>
+                        </a>
+                    @endif
+                @else
+                    <!-- Show link for user -->
+                    <a href="/jd/profile">
+                        <div class="gridtext">Upload your CV</div>
+                    </a>
+                @endif
             </div>
+
             <div class="item item5 whatsappbox">
                 <div class="gridtext">Customer Support</div>
                 <div class="homeimgBox whatsappLogo"><img style="width: 60px; height:60px" src="/jd_img/whatsapp.png" alt=""></div>

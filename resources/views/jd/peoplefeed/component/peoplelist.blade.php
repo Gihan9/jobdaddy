@@ -11,7 +11,8 @@
                         <img src="{{ asset('storage/' . $jobSeeker->profile_picture) }}" alt="">
                     </div>
                     <div class="personBtns">
-                        <div class="viewProf smbtn">Profile</div>
+                    <a href="{{ route('user.details', ['id' => $jobSeeker->user->id]) }}" class="viewProf smbtn">Profile</a>
+                        
                         <div class="shortlist smbtn">Shortlist</div>
                     </div>
                 </div>

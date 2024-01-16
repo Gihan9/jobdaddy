@@ -9,7 +9,8 @@
     <div class="row advertBox">
         <div class="backLinks">
             <!--<span class="backLink"><i class="bi bi-arrow-left"></i>Back</span>-->
-            <a href="/jobs"><img src="/jd_img/backbtn.png" alt="back button"></a>
+            <a href="{{ url()->previous() }}"><img src="/jd_img/backbtn.png" alt="back button"></a>
+          
         </div>
         <div class="adSummary">
             @include('jd.advert.component.summary')

@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
-                        <label for="designation" class="form-label formlab">Designation</label>
+                        <label for="designation" class="form-label formlab">Job Title</label>
                         <div class="inframe">
                             
                             <input type="text" name="designation" id="emailLogin" aria-label="email"  class="form-control" value="{{ old('designation', $profile->designation ?? '') }}">

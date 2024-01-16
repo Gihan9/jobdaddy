@@ -10,7 +10,11 @@
         <form method="post" action="{{ route('skills.delete', ['skillId' =>      $skill->id]) }}">
             @csrf
             @method('DELETE')
-            <button type="submit"> <i class="bi bi-x"></i></button>
+          
+            <button type="submit" class="icon-button">
+                <i class="bi bi-x" ></i>
+            </button>
+
         </form>
           
             <span>{{ $skill->skill }}</span>
@@ -29,3 +33,12 @@
     
 
 </div>
+
+<style>
+    .icon-button {
+        border: none;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+    }
+</style>

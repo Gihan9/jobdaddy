@@ -14,7 +14,7 @@
 <div class="aboutSafety blueframe">
     <div class="blueframeTitle">Safety Tips</div>
     <div class="blueframeText">
-        Beware of online scammers. Don'tshare sensitive information (credit/
+        Beware of online scammers. Don't share sensitive information (credit/
         debit card details, OTP messages etc.) with 3rd parties.   
     </div>
     <div class="safetylinks">

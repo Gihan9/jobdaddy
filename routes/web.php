@@ -160,6 +160,10 @@ Route::get('/jd/payment', function () {
 
 Route::get('/company/{id}', [CompanyProfileController::class, 'showcompany'])->name('company.show');
 
+Route::get('/user/details/{id}', [JobSeekerController::class, 'showDetails'])->name('user.details');
+
+
+
 
 Route::get('/job_seekers', [JobSeekerController::class, 'showJobSeekers'])->name('job_seekers.show');
 Route::get('/searchpeople', [JobSeekerController::class, 'searchpeople'])->name('people.search');
@@ -179,8 +183,9 @@ Route::get('/jd/postad', function () {
 });
 
 Route::get('/filterByCategory', [JobsController::class, 'filterByCategory'])->name('jobs.filterByCategory');
+
 // Display the registration form
-Route::get('/company/registerform', [CompanyController::class, 'companyregister'])->name('company.register');
+Route::get('/companyregister', [CompanyController::class, 'companyregister'])->name('company.register');
 
 // Handle the registration form submission
 Route::post('/company/register', [CompanyController::class, 'register'])->name('company.register.submit');
