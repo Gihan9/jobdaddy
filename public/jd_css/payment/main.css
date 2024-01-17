@@ -1,0 +1,55 @@
+.backLinks{
+    max-height: 23px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+}
+.backLinks img{
+    height: 100%;
+}
+
+.payTitle{
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(29, 29, 121);
+}
+.paySubDescrip{
+    font-size: 12px;
+    font-weight: 500;
+    color: rgb(29, 29, 121);
+
+}
+.summaryTitle{
+    font-weight: 700;
+}
+
+
+
+.form-control:focus {
+    box-shadow: none !important; 
+}
+
+
+
+.inframe{
+    border: 2px rgb(72, 76, 126) solid;
+    border-radius: 5px;
+    
+}
+
+.inframe:focus-within {
+    box-shadow: 0 0 5px var(--primPurple); 
+    border-color: none;
+    
+}
+
+.inframe input , .input-group-text{
+    border: none;
+    background-color: white;
+    font-size: 12px;
+}
+
+
+

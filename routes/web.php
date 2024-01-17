@@ -153,6 +153,11 @@ Route::get('/jd/advertdetails', function () {
 });
 
 
+Route::get('/jd/payment', function () {
+    return view('jd.payment.payment');
+});
+
+
 Route::get('/company/{id}', [CompanyProfileController::class, 'showcompany'])->name('company.show');
 
 Route::get('/user/details/{id}', [JobSeekerController::class, 'showDetails'])->name('user.details');
