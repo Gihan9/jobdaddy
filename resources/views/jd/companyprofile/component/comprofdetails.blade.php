@@ -41,6 +41,9 @@
                 <div class="profdata">&nbsp; &nbsp;0712345678</div> 
                 @endisset    
             </div>
+            @error('phone')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
             <div class="col-md-5 col-sm-12 mb-3">
                 <div class="profdatatype">Location</div>
                 @isset($companyProfile)

@@ -20,6 +20,9 @@
                         <input type="text" name="name" value="{{ $companyProfile->name ?? old('name') }}">
                         </div>
                     </div>
+                    @error('name')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                     <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
                         <label for="comwebaddress" class="form-label formlab">Company Website URL (If have any)</label>
                         <div class="inframe">
@@ -44,6 +47,7 @@
                         <input type="email" name="email" value="{{ $companyProfile->email ?? old('email') }}">
                         </div>
                     </div>
+                    
 
                     <div class="col-md-12 col-sm-12 mb-3">
                         <label for="phone" class="form-label formlab">Contact Number </label>
@@ -52,6 +56,9 @@
                         </div>
                         
                     </div>
+                    @error('phone')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
 
                     <div class="col-md-12 col-sm-12 mb-3">
                         <label for="location" class="form-label formlab">Location </label>

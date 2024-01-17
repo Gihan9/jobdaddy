@@ -2,14 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\admin\Controllers\JobuserController;
+use App\Admin\Controllers\JobuserController;
 use App\admin\Controllers\JobseekerController;
-use App\admin\Controllers\ExperienceController;
-use App\admin\Controllers\EducationController;
-use App\admin\Controllers\CompanyController;
-use App\admin\Controllers\CompanyProfileController;
-use App\admin\Controllers\CompanyqaController;
-use App\admin\Controllers\JobsController;
+use App\Admin\Controllers\ExperienceController;
+use App\Admin\Controllers\EducationController;
+use App\Admin\Controllers\CompanyController;
+use App\Admin\Controllers\CompanyProfileController;
+use App\Admin\Controllers\CompanyqaController;
+use App\Admin\Controllers\JobsController;
 use App\Livewire\CompanyLogin;
 use App\Livewire\CompanyRegister;
 /*
@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
     // Routes that require authentication
     Route::get('/jd/profile', [JobseekerController::class, 'so']);
     Route::get('/jd/profile/edit', [JobseekerController::class, 'edit']);
-    Route::post('/jd/profile/update', [JobseekerController::class, 'up']);
+    Route::post('/jd/profile/update', [JobseekerController::class, 'updateProfile']);
     Route::post('/jd/profile/store', [ExperienceController::class, 'sto']);
     Route::delete('/jd/experiences/{experience}', [ExperienceController::class, 'destroy'])->name('experiences.destroy');
     Route::get('/jd/profile/experiences/{id}/edit', [ExperienceController::class, 'edit'])->name('experiences.edit');

@@ -32,17 +32,24 @@
                     <div class="col-md-6 col-sm-12 mb-3">
                         <label for="sex" class="form-label formlab">Sex</label>
                         <div class="inframe">
-                        <input type="text" name="sex" id="sex" class="form-control" value="{{ old('sex', $profile->sex ?? '') }}">
+                            <select name="sex" id="sex" class="form-control">
+                                <option value="male" {{ (old('sex', $profile->sex ?? '') == 'male') ? 'selected' : '' }}>Male</option>
+                                <option value="female" {{ (old('sex', $profile->sex ?? '') == 'female') ? 'selected' : '' }}>Female</option>
+                                <option value="other" {{ (old('sex', $profile->sex ?? '') == 'other') ? 'selected' : '' }}>Other</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12 mb-3">
                         <label for="mStatus" class="form-label formlab">Marital Status</label>
                         <div class="inframe">
-                           
-                            <input type="text" name="marital_status" id="emailLogin" aria-label="email"  class="form-control" value="{{ old('marital_status', $profile->marital_status ?? '') }}">
+                            <select name="marital_status" id="mStatus" class="form-control">
+                                <option value="single" {{ (old('marital_status', $profile->marital_status ?? '') == 'single') ? 'selected' : '' }}>Single</option>
+                                <option value="married" {{ (old('marital_status', $profile->marital_status ?? '') == 'married') ? 'selected' : '' }}>Married</option>
+                                <!-- Add more options as needed -->
+                            </select>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                         <label for="location" class="form-label formlab">Location</label>
                         <div class="inframe">
                             
@@ -60,9 +67,12 @@
                     <div class="col-md-12 col-sm-12 mb-3">
                         <label for="emailLogin" class="form-label">Contact Number (WhatsApp)</label>
                         <div class="inframe">
-                            <input type="text" name="phone" id="emailLogin" aria-label="email"  class="form-control" value="{{ old('phone', $profile->phone ?? '') }}">
+                            <input type="tel" name="phone" id="emailLogin" aria-label="email"  class="form-control" value="{{ old('phone', $profile->phone ?? '') }}">
                         </div>
-                        
+                    @error('phone')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+
                     </div>
 
                     <div class="modalBtns">
@@ -78,3 +88,5 @@
       </div>
     </div>
   </div>
+
+  

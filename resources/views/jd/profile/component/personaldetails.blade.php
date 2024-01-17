@@ -57,6 +57,9 @@
                 <div class="inframe">
                     <input class="form-control" id="phone" type="text" value="{{ old('phone', $profile->phone ?? '') }}" readonly>
                 </div>
+                @error('phone')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 <div class="form-check">
                     <!--
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -71,3 +74,4 @@
 
 
 </div>
+

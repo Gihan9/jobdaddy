@@ -93,20 +93,30 @@ class CompanyProfileController extends AdminController
     }
 
     public function storeOrUpdate(Request $request)
-    {
-        $companyProfile = auth()->user()->companyProfile;
+{
+    $user = auth()->user();
 
-        if (!$companyProfile) {
-            $companyProfile = new CompanyProfile();
-            $companyProfile->user_id = auth()->id();
-        }
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'website' => 'nullable|url|max:255',
+        'date' => 'nullable|date',
+        'email' => 'email',
+        'phone' => 'nullable|string|min:10',
+        'location' => 'nullable|string|max:255',
+    ]);
 
-        $companyProfile->fill($request->all());
-        $companyProfile->save();
+    $companyProfile = $user->companyProfile;
 
-        return redirect()->route('company.profile.form')->with('success', 'Company profile updated successfully!');
+    if (!$companyProfile) {
+        $companyProfile = new CompanyProfile();
+        $companyProfile->user_id = $user->id;
     }
 
+    $companyProfile->fill($request->all());
+    $companyProfile->save();
+
+    return redirect()->route('company.profile.form')->with('success', 'Company profile updated successfully!');
+}
    
 
     public function updateProfilePicture(Request $request)

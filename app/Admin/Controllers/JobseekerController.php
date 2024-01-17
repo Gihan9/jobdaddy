@@ -120,35 +120,35 @@ class JobseekerController extends AdminController
         return view('jd.profile.edit', compact('user', 'profile'));
     }
 
-    public function up()
-    {
-        
-        request()->validate([
-            'name' => 'required|string|max:255',
-            'age' => 'nullable|integer',
-            'sex' => 'nullable|string|max:10',
-            'phone' => 'nullable|string|max:20',
-            'location' => 'nullable|string|max:255',
-            'marital_status' => 'nullable|string|max:255',
-            'designation' => 'nullable|string|max:255',
-        ]);
+    
+public function updateProfile()
+{
+    $validatedData = request()->validate([
+        'name' => 'required|string|max:255',
+        'age' => 'nullable|integer',
+        'sex' => 'nullable|string|max:10',
+        'phone' => 'nullable|min:10|max:13',
+        'location' => 'nullable|string|max:255',
+        'marital_status' => 'nullable|string|max:255',
+        'designation' => 'nullable|string|max:255',
+    ]);
 
-        // Update user details
-        $user = auth()->user();
-        $user->update(['name' => request()->input('name')]);
+    // Update user details
+    $user = auth()->user();
+    $user->update(['name' => $validatedData['name']]);
 
-        // Update or create profile data
-        $profile = $user->profile;
-        if (!$profile) {
-            $profile = new Jobseeker();
-            $profile->user_id = $user->id;
-        }
-        $profile->fill(request()->only(['name', 'age', 'sex', 'phone', 'location', 'marital_status', 'designation']));
-        $profile->save();
-
-        return redirect('/jd/profile');
+    // Update or create profile data
+    $profile = $user->profile;
+    if (!$profile) {
+        $profile = new Jobseeker();
+        $profile->user_id = $user->id;
     }
 
+    $profile->fill($validatedData);
+    $profile->save();
+
+    return redirect('/jd/profile');
+}
     public function updatePicture(Request $request)
     {
         
