@@ -27,7 +27,7 @@ class CompanyqaController extends AdminController
         $grid = new Grid(new Companyqa());
 
         $grid->column('id', __('Id'));
-        $grid->column('company_id', __('Company id'));
+        $grid->column('user_id', __('Company id'));
         $grid->column('question', __('Question'));
         $grid->column('answer', __('Answer'));
         $grid->column('col1', __('Col1'));

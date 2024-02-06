@@ -28,6 +28,7 @@ class ExperienceController extends BaseController
         $grid = new Grid(new Experience());
 
         $grid->column('id', __('Id'));
+        $grid->column('user_id', __('User Id'));
         $grid->column('job_title', __('Job title'));
         $grid->column('company_name', __('Company name'));
         $grid->column('s_date', __('Start_Date'));

@@ -27,6 +27,7 @@ class EducationController extends AdminController
         $grid = new Grid(new Education());
 
         $grid->column('id', __('Id'));
+        $grid->column('user_id', __('User Id'));
         $grid->column('degree', __('Degree'));
         $grid->column('university', __('University'));
         $grid->column('start_date', __('Start Date'));

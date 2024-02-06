@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Admin\Controllers\JobuserController;
-use App\admin\Controllers\JobseekerController;
+use App\Admin\Controllers\JobseekerController;
 use App\Admin\Controllers\ExperienceController;
 use App\Admin\Controllers\EducationController;
 use App\Admin\Controllers\CompanyController;
@@ -153,6 +153,7 @@ Route::get('/jd/advertdetails', function () {
 });
 
 
+//Payment Route
 Route::get('/jd/payment', function () {
     return view('jd.payment.payment');
 });

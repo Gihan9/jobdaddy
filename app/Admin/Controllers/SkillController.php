@@ -27,6 +27,8 @@ class SkillController extends AdminController
         $grid = new Grid(new Skill());
 
         $grid->column('id', __('Id'));
+        $grid->column('user_id', __('User_Id'));
+
         $grid->column('skill', __('Skill'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));

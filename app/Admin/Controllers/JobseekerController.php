@@ -37,16 +37,29 @@ class JobseekerController extends AdminController
         $grid = new Grid(new Jobseeker());
 
         $grid->column('id', __('Id'));
-        $grid->column('profile_picture')->image();
-        $grid->column('name', __('name'));
-        $grid->column('age', __('age'));
-        $grid->column('sex', __('sex'));
-        $grid->column('marital_status', __('marital_status'));
-        $grid->column('designation', __('designation'));
-       
+        $grid->column('user_id', __('Register Id'));
+
+        $grid->column('profile_picture', 'Profile Picture')->display(function ($profilePicture) {
+            $url = asset("storage/{$profilePicture}");
+        
+            return "<img src='{$url}' alt='advertisement picture' style='max-width: 100px; max-height: 100px;'>";
+        })->label('Profile Picture');
+        $grid->column('name', __('Name'));
+        $grid->column('age', __('Age'));
+        $grid->column('sex', __('Sex'));
+        $grid->column('marital_status', __('Marital Status'));
+        $grid->column('designation', __('Job Title'));
+        $grid->column('salary_range', __('Salary'));
         $grid->column('phone', __('Phone'));
         $grid->column('location', __('Location'));
-       
+        $grid->column('cv_path', 'CV File')->display(function ($cvFile) {
+            if ($cvFile) {
+                $url = asset("storage/{$cvFile}");
+                return "<a href='{$url}' target='_blank'>View CV</a>";
+            } else {
+                return "<a href='' target='_blank'>NO CV added</a>";
+            }
+        })->label('CV File');
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 

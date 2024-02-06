@@ -27,10 +27,8 @@ class JobpreferenceController extends AdminController
         $grid = new Grid(new Jobpreference());
 
         $grid->column('id', __('Id'));
-        $grid->column('p_job_title', __('P job title'));
-        $grid->column('employment_type', __('Employment type'));
-        $grid->column('p_location', __('P location'));
-        $grid->column('user_id', __('User id'));
+        $grid->column('user_id', __('User Id'));
+        $grid->column('job', __('Job title'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 

@@ -22,7 +22,7 @@
             <div class="tags">
                 <span class="adtag" id="type">{{ $job->em_type }}</span>
                 <span class="adtag" id="salary">LKR{{ $job->salary }}</span>
-                <span class="adtag" id="jobcategory">{{ $job->keyword1 }}</span>
+                <span class="adtag" id="jobcategory">{{ $job->category }}</span>
             </div>
              
         </div>

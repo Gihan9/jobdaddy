@@ -35,15 +35,24 @@ class JobsController extends AdminController
         $grid = new Grid(new Jobs());
 
         $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
+        $grid->column('user_id', __('Company_Id'));
+        $grid->column('status', __('Status'));
+        $grid->column('artwork', 'Profile Picture')->display(function ($profilePicture) {
+            $url = asset("storage/{$profilePicture}");
+        
+            return "<img src='{$url}' alt='advertisement picture' style='max-width: 100px; max-height: 100px;'>";
+        })->label('Artwork');
+        $grid->column('position', __('Job Titile'));
         $grid->column('company_name', __('Company Name'));
-        $grid->column('name', __('Name'));
-        $grid->column('description', __('Description'));
         $grid->column('category', __('Category'));
-        $grid->column('requirments', __('Requirments'));
-        $grid->column('type', __('Type'));
-        $grid->column('location', __('Location'));
+        $grid->column('website', __('Website'));
+        $grid->column('em_type', __('Employment Type'));
+        $grid->column('work_type', __('Work Type'));
+        $grid->column('location', __('Location'));  
+        $grid->column('salary', __('Salary'));  
+        $grid->column('Phone', __('Contact'));  
         $grid->column('email', __('Email'));
+        $grid->column('description', __('Description'));
         $grid->column('need_cv', __('Need cv'));
         $grid->column('need_cover_letter', __('Need cover letter'));
         $grid->column('company_id', __('Company id'));
@@ -254,7 +263,7 @@ class JobsController extends AdminController
       
 
        
-        return redirect()->route('company.profile.form')->with('success', 'Profile picture updated successfully!');
+        return view('jd.payment.payment');
         
     }
 

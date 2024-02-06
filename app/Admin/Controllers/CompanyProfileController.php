@@ -30,11 +30,20 @@ class CompanyProfileController extends AdminController
         $grid = new Grid(new CompanyProfile());
 
         $grid->column('id', __('Id'));
+        $grid->column('user_id', __('Register Id'));
+        $grid->column('profile_picture', 'Profile Picture')->display(function ($profilePicture) {
+            $url = asset("storage/{$profilePicture}");
+        
+            return "<img src='{$url}' alt='advertisement picture' style='max-width: 100px; max-height: 100px;'>";
+        })->label('Profile Picture');
         $grid->column('name', __('Name'));
-        $grid->column('about', __('About'));
-        $grid->column('established_date', __('Established date'));
-        $grid->column('profile_picture', __('Profile picture'));
+        $grid->column('website', __('Website'));
+        $grid->column('date', __('Established date'));
+        $grid->column('phone', __('Contact '));
+        $grid->column('email', __('Email '));
+        $grid->column('location', __('Location'));
         $grid->column('rating', __('Rating'));
+         $grid->column('about', __('About'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -52,7 +61,13 @@ class CompanyProfileController extends AdminController
         $show = new Show(CompanyProfile::findOrFail($id));
 
         $show->field('id', __('Id'));
+        $show->field('user_id', __('Id'));
         $show->field('name', __('Name'));
+        $show->field('website', __('Website'));
+        $show->field('date', __('Established Date'));
+        $show->field('phone', __('Contact'));
+        $show->field('email', __('Email'));
+        $show->field('location', __('Location'));
         $show->field('about', __('About'));
         $show->field('established_date', __('Established date'));
         $show->field('profile_picture', __('Profile picture'));
@@ -74,7 +89,11 @@ class CompanyProfileController extends AdminController
 
         $form->text('name', __('Name'));
         $form->text('about', __('About'));
-        $form->text('established_date', __('Established date'));
+        $form->text('website', __('Website'));
+        $form->text('date', __('Established date'));
+        $form->text('phone', __('Contact'));
+        $form->text('email', __('Email'));
+        $form->text('location', __('Location'));
         $form->text('profile_picture', __('Profile picture'));
         $form->text('rating', __('Rating'));
 
@@ -91,20 +110,36 @@ class CompanyProfileController extends AdminController
        
         return view('jd.companyprofile.company', compact('companyProfile', 'companyQnAs'));
     }
-
+    //public function storeOrUpdate(Request $request)
+    //{
+    //  $user = auth()->user();
+    
+     //   $request->validate([
+       //     'name' => 'required|string|max:255',
+         //   'website' => 'nullable|url|max:255',
+          //  'date' => 'nullable|date',
+           // 'email' => 'email',
+            //'phone' => 'nullable|string|min:10',
+            //'location' => 'nullable|string|max:255',
+       // ]);
+    
+       // $companyProfile = $user->companyProfile;
+    
+      //  if (!$companyProfile) {
+      //      $companyProfile = new CompanyProfile();
+      //      $companyProfile->user_id = $user->id;
+      //  }
+    
+       // $companyProfile->fill($request->all());
+      //  $companyProfile->save();
+    
+      //  return redirect()->route('company.profile.form')->with('success', 'Company profile updated successfully!');
+   // }//
     public function storeOrUpdate(Request $request)
 {
     $user = auth()->user();
 
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'website' => 'nullable|url|max:255',
-        'date' => 'nullable|date',
-        'email' => 'email',
-        'phone' => 'nullable|string|min:10',
-        'location' => 'nullable|string|max:255',
-    ]);
-
+   
     $companyProfile = $user->companyProfile;
 
     if (!$companyProfile) {

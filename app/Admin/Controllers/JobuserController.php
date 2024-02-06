@@ -34,8 +34,8 @@ class JobuserController extends AdminController
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'))->filter('like');
         $grid->column('acc_type', __('Account type'));
-        $grid->column('email', __('Email'));
-        $grid->column('password', __('Password'));
+      
+      
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
